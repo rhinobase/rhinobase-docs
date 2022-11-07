@@ -2,3 +2,9 @@ dist
 node_modules
 .next
 build
+public
+styles
+.*
+*.json
+*.js
+*.ts

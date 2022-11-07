@@ -9,6 +9,7 @@ import {
   OrderedList,
   Text,
   UnorderedList,
+  extendTheme,
 } from "@chakra-ui/react";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXComponents } from "mdx/types";
@@ -17,6 +18,17 @@ import Head from "next/head";
 import Script from "next/script";
 import Link from "next/link";
 import Image from "next/image";
+import { Plus_Jakarta_Sans } from "@next/font/google";
+import Wrapper from "components/Wrapper";
+
+const font = Plus_Jakarta_Sans();
+
+const defaultTheme = extendTheme({
+  ...theme,
+  fonts: {
+    heading: font.style.fontFamily,
+  },
+});
 
 const components: MDXComponents = {
   // a: (props) => <Link href={} {...props} />,
@@ -77,7 +89,7 @@ const components: MDXComponents = {
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={defaultTheme}>
       <Head>
         <title key="title">Rhinobase Docs</title>
         <meta
@@ -117,7 +129,9 @@ export default function App({ Component, pageProps }: AppProps) {
         </>
       )}
       <MDXProvider components={components}>
-        <Component {...pageProps} />
+        <Wrapper>
+          <Component {...pageProps} />
+        </Wrapper>
       </MDXProvider>
     </ChakraProvider>
   );
