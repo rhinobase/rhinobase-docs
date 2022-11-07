@@ -1,5 +1,36 @@
-import { Input } from "@chakra-ui/react";
+import {
+  Button,
+  Kbd,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody,
+  Spacer,
+} from "@chakra-ui/react";
 
 export default function Searchbar() {
-  return <Input placeholder="Search" w="xl"></Input>;
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <>
+      <Button
+        onClick={onOpen}
+        leftIcon={<span className="material-symbols-rounded">search</span>}
+        w="xl"
+        fontWeight={500}
+      >
+        Search the docs
+        <Spacer />
+        <span style={{ display: "flex" }}>
+          <Kbd mr={1}>Ctrl</Kbd> + <Kbd ml={1}>K</Kbd>
+        </span>
+      </Button>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalBody>Hello</ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
+  );
 }

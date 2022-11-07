@@ -9,11 +9,11 @@ type WrapperProps = {
 export default function Wrapper(props: WrapperProps) {
   return (
     <>
-      <Container maxW="6xl">
+      <Container maxW="8xl">
         <Header />
       </Container>
       {props.children}
-      <Container maxW="6xl">
+      <Container maxW="8xl">
         <Footer />
       </Container>
     </>
