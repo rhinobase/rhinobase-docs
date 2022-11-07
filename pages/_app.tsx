@@ -1,10 +1,21 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ChakraProvider, Heading, Text } from "@chakra-ui/react";
+import { ChakraProvider, Heading, Text, extendTheme } from "@chakra-ui/react";
 import { MDXProvider } from "@mdx-js/react";
 import theme from "theme";
 import Head from "next/head";
 import Script from "next/script";
+import { Plus_Jakarta_Sans } from "@next/font/google";
+import Wrapper from "components/Wrapper";
+
+const font = Plus_Jakarta_Sans();
+
+const defaultTheme = extendTheme({
+  ...theme,
+  fonts: {
+    heading: font.style.fontFamily,
+  },
+});
 
 const components = {
   h1: (props: any) => <Heading as="h1" {...props} />,
@@ -14,7 +25,7 @@ const components = {
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={defaultTheme}>
       <Head>
         <title key="title">Rhinobase Docs</title>
         <meta
@@ -54,7 +65,9 @@ export default function App({ Component, pageProps }: AppProps) {
         </>
       )}
       <MDXProvider components={components}>
-        <Component {...pageProps} />
+        <Wrapper>
+          <Component {...pageProps} />
+        </Wrapper>
       </MDXProvider>
     </ChakraProvider>
   );
