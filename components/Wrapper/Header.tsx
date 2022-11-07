@@ -1,15 +1,23 @@
-import { Heading, HStack, IconButton, Spacer, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import {
+  HStack,
+  IconButton,
+  Spacer,
+  useColorMode,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import FullLogo from "components/brand/FullLogo";
 import { FaGithub, FaDiscord, FaYoutube } from "react-icons/fa";
 import Searchbar from "./Searchbar";
 
 export default function Header() {
-    const {toggleColorMode} = useColorMode()
-    const value = useColorModeValue("dark_mode","light_mode")
+  const { toggleColorMode } = useColorMode();
+  const value = useColorModeValue("dark_mode", "light_mode");
+
   return (
     <HStack m={3}>
-      <Heading>LOGO</Heading>
+      <FullLogo logo={{ size: 40, borderRadius: "md", p: 1 }} size="lg" />
       <Spacer />
-      <Searchbar/>
+      <Searchbar />
       <Spacer />
       <IconButton
         variant="ghost"
@@ -26,7 +34,11 @@ export default function Header() {
         aria-label="youtube"
         icon={<FaYoutube size="24px" />}
       />
-      <IconButton onClick={toggleColorMode} variant="ghost" aria-label="togglemode">
+      <IconButton
+        onClick={toggleColorMode}
+        variant="ghost"
+        aria-label="togglemode"
+      >
         <span className="material-symbols-rounded">{value}</span>
       </IconButton>
     </HStack>
