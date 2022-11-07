@@ -19,7 +19,7 @@ import Script from "next/script";
 import Link from "next/link";
 import Image from "next/image";
 import { Plus_Jakarta_Sans } from "@next/font/google";
-import Wrapper from "components/Wrapper";
+import DefaultWrapper from "components/wrapper/DefaultWrapper";
 
 const font = Plus_Jakarta_Sans();
 
@@ -129,9 +129,9 @@ export default function App({ Component, pageProps }: AppProps) {
         </>
       )}
       <MDXProvider components={components}>
-        <Wrapper>
+        <DefaultWrapper>
           <Component {...pageProps} />
-        </Wrapper>
+        </DefaultWrapper>
       </MDXProvider>
     </ChakraProvider>
   );
