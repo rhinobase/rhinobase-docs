@@ -6,7 +6,7 @@ type WrapperProps = {
   children: JSX.Element;
 };
 
-export default function Wrapper(props: WrapperProps) {
+export default function DefaultWrapper(props: WrapperProps) {
   return (
     <>
       <Container maxW="8xl">

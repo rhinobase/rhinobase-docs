@@ -20,6 +20,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { Plus_Jakarta_Sans } from "@next/font/google";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
+import { NextPage } from "next";
+import ContentWrapper from "components/wrapper/ContentWrapper";
+
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: JSX.Element) => JSX.Element;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
 const font = Plus_Jakarta_Sans();
 
@@ -87,7 +97,15 @@ const components: MDXComponents = {
   hr: (props) => <Divider my="4rem" {...props} />,
 };
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout =
+    Component.getLayout ??
+    ((page) => (
+      <DefaultWrapper>
+        <ContentWrapper>{page}</ContentWrapper>
+      </DefaultWrapper>
+    ));
+
   return (
     <ChakraProvider theme={defaultTheme}>
       <Head>
@@ -129,9 +147,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </>
       )}
       <MDXProvider components={components}>
-        <DefaultWrapper>
-          <Component {...pageProps} />
-        </DefaultWrapper>
+        {getLayout(<Component {...pageProps} />)}
       </MDXProvider>
     </ChakraProvider>
   );
