@@ -7,6 +7,9 @@ import {
   ModalContent,
   ModalBody,
   Spacer,
+  Input,
+  InputGroup,
+  InputLeftElement,
 } from "@chakra-ui/react";
 
 export default function Searchbar() {
@@ -25,10 +28,17 @@ export default function Searchbar() {
           <Kbd mr={1}>Ctrl</Kbd> + <Kbd ml={1}>K</Kbd>
         </span>
       </Button>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal size="xl" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalBody>Hello</ModalBody>
+          <ModalBody p={0}>
+            <InputGroup size="lg">
+              <InputLeftElement pointerEvents="none">
+                <span className="material-symbols-rounded">search</span>
+              </InputLeftElement>
+              <Input placeholder="Search the docs" />
+            </InputGroup>
+          </ModalBody>
         </ModalContent>
       </Modal>
     </>

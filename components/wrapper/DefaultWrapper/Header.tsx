@@ -6,16 +6,19 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import FullLogo from "components/brand/FullLogo";
-import { FaGithub, FaDiscord, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaDiscord, FaYoutube, FaMoon, FaSun } from "react-icons/fa";
 import Searchbar from "./Searchbar";
+import Link from "next/link";
 
 export default function Header() {
   const { toggleColorMode } = useColorMode();
-  const value = useColorModeValue("dark_mode", "light_mode");
+  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
   return (
     <HStack m={3}>
-      <FullLogo logo={{ size: 40, borderRadius: "md", p: 1 }} size="lg" />
+      <Link href="/">
+        <FullLogo logo={{ size: 40, borderRadius: "md", p: 1 }} size="lg" />
+      </Link>
       <Spacer />
       <Searchbar />
       <Spacer />
@@ -38,9 +41,8 @@ export default function Header() {
         onClick={toggleColorMode}
         variant="ghost"
         aria-label="togglemode"
-      >
-        <span className="material-symbols-rounded">{value}</span>
-      </IconButton>
+        icon={<SwitchIcon />}
+      />
     </HStack>
   );
 }
