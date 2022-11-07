@@ -1,4 +1,12 @@
-import { HStack, Divider, Text, Grid, Spacer, Button, ButtonGroup } from "@chakra-ui/react";
+import {
+  HStack,
+  Divider,
+  Text,
+  Grid,
+  Spacer,
+  Button,
+  ButtonGroup,
+} from "@chakra-ui/react";
 import FooterList, { FooterListProps } from "./FooterList";
 
 const data: FooterListProps[] = [
@@ -106,7 +114,7 @@ export default function Footer() {
         ))}
       </Grid>
       <Divider my={4} />
-      <HStack>
+      <HStack mb={4}>
         <Text color="GrayText">
           © 2020 - {new Date().getFullYear()} Rhinobase® Inc. All Rights
           Reserved.
