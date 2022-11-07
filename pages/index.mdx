@@ -1,13 +1,54 @@
 export const meta = {
-author: 'Rich Haines'
-}
+  title: "Testing File", // Document title - used in <title> as well as things like search titles.
+  noindex: false, // Set this to true to disable indexing (robots, algolia) of this content.
+  notoc: false, // Set this to true to disable page-level table of contents rendering.
+  draft: false, // Set this to true to mark this page as a draft, and hide it from various other components
+  keywords: [], // A list of keywords for indexing with search.
+  description: "This is testing all the components", // A description to use in the <meta> header, as well as in auto generated page grids.
+};
 
-# My MDX page
+# Testing page
 
-This is a list in markdown:
+## Headings
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+---
+
+## Paragraph
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+
+---
+
+# HR
+
+---
 
 - One
 - Two
 - Three
+
+```javascript
+function foo() {
+  return "bar";
+}
+```
+
+```python
+def foo():
+  return 'bar'
+```
 
 Checkout my React component:

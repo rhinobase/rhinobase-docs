@@ -1,15 +1,78 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ChakraProvider, Heading, Text } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  Code,
+  Divider,
+  Heading,
+  ListItem,
+  OrderedList,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
 import { MDXProvider } from "@mdx-js/react";
+import { MDXComponents } from "mdx/types";
 import theme from "theme";
 import Head from "next/head";
 import Script from "next/script";
+import Link from "next/link";
+import Image from "next/image";
 
-const components = {
-  h1: (props: any) => <Heading as="h1" {...props} />,
-  h2: Heading,
-  p: Text,
+const components: MDXComponents = {
+  // a: (props) => <Link href={} {...props} />,
+  // blockquote:
+  // code:
+  h1: (props) => (
+    <Heading
+      as="h1"
+      mt="2rem"
+      mb=".25rem"
+      lineHeight={1.2}
+      fontWeight="bold"
+      fontSize="1.875rem"
+      letterSpacing="-.025em"
+      {...props}
+    />
+  ),
+  h2: (props) => (
+    <Heading
+      as="h2"
+      mt="4rem"
+      mb=".5rem"
+      lineHeight={1.3}
+      fontWeight="semibold"
+      fontSize="1.5rem"
+      letterSpacing="-.025em"
+      {...props}
+    />
+  ),
+  h3: (props) => (
+    <Heading
+      as="h3"
+      mt="3rem"
+      lineHeight={1.25}
+      fontWeight="semibold"
+      fontSize="1.25rem"
+      letterSpacing="-.025em"
+      {...props}
+    />
+  ),
+  h4: (props) => (
+    <Heading
+      as="h4"
+      mt="3rem"
+      lineHeight={1.375}
+      fontWeight="semibold"
+      fontSize="1.125rem"
+      {...props}
+    />
+  ),
+  li: ListItem,
+  ol: OrderedList,
+  p: (props) => <Text mt="1.25rem" lineHeight={1.7} {...props} />,
+  // pre: Code,
+  ul: (props) => <UnorderedList mt="0.5rem" ml="1.25rem" {...props} />,
+  hr: (props) => <Divider my="4rem" {...props} />,
 };
 
 export default function App({ Component, pageProps }: AppProps) {
