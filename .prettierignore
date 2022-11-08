@@ -1,10 +1,8 @@
-dist
-node_modules
 .next
-build
+.cache
+package-lock.json
 public
-styles
-.*
-*.json
-*.js
-*.ts
+node_modules
+next-env.d.ts
+next.config.ts
+yarn.lock

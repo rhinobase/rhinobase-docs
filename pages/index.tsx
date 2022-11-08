@@ -1,9 +1,11 @@
 import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import ApplicationTypeTile from "components/ApplicationTypeTile";
+import ComunityBanner from "components/ComunityBanner";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
 
 export default function Home() {
   return (
+    <>
     <Box py={5} pos="relative">
       <Box
         pos="absolute"
@@ -54,6 +56,8 @@ export default function Home() {
         </SimpleGrid>
       </Container>
     </Box>
+      <ComunityBanner />
+    </>
   );
 }
 
