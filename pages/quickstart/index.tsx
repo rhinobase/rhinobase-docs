@@ -6,9 +6,11 @@ import {
   SimpleGrid,
   Text,
   Image,
+  Spacer,
 } from "@chakra-ui/react";
 import { QuickstartTileProps } from "components/QuickstartTile";
 import React from "react";
+import Sidebar from "components/Sidebar";
 
 type QuickstartType = {
   title: string;
@@ -28,7 +30,30 @@ const data: QuickstartType[] = [
 
 export default function Quickstarts() {
   return (
-    <>
+    <Sidebar
+      options={[
+        {
+          items: [
+            {
+              title: "Regular Web App",
+              href: "#regular",
+            },
+            {
+              title: "Single-Page App",
+              href: "#singlepage",
+            },
+            {
+              title: "Native/Mobile App",
+              href: "#native",
+            },
+            {
+              title: "Backend/API",
+              href: "#backend",
+            },
+          ],
+        },
+      ]}
+    >
       <Container maxW="6xl">
         {data.map((value, index) => (
           <React.Fragment key={index}>
@@ -42,12 +67,14 @@ export default function Quickstarts() {
                 />
                 <Heading>{value.title}</Heading>
               </HStack>
-              <Text fontSize="2xl" my={5}>{value.description}</Text>
+              <Text fontSize="2xl" my={5}>
+                {value.description}
+              </Text>
             </Box>
-            <SimpleGrid columns={{base: 1, md: 2, lg: 3}}></SimpleGrid>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }}></SimpleGrid>
           </React.Fragment>
         ))}
       </Container>
-    </>
+    </Sidebar>
   );
 }

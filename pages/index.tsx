@@ -9,7 +9,6 @@ import {
 import ApplicationTypeTile from "components/ApplicationTypeTile";
 import ComunityBanner from "components/ComunityBanner";
 import PatternDots from "components/utils/PatternDots";
-import DefaultWrapper from "components/wrapper/DefaultWrapper";
 
 export default function Home() {
   const bgColor = useColorModeValue("gray.100", "gray.700");
