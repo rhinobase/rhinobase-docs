@@ -87,15 +87,6 @@ const data: FooterListProps[] = [
   },
 ];
 
-{
-  /* <VStack
-m={3}
-divider={<StackDivider borderColor="gray.200" />}
-spacing={4}
-align="stretch"
-> */
-}
-
 export default function Footer() {
   return (
     <>

@@ -1,4 +1,4 @@
-import { Heading, HStack } from "@chakra-ui/react";
+import { Heading, Image, HStack, useColorModeValue } from "@chakra-ui/react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,15 +9,17 @@ export type QuickstartTileProps = {
 };
 
 export default function QuickstartTile(props: QuickstartTileProps) {
+  const bgColor = useColorModeValue("gray.100", "gray.700");
   return (
     <Link href={props.href}>
       <HStack
         h="72px"
-        border="1px"
-        borderColor="GrayText"
+        border="2px"
+        borderColor={bgColor}
         borderRadius="md"
         p={7}
-        spacing={5}
+        _hover={{border:"2px", borderColor: "messenger.200" }}
+        transition="border 0.1s ease 0s"
       >
         <Image src={props.image} alt={props.title} width={30} height={30} />
         <Heading size="md" fontWeight={500}>

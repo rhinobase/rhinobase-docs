@@ -10,7 +10,7 @@ export type FooterListProps = {
 export default function FooterList(props: FooterListProps) {
   return (
       <GridItem w="100%" p={3}>
-        <Text as="b">{props.title}</Text>
+        <Text as="b" my={5}>{props.title}</Text>
         {props.items.map((item, index) => (
           <FooterListItem key={index} {...item} />
         ))}
