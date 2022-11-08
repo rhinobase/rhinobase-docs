@@ -122,7 +122,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <meta property="og:url" content="https://rhinobase.io" />
         <meta property="og:type" content={"website"} />
       </Head>
-      {process.env.NODE_ENV && (
+      {process.env.NODE_ENV == "production" && (
         <>
           {/* TODO: Add the Google analytics code */}
           <Script src="https://www.googletagmanager.com/gtag/js?id=" />

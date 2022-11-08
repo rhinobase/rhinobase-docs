@@ -15,7 +15,7 @@ export default function DefaultWrapper(props: WrapperProps) {
           <Header />
         </Container>
       </Box>
-      {props.children}
+      <Box pt="64px">{props.children}</Box>
       <Container maxW="8xl">
         <Footer />
       </Container>
