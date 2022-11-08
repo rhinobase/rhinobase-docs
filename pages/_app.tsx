@@ -21,7 +21,6 @@ import Image from "next/image";
 import { Plus_Jakarta_Sans } from "@next/font/google";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
 import { NextPage } from "next";
-import ContentWrapper from "components/wrapper/ContentWrapper";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: JSX.Element) => JSX.Element;
@@ -102,7 +101,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     Component.getLayout ??
     ((page) => (
       <DefaultWrapper>
-        <ContentWrapper>{page}</ContentWrapper>
+        {page}
       </DefaultWrapper>
     ));
 

@@ -11,7 +11,7 @@ const withMDX = require("@next/mdx")({
 
 const nextConfig = withMDX({
   images: {
-    domains: [],
+    domains: ["via.placeholder.com"],
   },
   redirects: require("./next-redirect"),
   reactStrictMode: true,
