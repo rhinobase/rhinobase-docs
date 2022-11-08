@@ -6,7 +6,6 @@ import {
   SimpleGrid,
   Text,
   Image,
-  Spacer,
 } from "@chakra-ui/react";
 import QuickstartTile, { QuickstartTileProps } from "components/QuickstartTile";
 import React from "react";
