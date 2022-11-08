@@ -41,24 +41,28 @@ export default function Home() {
             mx={{ base: 5, lg: 0 }}
           >
             <ApplicationTypeTile
+              id="native"
               image="https://via.placeholder.com/150?text=%20"
               title="Native/Mobile App"
               content="Mobile or Desktop app that runs natively on a device"
               example="e.g., IOS, Andriod"
             />
             <ApplicationTypeTile
+              id="singlepage"
               image="https://via.placeholder.com/150?text=%20"
               title="Single-Page App"
               content="JavaScript web app that runs in the browser"
               example="e.g., AngularJS + Node.js, React"
             />
             <ApplicationTypeTile
+              id="regular"
               image="https://via.placeholder.com/150?text=%20"
               title="Regular Web App"
               content="Traditional web app that runs on the server"
               example="e.g., Express.js, ASP.NET"
             />
             <ApplicationTypeTile
+              id="backend"
               image="https://via.placeholder.com/150?text=%20"
               title="Backend/API"
               content="An API or service protected by Auth0"
