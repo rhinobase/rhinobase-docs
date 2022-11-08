@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import {
   ChakraProvider,
-  Code,
   Divider,
   Heading,
   ListItem,
@@ -16,13 +15,14 @@ import { MDXComponents } from "mdx/types";
 import theme from "theme";
 import Head from "next/head";
 import Script from "next/script";
-import Link from "next/link";
-import Image from "next/image";
 import { Plus_Jakarta_Sans } from "@next/font/google";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
 import { NextPage } from "next";
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
+  P,
+  IP
+> & {
   getLayout?: (page: JSX.Element) => JSX.Element;
 };
 

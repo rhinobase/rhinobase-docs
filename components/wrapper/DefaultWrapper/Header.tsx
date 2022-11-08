@@ -1,4 +1,5 @@
 import {
+  Box,
   HStack,
   IconButton,
   Spacer,
@@ -15,7 +16,7 @@ export default function Header() {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
   return (
-    <HStack m={3}>
+    <HStack py={3} pos="sticky" zIndex="10" >
       <Link href="/">
         <FullLogo logo={{ size: 40, borderRadius: "md", p: 1 }} size="lg" />
       </Link>
@@ -41,7 +42,7 @@ export default function Header() {
         onClick={toggleColorMode}
         variant="ghost"
         aria-label="togglemode"
-        icon={<SwitchIcon />}
+        icon={<SwitchIcon size="20px" />}
       />
     </HStack>
   );
