@@ -4,6 +4,7 @@ import {
   Spacer,
   useColorMode,
   useColorModeValue,
+  Button
 } from "@chakra-ui/react";
 import FullLogo from "components/brand/FullLogo";
 import { FaGithub, FaDiscord, FaYoutube, FaMoon, FaSun } from "react-icons/fa";
@@ -14,11 +15,24 @@ export default function Header() {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
   return (
-    <HStack py={3} pos="sticky" zIndex="10" >
+    <HStack py={3}>
       <Link href="/">
         <FullLogo logo={{ size: 40, borderRadius: "md", p: 1 }} size="lg" />
       </Link>
       <Spacer />
+
+      <Link href="/articles">
+      <Button variant="ghost" >Article</Button></Link>
+
+      <Link href="/quickstart">
+      <Button variant="ghost">Quickstarts</Button></Link>
+
+      <Link href="/apis">
+      <Button variant="ghost">APIs</Button></Link>
+
+      <Link href="/sdks">
+      <Button variant="ghost">SDKs</Button></Link>
+
       <IconButton
         variant="ghost"
         aria-label="github"

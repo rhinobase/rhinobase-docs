@@ -97,13 +97,7 @@ const components: MDXComponents = {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout =
-    Component.getLayout ??
-    ((page) => (
-      <DefaultWrapper>
-        {page}
-      </DefaultWrapper>
-    ));
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <ChakraProvider theme={defaultTheme}>
@@ -146,7 +140,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         </>
       )}
       <MDXProvider components={components}>
-        {getLayout(<Component {...pageProps} />)}
+        <DefaultWrapper>
+          {getLayout(<Component {...pageProps} />)}
+        </DefaultWrapper>
       </MDXProvider>
     </ChakraProvider>
   );
