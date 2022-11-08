@@ -1,5 +1,6 @@
-import { Heading, Image, HStack } from "@chakra-ui/react";
+import { Heading, HStack } from "@chakra-ui/react";
 import Link from "next/link";
+import Image from "next/image";
 
 export type QuickstartTileProps = {
   title: string;
@@ -16,8 +17,9 @@ export default function QuickstartTile(props: QuickstartTileProps) {
         borderColor="GrayText"
         borderRadius="md"
         p={7}
+        spacing={5}
       >
-        <Image src={props.image} alt={props.title} boxSize="50px" />
+        <Image src={props.image} alt={props.title} width={30} height={30} />
         <Heading size="md" fontWeight={500}>
           {props.title}
         </Heading>
