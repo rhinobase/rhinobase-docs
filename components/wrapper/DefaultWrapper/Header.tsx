@@ -1,5 +1,4 @@
 import {
-  Box,
   HStack,
   IconButton,
   Spacer,
@@ -8,7 +7,6 @@ import {
 } from "@chakra-ui/react";
 import FullLogo from "components/brand/FullLogo";
 import { FaGithub, FaDiscord, FaYoutube, FaMoon, FaSun } from "react-icons/fa";
-import Searchbar from "./Searchbar";
 import Link from "next/link";
 
 export default function Header() {
@@ -20,8 +18,6 @@ export default function Header() {
       <Link href="/">
         <FullLogo logo={{ size: 40, borderRadius: "md", p: 1 }} size="lg" />
       </Link>
-      <Spacer />
-      <Searchbar />
       <Spacer />
       <IconButton
         variant="ghost"
