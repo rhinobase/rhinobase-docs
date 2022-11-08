@@ -3,7 +3,7 @@ import Logo, { LogoProps } from "./Logo";
 
 type initialProps = {
   size?: string;
-  logo: LogoProps;
+  logo?: LogoProps;
 };
 
 export default function FullLogo({ size, logo }: initialProps) {
