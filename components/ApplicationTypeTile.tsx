@@ -1,4 +1,4 @@
-import { Button, Flex, Image, Text, useColorModeValue, VStack } from "@chakra-ui/react";
+import { Flex, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 
 type ApplicationTypeTileProps = {
