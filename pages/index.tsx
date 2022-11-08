@@ -1,9 +1,11 @@
-import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Container, Heading, SimpleGrid, Text, useColorModeValue } from "@chakra-ui/react";
 import ApplicationTypeTile from "components/ApplicationTypeTile";
 import ComunityBanner from "components/ComunityBanner";
+import PatternDots from "components/utils/PatternDots";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
 
 export default function Home() {
+  const bgColor = useColorModeValue("gray.100", "gray.700");
   return (
     <>
     <Box py={5} pos="relative">
@@ -11,12 +13,15 @@ export default function Home() {
         pos="absolute"
         w="100%"
         h="90%"
-        bgColor="gray.100"
+        bgColor={bgColor}
         top={0}
         left={0}
         borderBottomRadius="40px"
         zIndex="-1"
-      />
+        overflow="hidden"
+      >
+        <PatternDots />
+      </Box>
       <Container maxW="7xl">
         <Box my={20}>
           <Heading>Start Building</Heading>

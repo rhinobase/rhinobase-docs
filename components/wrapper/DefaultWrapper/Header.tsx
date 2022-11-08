@@ -1,4 +1,5 @@
 import {
+  Box,
   HStack,
   IconButton,
   Spacer,
@@ -15,7 +16,7 @@ export default function Header() {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
   return (
-    <HStack py={3}>
+    <HStack py={3} pos="sticky" zIndex="10" >
       <Link href="/">
         <FullLogo logo={{ size: 40, borderRadius: "md", p: 1 }} size="lg" />
       </Link>

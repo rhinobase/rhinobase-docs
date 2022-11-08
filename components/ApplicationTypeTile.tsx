@@ -1,4 +1,4 @@
-import { Button, Flex, Image, Text, VStack } from "@chakra-ui/react";
+import { Button, Flex, Image, Text, useColorModeValue, VStack } from "@chakra-ui/react";
 import React from "react";
 
 type ApplicationTypeTileProps = {
@@ -9,6 +9,7 @@ type ApplicationTypeTileProps = {
 };
 
 export default function ApplicationTypeTile(props: ApplicationTypeTileProps) {
+  const bgColor = useColorModeValue("white", "gray.800");
   return (
     <Flex
       h="320px"
@@ -22,7 +23,7 @@ export default function ApplicationTypeTile(props: ApplicationTypeTileProps) {
       borderRadius="md"
       p={7}
       transition="border 0.1s ease 0s"
-      bgColor="white"
+      bgColor={bgColor}
     >
       <Image
         borderRadius="2xl"
