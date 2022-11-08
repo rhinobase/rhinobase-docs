@@ -1,4 +1,4 @@
-import { Heading, Image, HStack, useColorModeValue } from "@chakra-ui/react";
+import { Heading, HStack, useColorModeValue } from "@chakra-ui/react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -20,6 +20,7 @@ export default function QuickstartTile(props: QuickstartTileProps) {
         p={7}
         _hover={{border:"2px", borderColor: "messenger.200" }}
         transition="border 0.1s ease 0s"
+        spacing={5}
       >
         <Image src={props.image} alt={props.title} width={30} height={30} />
         <Heading size="md" fontWeight={500}>
