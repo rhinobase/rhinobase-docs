@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 type SidebarNestedType = {
   title: string;
@@ -30,33 +30,36 @@ type SidebarProps = {
   options: SidebarNestedType[];
 };
 
-function SidebarNested(props: SidebarNestedType) {
-  const [isActive, setActive] = useState(false);
-  const router = useRouter();
-
-  console.log(router.pathname, router.basePath);
-
-  useEffect(() => {
-    if (props.href == "") setActive(true);
-  }, [router]);
+function SidebarNested(
+  props: SidebarNestedType & { index: number; active: number[] },
+) {
+  const isActive = props.index == props.active[0];
 
   if (props.items) {
     return (
       <AccordionItem border={0} p={0}>
-        <AccordionButton p={0}>
+        <AccordionButton p={0} mb={2} as={"div"}>
           <Button
             size="sm"
             w="100%"
             leftIcon={<AccordionIcon />}
             justifyContent="start"
+            isActive={isActive}
           >
             {props.title}
           </Button>
         </AccordionButton>
         <AccordionPanel py={0} pr={0}>
-          {props.items.map((item, index) => (
-            <SidebarNested key={index} {...item} />
-          ))}
+          <Accordion allowToggle index={props.active[1]}>
+            {props.items.map((item, index) => (
+              <SidebarNested
+                key={index}
+                {...item}
+                index={index}
+                active={isActive ? props.active.slice(1) : []}
+              />
+            ))}
+          </Accordion>
         </AccordionPanel>
       </AccordionItem>
     );
@@ -65,7 +68,13 @@ function SidebarNested(props: SidebarNestedType) {
   if (props.href)
     return (
       <Link href={props.href}>
-        <Button w="100%" size="sm" isActive={isActive} justifyContent="start">
+        <Button
+          w="100%"
+          size="sm"
+          mb={1}
+          isActive={isActive}
+          justifyContent="start"
+        >
           {props.title}
         </Button>
       </Link>
@@ -80,7 +89,30 @@ function SidebarNested(props: SidebarNestedType) {
   );
 }
 
+function findActiveAccordion(
+  items: SidebarNestedType[],
+  route: string,
+): number[] | undefined {
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    if (item.href && item.href == route) return [i];
+    else if (item.items) {
+      const result = findActiveAccordion(item.items, route);
+      if (result) {
+        result.unshift(i);
+        return result;
+      }
+    }
+  }
+}
+
 export default function Sidebar(props: SidebarProps) {
+  const router = useRouter();
+  const currentIndex = useMemo(
+    () => findActiveAccordion(props.options, router.pathname) ?? [],
+    [props.options, router.pathname],
+  );
+
   return (
     <HStack
       h="calc(100vh - 64px)"
@@ -96,9 +128,14 @@ export default function Sidebar(props: SidebarProps) {
         spacing={0}
         w="280px"
       >
-        <Accordion allowToggle>
+        <Accordion allowToggle index={currentIndex[0]}>
           {props.options.map((item, index) => (
-            <SidebarNested key={index} {...item} />
+            <SidebarNested
+              key={index}
+              {...item}
+              index={index}
+              active={[...(currentIndex ?? [])]}
+            />
           ))}
         </Accordion>
       </ButtonGroup>

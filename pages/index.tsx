@@ -1,8 +1,11 @@
 import {
   Box,
+  Button,
   Container,
   Heading,
+  HStack,
   SimpleGrid,
+  Spacer,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -11,7 +14,8 @@ import ComunityBanner from "components/ComunityBanner";
 import ContentTile from "components/ContentTile";
 import PatternDots from "components/utils/PatternDots";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
-import { FaGithub, FaInnosoft } from "react-icons/fa";
+import Link from "next/link";
+import { FaArrowRight, FaGithub, FaInnosoft } from "react-icons/fa";
 
 export default function Home() {
   const bgColor = useColorModeValue("gray.100", "gray.700");
@@ -80,11 +84,29 @@ export default function Home() {
           </SimpleGrid>
         </Container>
       </Box>
-      <Container maxW="7xl">
+      <Container maxW="7xl" my={8}>
+        <HStack>
+          <Text fontSize="2xl" as="b" ml={10}>
+            Multiparty payments
+          </Text>
+          <Spacer />
+          <Link href={""}>
+            <Button
+              variant="ghost"
+              colorScheme="messenger"
+              my={2}
+              mx={10}
+              rightIcon={<FaArrowRight />}
+            >
+              learn more
+            </Button>
+          </Link>
+        </HStack>
         <SimpleGrid
           columns={{ base: 1, md: 2, lg: 3 }}
           spacing={8}
-          my={20}
+          mt={8}
+          mb={20}
           mx={8}
         >
           <ContentTile
@@ -116,9 +138,23 @@ export default function Home() {
             tags={["PAYMENTS"]}
           />
         </SimpleGrid>
-        <Text fontSize="2xl" as="b" ml={10}>
-          Clone a sample project
-        </Text>
+        <HStack>
+          <Text fontSize="2xl" as="b" ml={10}>
+            Clone a sample project
+          </Text>
+          <Spacer />
+          <Link href={""}>
+            <Button
+              variant="ghost"
+              colorScheme="messenger"
+              my={2}
+              mx={10}
+              rightIcon={<FaArrowRight />}
+            >
+              learn more
+            </Button>
+          </Link>
+        </HStack>
         <SimpleGrid
           columns={{ base: 1, md: 2, lg: 3 }}
           spacing={8}
@@ -145,9 +181,23 @@ export default function Home() {
             tags={["WEB", "MOBILE WEB"]}
           />
         </SimpleGrid>
-        <Text fontSize="2xl" as="b" m={10}>
-          Clone a sample project
-        </Text>
+        <HStack>
+          <Text fontSize="2xl" as="b" ml={10}>
+            Clone a sample project
+          </Text>
+          <Spacer />
+          <Link href={""}>
+            <Button
+              variant="ghost"
+              colorScheme="messenger"
+              my={2}
+              mx={10}
+              rightIcon={<FaArrowRight />}
+            >
+              learn more
+            </Button>
+          </Link>
+        </HStack>
         <SimpleGrid
           columns={{ base: 1, md: 2, lg: 3 }}
           spacing={8}
