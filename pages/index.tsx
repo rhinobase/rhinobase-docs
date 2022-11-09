@@ -9,6 +9,7 @@ import {
 import ApplicationTypeTile from "components/ApplicationTypeTile";
 import ComunityBanner from "components/ComunityBanner";
 import PatternDots from "components/utils/PatternDots";
+import DefaultWrapper from "components/wrapper/DefaultWrapper";
 
 export default function Home() {
   const bgColor = useColorModeValue("gray.100", "gray.700");
@@ -27,6 +28,12 @@ export default function Home() {
           overflow="hidden"
         >
           <PatternDots />
+          <Box
+            position="absolute"
+            w="100%"
+            h="100%"
+            bgGradient={`linear(to-b, ${bgColor}, transparent)`}
+          />
         </Box>
         <Container maxW="7xl">
           <Box my={20}>
@@ -75,3 +82,7 @@ export default function Home() {
     </>
   );
 }
+
+Home.getLayout = function getLayout(page: JSX.Element) {
+  return <DefaultWrapper>{page}</DefaultWrapper>;
+};

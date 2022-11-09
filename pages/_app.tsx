@@ -16,8 +16,8 @@ import theme from "theme";
 import Head from "next/head";
 import Script from "next/script";
 import { Plus_Jakarta_Sans } from "@next/font/google";
-import DefaultWrapper from "components/wrapper/DefaultWrapper";
 import { NextPage } from "next";
+import MinimalWrapper from "components/wrapper/MinimalWrapper";
 
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
   P,
@@ -97,7 +97,8 @@ const components: MDXComponents = {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page);
+  const getLayout =
+    Component.getLayout ?? ((page) => <MinimalWrapper>{page}</MinimalWrapper>);
 
   return (
     <ChakraProvider theme={defaultTheme}>
@@ -140,9 +141,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         </>
       )}
       <MDXProvider components={components}>
-        <DefaultWrapper>
-          {getLayout(<Component {...pageProps} />)}
-        </DefaultWrapper>
+        {getLayout(<Component {...pageProps} />)}
       </MDXProvider>
     </ChakraProvider>
   );

@@ -1,6 +1,5 @@
 import {
   Box,
-  Container,
   Heading,
   HStack,
   SimpleGrid,
@@ -8,26 +7,28 @@ import {
   Image,
 } from "@chakra-ui/react";
 import QuickstartTile, { QuickstartTileProps } from "components/QuickstartTile";
+import Sidebar from "components/wrapper/Sidebar";
 import React from "react";
-import Sidebar from "components/Sidebar";
-import PythonImage from "../../public/quickstart_icons/python.svg"
-import LaravelImage from "../../public/quickstart_icons/laravel.svg"
-import JavascriptImage from "../../public/quickstart_icons/javascript.svg"
-import GolangImage from "../../public/quickstart_icons/golang.svg"
-import PhpImage from "../../public/quickstart_icons/php.svg"
-import NextjsImage from "../../public/quickstart_icons/nextjs.svg"
-import RailsImage from "../../public/quickstart_icons/rails.svg"
-import JavaImage from "../../public/quickstart_icons/java.svg"
-import AngularImage from "../../public/quickstart_icons/angular.svg"
-import VuejsImage from "../../public/quickstart_icons/vuejs.svg"
-import AndroidImage from "../../public/quickstart_icons/android.svg"
-import FlutterImage from "../../public/quickstart_icons/flutter.svg"
-import AppleImage from "../../public/quickstart_icons/apple.svg"
-import ReactImage from "../../public/quickstart_icons/react.svg"
-import NodejsImage from "../../public/quickstart_icons/nodejs.svg"
-import DjangoImage from "../../public/quickstart_icons/django.svg"
+// Images
+import PythonImage from "../../public/quickstart_icons/python.svg";
+import LaravelImage from "../../public/quickstart_icons/laravel.svg";
+import JavascriptImage from "../../public/quickstart_icons/javascript.svg";
+import GolangImage from "../../public/quickstart_icons/golang.svg";
+import PhpImage from "../../public/quickstart_icons/php.svg";
+import NextjsImage from "../../public/quickstart_icons/nextjs.svg";
+import RailsImage from "../../public/quickstart_icons/rails.svg";
+import JavaImage from "../../public/quickstart_icons/java.svg";
+import AngularImage from "../../public/quickstart_icons/angular.svg";
+import VuejsImage from "../../public/quickstart_icons/vuejs.svg";
+import AndroidImage from "../../public/quickstart_icons/android.svg";
+import FlutterImage from "../../public/quickstart_icons/flutter.svg";
+import AppleImage from "../../public/quickstart_icons/apple.svg";
+import ReactImage from "../../public/quickstart_icons/react.svg";
+import NodejsImage from "../../public/quickstart_icons/nodejs.svg";
+import DjangoImage from "../../public/quickstart_icons/django.svg";
 
 type QuickstartType = {
+  id: string;
   title: string;
   description: string;
   image: string;
@@ -36,6 +37,7 @@ type QuickstartType = {
 
 const data: QuickstartType[] = [
   {
+    id: "regular",
     title: "Regular Web App",
     description: "Traditional web app that runs on the server",
     image: "https://via.placeholder.com/150?text=%20",
@@ -88,6 +90,7 @@ const data: QuickstartType[] = [
     ],
   },
   {
+    id: "singlepage",
     title: "Single Page App",
     description: "Javascript web app that runs in the browser",
     image: "https://via.placeholder.com/150?text=%20",
@@ -115,6 +118,7 @@ const data: QuickstartType[] = [
     ],
   },
   {
+    id: "native",
     title: "Native/Mobile App",
     description: "Traditional web app that runs on the server",
     image: "https://via.placeholder.com/150?text=%20",
@@ -142,6 +146,7 @@ const data: QuickstartType[] = [
     ],
   },
   {
+    id: "backend",
     title: "Backend/API",
     description: "Traditional web app that runs on the server",
     image: "https://via.placeholder.com/150?text=%20",
@@ -182,7 +187,7 @@ const data: QuickstartType[] = [
         image: NodejsImage,
       },
     ],
-  }
+  },
 ];
 
 export default function Quickstarts() {
@@ -211,7 +216,7 @@ export default function Quickstarts() {
         },
       ]}
     >
-      <Container maxW="6xl">
+      <>
         {data.map((value, index) => (
           <React.Fragment key={index}>
             <Box>
@@ -235,7 +240,7 @@ export default function Quickstarts() {
             </SimpleGrid>
           </React.Fragment>
         ))}
-      </Container>
+      </>
     </Sidebar>
   );
 }

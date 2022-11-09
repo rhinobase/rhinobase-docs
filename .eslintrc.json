@@ -10,6 +10,7 @@
   "plugins": ["@typescript-eslint", "import"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "react/react-in-jsx-scope": "off",
     "react/display-name": "off",
     "@next/next/no-img-element": "off",

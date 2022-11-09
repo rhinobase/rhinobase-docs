@@ -1,12 +1,11 @@
-import { Container, Box, useColorModeValue } from "@chakra-ui/react";
-import Footer from "./Footer";
-import Header from "./Header";
+import { Box, useColorModeValue } from "@chakra-ui/react";
+import Header from "./DefaultWrapper/Header";
 
 type WrapperProps = {
   children: JSX.Element;
 };
 
-export default function DefaultWrapper(props: WrapperProps) {
+export default function MinimalWrapper(props: WrapperProps) {
   const bgColor = useColorModeValue("gray.100", "gray.700");
   return (
     <>
@@ -14,9 +13,6 @@ export default function DefaultWrapper(props: WrapperProps) {
         <Header />
       </Box>
       <Box pt="64px">{props.children}</Box>
-      <Container maxW="7xl">
-        <Footer />
-      </Container>
     </>
   );
 }
