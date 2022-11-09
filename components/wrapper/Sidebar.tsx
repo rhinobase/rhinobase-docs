@@ -14,6 +14,7 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  ExpandedIndex,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -34,6 +35,11 @@ function SidebarNested(
   props: SidebarNestedType & { index: number; active: number[] },
 ) {
   const isActive = props.index == props.active[0];
+  const [active, setActive] = useState<ExpandedIndex>();
+
+  useEffect(() => {
+    setActive(props.active[1]);
+  }, [props.active]);
 
   if (props.items) {
     return (
@@ -44,13 +50,17 @@ function SidebarNested(
             w="100%"
             leftIcon={<AccordionIcon />}
             justifyContent="start"
-            isActive={isActive}
+            colorScheme={isActive ? "messenger" : undefined}
           >
             {props.title}
           </Button>
         </AccordionButton>
         <AccordionPanel py={0} pr={0}>
-          <Accordion allowToggle index={props.active[1]}>
+          <Accordion
+            allowToggle
+            index={active}
+            onChange={(expandedIndex) => setActive(expandedIndex)}
+          >
             {props.items.map((item, index) => (
               <SidebarNested
                 key={index}
@@ -72,7 +82,8 @@ function SidebarNested(
           w="100%"
           size="sm"
           mb={1}
-          isActive={isActive}
+          colorScheme={isActive ? "messenger" : undefined}
+          // isActive={isActive}
           justifyContent="start"
         >
           {props.title}
@@ -108,10 +119,15 @@ function findActiveAccordion(
 
 export default function Sidebar(props: SidebarProps) {
   const router = useRouter();
+  const [active, setActive] = useState<ExpandedIndex>();
   const currentIndex = useMemo(
     () => findActiveAccordion(props.options, router.pathname) ?? [],
     [props.options, router.pathname],
   );
+
+  useEffect(() => {
+    setActive(currentIndex[0]);
+  }, [currentIndex]);
 
   return (
     <HStack
@@ -121,20 +137,23 @@ export default function Sidebar(props: SidebarProps) {
     >
       <ButtonGroup
         variant="ghost"
-        colorScheme="messenger"
         px={2}
         py={3}
         flexDir="column"
         spacing={0}
         w="280px"
       >
-        <Accordion allowToggle index={currentIndex[0]}>
+        <Accordion
+          allowToggle
+          index={active}
+          onChange={(expandedIndex) => setActive(expandedIndex)}
+        >
           {props.options.map((item, index) => (
             <SidebarNested
               key={index}
               {...item}
               index={index}
-              active={[...(currentIndex ?? [])]}
+              active={[...currentIndex]}
             />
           ))}
         </Accordion>
