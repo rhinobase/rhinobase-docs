@@ -1,5 +1,7 @@
+import QuickstartWrapper from "components/wrapper/QuickstartWrapper";
 export default function vue() {
-  return (
-    <div>vue</div>
-  )
+  return <>vue</>
 }
+vue.getLayout = function getLayout(page: JSX.Element) {
+  return <QuickstartWrapper>{page}</QuickstartWrapper>;
+};

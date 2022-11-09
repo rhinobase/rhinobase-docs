@@ -1,5 +1,8 @@
+import QuickstartWrapper from "components/wrapper/QuickstartWrapper";
+
 export default function python() {
-  return (
-    <div>python</div>
-  )
+  return <>python</>
 }
+python.getLayout = function getLayout(page: JSX.Element) {
+  return <QuickstartWrapper>{page}</QuickstartWrapper>;
+};

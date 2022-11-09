@@ -1,5 +1,8 @@
+import QuickstartWrapper from "components/wrapper/QuickstartWrapper";
+
 export default function php() {
-  return (
-    <div>php</div>
-  )
+  return <>php</>
 }
+php.getLayout = function getLayout(page: JSX.Element) {
+  return <QuickstartWrapper>{page}</QuickstartWrapper>;
+};
