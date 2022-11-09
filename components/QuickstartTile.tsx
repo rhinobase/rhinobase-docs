@@ -18,7 +18,7 @@ export default function QuickstartTile(props: QuickstartTileProps) {
         borderColor={bgColor}
         borderRadius="md"
         p={7}
-        _hover={{border:"2px", borderColor: "messenger.200" }}
+        _hover={{borderColor: "messenger.200" }}
         transition="border 0.1s ease 0s"
         spacing={5}
       >
