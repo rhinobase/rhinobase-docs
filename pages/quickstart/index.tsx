@@ -48,43 +48,43 @@ const data: QuickstartType[] = [
         image: PythonImage,
       },
       {
-        title: "Laravel",
-        href: "/quickstart/django",
+        title: "Laraval",
+        href: "/quickstart/laraval",
         image: LaravelImage,
       },
       {
         title: "Express",
-        href: "/quickstart/django",
+        href: "/quickstart/express",
         image: JavascriptImage,
       },
       {
         title: "Go",
-        href: "/quickstart/django",
+        href: "/quickstart/go",
         image: GolangImage,
       },
       {
         title: "Python",
-        href: "/quickstart/django",
+        href: "/quickstart/python",
         image: PythonImage,
       },
       {
         title: "PHP",
-        href: "/quickstart/django",
+        href: "/quickstart/php",
         image: PhpImage,
       },
       {
         title: "Next.js",
-        href: "/quickstart/django",
+        href: "/quickstart/nextjs",
         image: NextjsImage,
       },
       {
         title: "Ruby On Rails",
-        href: "/quickstart/django",
+        href: "/quickstart/ruby_on_rails",
         image: RailsImage,
       },
       {
         title: "Java",
-        href: "/quickstart/django",
+        href: "/quickstart/java",
         image: JavaImage,
       },
     ],
@@ -97,22 +97,22 @@ const data: QuickstartType[] = [
     items: [
       {
         title: "Angular",
-        href: "/quickstart/django",
+        href: "/quickstart/angular",
         image: AngularImage,
       },
       {
         title: "Javascript",
-        href: "/quickstart/django",
+        href: "/quickstart/javascript",
         image: JavascriptImage,
       },
       {
         title: "React",
-        href: "/quickstart/django",
+        href: "/quickstart/react",
         image: ReactImage,
       },
       {
         title: "Vue",
-        href: "/quickstart/django",
+        href: "/quickstart/vue",
         image: VuejsImage,
       },
     ],
@@ -125,22 +125,22 @@ const data: QuickstartType[] = [
     items: [
       {
         title: "Android",
-        href: "/quickstart/django",
+        href: "/quickstart/android",
         image: AndroidImage,
       },
       {
         title: "Flutter",
-        href: "/quickstart/django",
+        href: "/quickstart/flutter",
         image: FlutterImage,
       },
       {
         title: "IOS / macOS",
-        href: "/quickstart/django",
+        href: "/quickstart/ios",
         image: AppleImage,
       },
       {
         title: "React Native",
-        href: "/quickstart/django",
+        href: "/quickstart/react_native",
         image: ReactImage,
       },
     ],
@@ -153,37 +153,37 @@ const data: QuickstartType[] = [
     items: [
       {
         title: "Django API",
-        href: "/quickstart/django",
+        href: "/quickstart/django_api",
         image: DjangoImage,
       },
       {
         title: "Python API",
-        href: "/quickstart/django",
+        href: "/quickstart/python_api",
         image: PythonImage,
       },
       {
         title: "PHP API",
-        href: "/quickstart/django",
+        href: "/quickstart/php_api",
         image: PhpImage,
       },
       {
-        title: "Laravel API",
-        href: "/quickstart/django",
+        title: "Laraval API",
+        href: "/quickstart/laraval_api",
         image: LaravelImage,
       },
       {
         title: "Ruby On Rails API",
-        href: "/quickstart/django",
+        href: "/quickstart/ruby_on_rails_api",
         image: RailsImage,
       },
       {
         title: "Go API",
-        href: "/quickstart/django",
+        href: "/quickstart/go_api",
         image: GolangImage,
       },
       {
         title: "Node (Express) API",
-        href: "/quickstart/django",
+        href: "/quickstart/node_express_api",
         image: NodejsImage,
       },
     ],
