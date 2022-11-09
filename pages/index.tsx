@@ -8,8 +8,10 @@ import {
 } from "@chakra-ui/react";
 import ApplicationTypeTile from "components/ApplicationTypeTile";
 import ComunityBanner from "components/ComunityBanner";
+import ContentTile from "components/ContentTile";
 import PatternDots from "components/utils/PatternDots";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
+import { FaGithub, FaInnosoft } from "react-icons/fa";
 
 export default function Home() {
   const bgColor = useColorModeValue("gray.100", "gray.700");
@@ -78,6 +80,119 @@ export default function Home() {
           </SimpleGrid>
         </Container>
       </Box>
+      <Container maxW="7xl">
+        <SimpleGrid
+          columns={{ base: 1, md: 2, lg: 3 }}
+          spacing={8}
+          my={20}
+          mx={8}
+        >
+          <ContentTile
+            title={"Accept online payments"}
+            href={""}
+            image={"https://via.placeholder.com/150?text=%20"}
+            description={
+              "Build a payment form or use a prebuilt checkout page to accept online payments."
+            }
+            icon={<FaInnosoft size="20px" />}
+            tags={["PAYMENTS"]}
+          />
+          <ContentTile
+            title={"Create a subscription"}
+            href={""}
+            image={"https://via.placeholder.com/150?text=%20"}
+            description={
+              "Set up recurring billing for your SaaS or e-commerce business."
+            }
+            icon={<FaInnosoft size="20px" />}
+            tags={["BILLING"]}
+          />
+          <ContentTile
+            title={"Receive payouts"}
+            href={""}
+            image={"https://via.placeholder.com/150?text=%20"}
+            description={"Set up your bank account to receive payouts."}
+            icon={<FaInnosoft size="20px" />}
+            tags={["PAYMENTS"]}
+          />
+        </SimpleGrid>
+        <Text fontSize="2xl" as="b" ml={10}>
+          Clone a sample project
+        </Text>
+        <SimpleGrid
+          columns={{ base: 1, md: 2, lg: 3 }}
+          spacing={8}
+          mt={10}
+          mb={20}
+          mx={8}
+        >
+          <ContentTile
+            title={"Accept a payments"}
+            href={""}
+            icon={<FaGithub size="20px" />}
+            tags={["WEB", "IOS", "ANDROID"]}
+          />
+          <ContentTile
+            title={"Start a simple subscription"}
+            href={""}
+            icon={<FaGithub size="20px" />}
+            tags={["WEB", "MOBILE WEB"]}
+          />
+          <ContentTile
+            title={"Use a prebuilt checkout form"}
+            href={""}
+            icon={<FaGithub size="20px" />}
+            tags={["WEB", "MOBILE WEB"]}
+          />
+        </SimpleGrid>
+        <Text fontSize="2xl" as="b" m={10}>
+          Clone a sample project
+        </Text>
+        <SimpleGrid
+          columns={{ base: 1, md: 2, lg: 3 }}
+          spacing={8}
+          mt={10}
+          mb={20}
+          mx={8}
+        >
+          <ContentTile
+            title={"How cards work"}
+            href={""}
+            description={
+              "See how a credit or debit card payment works online step by step."
+            }
+          />
+          <ContentTile
+            title={"Payouts"}
+            href={""}
+            description={"Set up your bank account to receive payouts."}
+          />
+          <ContentTile
+            title={"Declines"}
+            href={""}
+            description={"Identify causes and build automatic retires."}
+          />
+          <ContentTile
+            title={"Receipts"}
+            href={""}
+            description={"Send email receipts built by us or customized."}
+          />
+          <ContentTile
+            title={"Refunds"}
+            href={""}
+            description={
+              "Refund or cancel customers' payments and avoid dispute."
+            }
+          />
+          <ContentTile
+            title={"Wbhook events"}
+            href={""}
+            description={
+              "Get notified about payments events and trigger actions."
+            }
+          />
+        </SimpleGrid>
+      </Container>
       <ComunityBanner />
     </>
   );

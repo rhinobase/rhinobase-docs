@@ -6,7 +6,7 @@ export default function Apis() {
     <Sidebar
       options={[
         {
-          header: "APIS",
+          title: "APIS",
           items: [
             {
               title: "Overview",

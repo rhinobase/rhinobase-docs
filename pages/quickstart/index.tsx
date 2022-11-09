@@ -7,8 +7,9 @@ import {
   Image,
 } from "@chakra-ui/react";
 import QuickstartTile, { QuickstartTileProps } from "components/QuickstartTile";
-import Sidebar from "components/wrapper/Sidebar";
+import QuickstartWrapper from "components/wrapper/QuickstartWrapper";
 import React from "react";
+
 // Images
 import PythonImage from "../../public/quickstart_icons/python.svg";
 import LaravelImage from "../../public/quickstart_icons/laravel.svg";
@@ -35,7 +36,7 @@ type QuickstartType = {
   items: QuickstartTileProps[];
 };
 
-const data: QuickstartType[] = [
+const quickstart_data: QuickstartType[] = [
   {
     id: "regular",
     title: "Regular Web App",
@@ -191,40 +192,31 @@ const data: QuickstartType[] = [
 ];
 
 export default function Quickstarts() {
-  const options = data.map((value) => ({
-    title: value.title,
-    items: value.items.map((value) => ({
-      title: value.title,
-      href: value.href,
-    })),
-  }));
-  return (
-    <Sidebar options={options}>
-      <>
-        {data.map((value, index) => (
-          <React.Fragment key={index}>
-            <Box pt={10} id={value.id}>
-              <HStack gap={5}>
-                <Image
-                  src={value.image}
-                  alt={value.title}
-                  boxSize="75px"
-                  borderRadius="xl"
-                />
-                <Heading>{value.title}</Heading>
-              </HStack>
-              <Text fontSize="2xl" my={5}>
-                {value.description}
-              </Text>
-            </Box>
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5} mb={10}>
-              {value.items.map((item, index) => (
-                <QuickstartTile key={index} {...item} />
-              ))}
-            </SimpleGrid>
-          </React.Fragment>
+  return quickstart_data.map((value, index) => (
+    <React.Fragment key={index}>
+      <Box pt={10} id={value.id}>
+        <HStack gap={5}>
+          <Image
+            src={value.image}
+            alt={value.title}
+            boxSize="75px"
+            borderRadius="xl"
+          />
+          <Heading>{value.title}</Heading>
+        </HStack>
+        <Text fontSize="2xl" my={5}>
+          {value.description}
+        </Text>
+      </Box>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5} mb={10}>
+        {value.items.map((item, index) => (
+          <QuickstartTile key={index} {...item} />
         ))}
-      </>
-    </Sidebar>
-  );
+      </SimpleGrid>
+    </React.Fragment>
+  ));
 }
+
+Quickstarts.getLayout = function getLayout(page: JSX.Element) {
+  return <QuickstartWrapper>{page}</QuickstartWrapper>;
+};

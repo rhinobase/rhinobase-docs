@@ -16,7 +16,8 @@ import {
   AlertTitle,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
 type SidebarNestedType = {
   title: string;
@@ -30,6 +31,15 @@ type SidebarProps = {
 };
 
 function SidebarNested(props: SidebarNestedType) {
+  const [isActive, setActive] = useState(false);
+  const router = useRouter();
+
+  console.log(router.pathname, router.basePath);
+
+  useEffect(() => {
+    if (props.href == "") setActive(true);
+  }, [router]);
+
   if (props.items) {
     return (
       <AccordionItem border={0} p={0}>
@@ -55,7 +65,7 @@ function SidebarNested(props: SidebarNestedType) {
   if (props.href)
     return (
       <Link href={props.href}>
-        <Button w="100%" size="sm" justifyContent="start">
+        <Button w="100%" size="sm" isActive={isActive} justifyContent="start">
           {props.title}
         </Button>
       </Link>
@@ -92,7 +102,7 @@ export default function Sidebar(props: SidebarProps) {
           ))}
         </Accordion>
       </ButtonGroup>
-      <Box h="100%" w="100%" overflow="auto" >
+      <Box h="100%" w="100%" overflow="auto">
         <Container maxW="6xl">{props.children}</Container>
       </Box>
     </HStack>

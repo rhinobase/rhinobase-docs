@@ -1,6 +1,12 @@
-import { HStack, Text, Image, useColorModeValue, Box, AspectRatio } from "@chakra-ui/react";
+import {
+  HStack,
+  Text,
+  Image,
+  useColorModeValue,
+  Box,
+  AspectRatio,
+} from "@chakra-ui/react";
 import Link from "next/link";
-// import Image from "next/image";
 
 export type ContentTileProps = {
   title: string;
@@ -19,14 +25,15 @@ export default function ContentTile(props: ContentTileProps) {
       <Link href={props.href}>
         <Box
           w="100%"
+          h="100%"
           borderBottom="2px"
           borderColor={bgColor}
           py={4}
           _hover={{ borderColor: "messenger.200" }}
           transition="border 0.1s ease 0s"
         >
-          <AspectRatio ratio={3/1} mb={5} borderRadius="md" overflow="hidden">
-          <Image src={props.image} alt={props.title} />
+          <AspectRatio ratio={3 / 1} mb={5} borderRadius="md" overflow="hidden">
+            <Image src={props.image} alt={props.title} />
           </AspectRatio>
           <Text size="md" fontWeight={600} color="messenger.500">
             {props.title}
@@ -54,6 +61,7 @@ export default function ContentTile(props: ContentTileProps) {
     <Link href={props.href}>
       <Box
         w="100%"
+        h="100%"
         border="2px"
         borderColor={bgColor}
         borderRadius="md"
