@@ -1,25 +1,74 @@
 import {
   ButtonGroup,
-  Text,
   Container,
-  Button,
   HStack,
   StackDivider,
   Box,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionIcon,
+  AccordionPanel,
+  Button,
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 
+type SidebarNestedType = {
+  title: string;
+  href?: string;
+  items?: SidebarNestedType[];
+};
+
 type SidebarProps = {
   children: JSX.Element;
-  options: {
-    header?: string;
-    items: {
-      title: string;
-      href: string;
-    }[];
-  }[];
+  options: SidebarNestedType[];
 };
+
+function SidebarNested(props: SidebarNestedType) {
+  if (props.items) {
+    return (
+      <AccordionItem border={0} p={0}>
+        <AccordionButton p={0}>
+          <Button
+            size="sm"
+            w="100%"
+            leftIcon={<AccordionIcon />}
+            justifyContent="start"
+          >
+            {props.title}
+          </Button>
+        </AccordionButton>
+        <AccordionPanel py={0} pr={0}>
+          {props.items.map((item, index) => (
+            <SidebarNested key={index} {...item} />
+          ))}
+        </AccordionPanel>
+      </AccordionItem>
+    );
+  }
+
+  if (props.href)
+    return (
+      <Link href={props.href}>
+        <Button w="100%" size="sm" justifyContent="start">
+          {props.title}
+        </Button>
+      </Link>
+    );
+
+  return (
+    <Alert status="error">
+      <AlertIcon />
+      <AlertTitle>neither href nor items are found!</AlertTitle>
+      <AlertDescription>Please declare one of them.</AlertDescription>
+    </Alert>
+  );
+}
 
 export default function Sidebar(props: SidebarProps) {
   return (
@@ -37,28 +86,13 @@ export default function Sidebar(props: SidebarProps) {
         spacing={0}
         w="280px"
       >
-        {props.options.map((value, index) => (
-          <React.Fragment key={index}>
-            {value.header && (
-              <Text as="b" alignSelf="start" mx={3} mb={8}>
-                {value.header}
-              </Text>
-            )}
-            {value.items.map((item, index) => (
-              <Link
-                key={index}
-                href={item.href}
-                style={{ marginBottom: "8px" }}
-              >
-                <Button w="100%" size="sm" justifyContent="start">
-                  {item.title}
-                </Button>
-              </Link>
-            ))}
-          </React.Fragment>
-        ))}
+        <Accordion allowToggle>
+          {props.options.map((item, index) => (
+            <SidebarNested key={index} {...item} />
+          ))}
+        </Accordion>
       </ButtonGroup>
-      <Box h="100%" w="100%" overflow="auto" py={10}>
+      <Box h="100%" w="100%" overflow="auto" >
         <Container maxW="6xl">{props.children}</Container>
       </Box>
     </HStack>

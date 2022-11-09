@@ -44,47 +44,47 @@ const data: QuickstartType[] = [
     items: [
       {
         title: "Django",
-        href: "",
+        href: "/quickstart/django",
         image: PythonImage,
       },
       {
         title: "Laravel",
-        href: "",
+        href: "/quickstart/django",
         image: LaravelImage,
       },
       {
         title: "Express",
-        href: "",
+        href: "/quickstart/django",
         image: JavascriptImage,
       },
       {
         title: "Go",
-        href: "",
+        href: "/quickstart/django",
         image: GolangImage,
       },
       {
         title: "Python",
-        href: "",
+        href: "/quickstart/django",
         image: PythonImage,
       },
       {
         title: "PHP",
-        href: "",
+        href: "/quickstart/django",
         image: PhpImage,
       },
       {
         title: "Next.js",
-        href: "",
+        href: "/quickstart/django",
         image: NextjsImage,
       },
       {
         title: "Ruby On Rails",
-        href: "",
+        href: "/quickstart/django",
         image: RailsImage,
       },
       {
         title: "Java",
-        href: "",
+        href: "/quickstart/django",
         image: JavaImage,
       },
     ],
@@ -97,22 +97,22 @@ const data: QuickstartType[] = [
     items: [
       {
         title: "Angular",
-        href: "",
+        href: "/quickstart/django",
         image: AngularImage,
       },
       {
         title: "Javascript",
-        href: "",
+        href: "/quickstart/django",
         image: JavascriptImage,
       },
       {
         title: "React",
-        href: "",
+        href: "/quickstart/django",
         image: ReactImage,
       },
       {
         title: "Vue",
-        href: "",
+        href: "/quickstart/django",
         image: VuejsImage,
       },
     ],
@@ -125,22 +125,22 @@ const data: QuickstartType[] = [
     items: [
       {
         title: "Android",
-        href: "",
+        href: "/quickstart/django",
         image: AndroidImage,
       },
       {
         title: "Flutter",
-        href: "",
+        href: "/quickstart/django",
         image: FlutterImage,
       },
       {
         title: "IOS / macOS",
-        href: "",
+        href: "/quickstart/django",
         image: AppleImage,
       },
       {
         title: "React Native",
-        href: "",
+        href: "/quickstart/django",
         image: ReactImage,
       },
     ],
@@ -153,37 +153,37 @@ const data: QuickstartType[] = [
     items: [
       {
         title: "Django API",
-        href: "",
+        href: "/quickstart/django",
         image: DjangoImage,
       },
       {
         title: "Python API",
-        href: "",
+        href: "/quickstart/django",
         image: PythonImage,
       },
       {
         title: "PHP API",
-        href: "",
+        href: "/quickstart/django",
         image: PhpImage,
       },
       {
         title: "Laravel API",
-        href: "",
+        href: "/quickstart/django",
         image: LaravelImage,
       },
       {
         title: "Ruby On Rails API",
-        href: "",
+        href: "/quickstart/django",
         image: RailsImage,
       },
       {
         title: "Go API",
-        href: "",
+        href: "/quickstart/django",
         image: GolangImage,
       },
       {
         title: "Node (Express) API",
-        href: "",
+        href: "/quickstart/django",
         image: NodejsImage,
       },
     ],
@@ -191,35 +191,19 @@ const data: QuickstartType[] = [
 ];
 
 export default function Quickstarts() {
+  const options = data.map((value) => ({
+    title: value.title,
+    items: value.items.map((value) => ({
+      title: value.title,
+      href: value.href,
+    })),
+  }));
   return (
-    <Sidebar
-      options={[
-        {
-          items: [
-            {
-              title: "Regular Web App",
-              href: "#regular",
-            },
-            {
-              title: "Single-Page App",
-              href: "#singlepage",
-            },
-            {
-              title: "Native/Mobile App",
-              href: "#native",
-            },
-            {
-              title: "Backend/API",
-              href: "#backend",
-            },
-          ],
-        },
-      ]}
-    >
+    <Sidebar options={options}>
       <>
         {data.map((value, index) => (
           <React.Fragment key={index}>
-            <Box>
+            <Box pt={10} id={value.id}>
               <HStack gap={5}>
                 <Image
                   src={value.image}
@@ -233,7 +217,7 @@ export default function Quickstarts() {
                 {value.description}
               </Text>
             </Box>
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5} mb={20}>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5} mb={10}>
               {value.items.map((item, index) => (
                 <QuickstartTile key={index} {...item} />
               ))}
