@@ -35,6 +35,7 @@ type SidebarProps = {
   options: SidebarNestedType[];
 };
 
+
 function SidebarNested(
   props: SidebarNestedType & { index: number; active: number[] },
 ) {
