@@ -16,8 +16,7 @@ import ContentWrapper from "components/content/ContentWrapper";
 import HeroContentTile from "components/content/HeroContentTile";
 import PatternDots from "components/utils/PatternDots";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
-import Link from "next/link";
-import { FaArrowRight, FaGithub, FaInnosoft } from "react-icons/fa";
+import { FaGithub, FaInnosoft } from "react-icons/fa";
 
 export default function Home() {
   const bgColor = useColorModeValue("gray.100", "gray.700");
