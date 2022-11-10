@@ -1,11 +1,8 @@
 import {
   Box,
-  Button,
   Container,
   Heading,
-  HStack,
   SimpleGrid,
-  Spacer,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
