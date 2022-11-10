@@ -1,12 +1,4 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  Hide,
-  HStack,
-  Show,
-  Spacer,
-} from "@chakra-ui/react";
+import { Button, Flex, Heading, HStack, Spacer } from "@chakra-ui/react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -20,9 +12,7 @@ export default function ContentWrapper(props: ContentWrapperProps) {
   return (
     <>
       <HStack alignItems="start" mt={20} mb={5}>
-        <Heading size="lg">
-          {props.title}
-        </Heading>
+        <Heading size="lg">{props.title}</Heading>
         <Spacer />
         <Link href={props.href}>
           <Button
@@ -44,7 +34,7 @@ export default function ContentWrapper(props: ContentWrapperProps) {
             variant="ghost"
             colorScheme="messenger"
             rightIcon={<FaArrowRight />}
-            >
+          >
             learn more
           </Button>
         </Link>

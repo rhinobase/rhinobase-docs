@@ -20,7 +20,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
-import { FaAlignRight, FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 type SidebarNestedType = {
   title: string;
@@ -87,8 +87,8 @@ function SidebarNested(
           justifyContent="start"
         >
           {props.title}
-          <Spacer/>
-          {props.isExternal && <FaExternalLinkAlt/>}
+          <Spacer />
+          {props.isExternal && <FaExternalLinkAlt />}
         </Button>
       </Link>
     );
@@ -119,7 +119,7 @@ export function findActiveAccordion(
   }
 }
 
-export function Sidebar(props: {options: SidebarNestedType[]}) {
+export function Sidebar(props: { options: SidebarNestedType[] }) {
   const router = useRouter();
   const [active, setActive] = useState<ExpandedIndex>();
   const currentIndex = useMemo(

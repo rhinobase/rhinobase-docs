@@ -49,11 +49,11 @@ describe("finding active button in sidebar", () => {
     expect(findActiveAccordion(options, "/nested/2")).toEqual([1, 1]);
   });
 
-  test("level 2 nesting test", () => {
+  test("level 2 nesting", () => {
     expect(findActiveAccordion(options, "/harder/2/1")).toEqual([2, 1, 0]);
   });
 
-  test("level 3 nesting test", () => {
+  test("level 3 nesting", () => {
     expect(findActiveAccordion(options, "/hard/2/1/0")).toEqual([3, 1, 1, 0]);
   });
 });
