@@ -7,13 +7,16 @@ type WrapperProps = {
 };
 
 export default function DefaultWrapper(props: WrapperProps) {
-  const bgColor = useColorModeValue("gray.100", "gray.700");
+  const bgColor = useColorModeValue(
+    "gray.100",
+    "gray.700",
+  );
+
   return (
     <>
-      <Box pos="fixed" w="100%" bgColor={bgColor} zIndex={100}>
-        <Header />
-      </Box>
-      <Box pt="64px">{props.children}</Box>
+      <Header />
+      <Box h="64px" w="100%" bgColor={bgColor} />
+      <Box>{props.children}</Box>
       <Container maxW="7xl">
         <Footer />
       </Container>

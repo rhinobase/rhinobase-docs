@@ -8,9 +8,7 @@ type WrapperProps = {
 export default function MinimalWrapper(props: WrapperProps) {
   return (
     <>
-      <Box pos="fixed" w="100%" zIndex={100}>
-        <Header />
-      </Box>
+      <Header />
       <Box pt="64px">{props.children}</Box>
     </>
   );
