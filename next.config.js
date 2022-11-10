@@ -13,6 +13,10 @@ const nextConfig = withMDX({
   images: {
     domains: ["via.placeholder.com"],
   },
+  i18n: {
+    locales: ["en-US"],
+    defaultLocale: "en-US",
+  },
   redirects: () => [
     {
       source: "/discord",
