@@ -12,6 +12,7 @@ import {
 import ApplicationTypeTile from "components/ApplicationTypeTile";
 import ComunityBanner from "components/ComunityBanner";
 import ContentTile from "components/ContentTile";
+import HeroContentTile from "components/HeroContentTile";
 import PatternDots from "components/utils/PatternDots";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
 import Link from "next/link";
@@ -242,7 +243,17 @@ export default function Home() {
             }
           />
         </SimpleGrid>
+        <HeroContentTile
+        title={"Stripe CLI"}
+        href={""}
+        tag={"Set Up The CLI"}
+        description={
+          "Interact with Stripe from your terminal to bootstrap sample projects, send test mode API requests, and debug your integration."
+        }
+        image={"https://via.placeholder.com/150?text=%20"}
+      />
       </Container>
+
       <ComunityBanner />
     </>
   );

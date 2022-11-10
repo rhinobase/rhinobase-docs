@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXComponents } from "mdx/types";
-import theme from "theme";
 import Head from "next/head";
 import Script from "next/script";
 import { Plus_Jakarta_Sans } from "@next/font/google";
