@@ -56,9 +56,7 @@ const options = [
 export default function QuickstartWrapper(props: WrapperProps) {
   return (
     <>
-      <Box pos="fixed" w="100%" zIndex={100}>
-        <Header />
-      </Box>
+      <Header />
       <Box pt="64px">
         <Sidebar options={options}>{props.children}</Sidebar>
       </Box>

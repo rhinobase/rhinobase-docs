@@ -23,6 +23,7 @@ import React, { useEffect, useMemo, useState } from "react";
 type SidebarNestedType = {
   title: string;
   href?: string;
+  icon?: JSX.Element;
   items?: SidebarNestedType[];
 };
 
@@ -56,11 +57,7 @@ function SidebarNested(
           </Button>
         </AccordionButton>
         <AccordionPanel py={0} pr={0}>
-          <Accordion
-            allowToggle
-            index={active}
-            onChange={(expandedIndex) => setActive(expandedIndex)}
-          >
+          <Accordion allowToggle index={active} onChange={setActive}>
             {props.items.map((item, index) => (
               <SidebarNested
                 key={index}
@@ -83,7 +80,7 @@ function SidebarNested(
           size="sm"
           mb={1}
           colorScheme={isActive ? "messenger" : undefined}
-          // isActive={isActive}
+          leftIcon={props.icon}
           justifyContent="start"
         >
           {props.title}
@@ -143,11 +140,7 @@ export default function Sidebar(props: SidebarProps) {
         spacing={0}
         w="280px"
       >
-        <Accordion
-          allowToggle
-          index={active}
-          onChange={(expandedIndex) => setActive(expandedIndex)}
-        >
+        <Accordion allowToggle index={active} onChange={setActive}>
           {props.options.map((item, index) => (
             <SidebarNested
               key={index}
