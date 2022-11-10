@@ -9,7 +9,7 @@ export type FooterListProps = {
 
 export default function FooterList(props: FooterListProps) {
   return (
-    <GridItem w="100%" mx={10} p={3}>
+    <GridItem w="100%" p={3}>
       <Box mb={4}>
         <Text as="b">{props.title}</Text>
       </Box>

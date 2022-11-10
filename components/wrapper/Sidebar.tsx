@@ -15,15 +15,18 @@ import {
   AlertIcon,
   AlertTitle,
   ExpandedIndex,
+  Spacer,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
+import { FaAlignRight, FaExternalLinkAlt } from "react-icons/fa";
 
 type SidebarNestedType = {
   title: string;
   href?: string;
   icon?: JSX.Element;
+  isExternal?: boolean;
   items?: SidebarNestedType[];
 };
 
@@ -84,6 +87,8 @@ function SidebarNested(
           justifyContent="start"
         >
           {props.title}
+          <Spacer/>
+          {props.isExternal && <FaExternalLinkAlt/>}
         </Button>
       </Link>
     );
@@ -114,7 +119,7 @@ export function findActiveAccordion(
   }
 }
 
-export default function Sidebar(props: SidebarProps) {
+export function Sidebar(props: {options: SidebarNestedType[]}) {
   const router = useRouter();
   const [active, setActive] = useState<ExpandedIndex>();
   const currentIndex = useMemo(
@@ -127,30 +132,36 @@ export default function Sidebar(props: SidebarProps) {
   }, [currentIndex]);
 
   return (
+    <ButtonGroup
+      variant="ghost"
+      px={2}
+      py={3}
+      flexDir="column"
+      spacing={0}
+      w="280px"
+    >
+      <Accordion allowToggle index={active} onChange={setActive}>
+        {props.options.map((item, index) => (
+          <SidebarNested
+            key={index}
+            {...item}
+            index={index}
+            active={[...currentIndex]}
+          />
+        ))}
+      </Accordion>
+    </ButtonGroup>
+  );
+}
+
+export default function SidebarWrapper(props: SidebarProps) {
+  return (
     <HStack
       h="calc(100vh - 64px)"
       alignItems="flex-start"
       divider={<StackDivider />}
     >
-      <ButtonGroup
-        variant="ghost"
-        px={2}
-        py={3}
-        flexDir="column"
-        spacing={0}
-        w="280px"
-      >
-        <Accordion allowToggle index={active} onChange={setActive}>
-          {props.options.map((item, index) => (
-            <SidebarNested
-              key={index}
-              {...item}
-              index={index}
-              active={[...currentIndex]}
-            />
-          ))}
-        </Accordion>
-      </ButtonGroup>
+      <Sidebar options={props.options} />
       <Box h="100%" w="100%" overflow="auto">
         <Container maxW="6xl">{props.children}</Container>
       </Box>
