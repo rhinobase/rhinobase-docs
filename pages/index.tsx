@@ -11,8 +11,9 @@ import {
 } from "@chakra-ui/react";
 import ApplicationTypeTile from "components/ApplicationTypeTile";
 import ComunityBanner from "components/ComunityBanner";
-import ContentTile from "components/ContentTile";
-import HeroContentTile from "components/HeroContentTile";
+import ContentTile from "components/content/ContentTile";
+import ContentWrapper from "components/content/ContentWrapper";
+import HeroContentTile from "components/content/HeroContentTile";
 import PatternDots from "components/utils/PatternDots";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
 import Link from "next/link";
@@ -86,172 +87,118 @@ export default function Home() {
         </Container>
       </Box>
       <Container maxW="7xl" my={8}>
-        <HStack>
-          <Text fontSize="2xl" as="b" ml={10}>
-            Multiparty payments
-          </Text>
-          <Spacer />
-          <Link href={""}>
-            <Button
-              variant="ghost"
-              colorScheme="messenger"
-              my={2}
-              mx={10}
-              rightIcon={<FaArrowRight />}
-            >
-              learn more
-            </Button>
-          </Link>
-        </HStack>
-        <SimpleGrid
-          columns={{ base: 1, md: 2, lg: 3 }}
-          spacing={8}
-          mt={8}
-          mb={20}
-          mx={8}
-        >
-          <ContentTile
-            title={"Accept online payments"}
-            href={""}
-            image={"https://via.placeholder.com/150?text=%20"}
-            description={
-              "Build a payment form or use a prebuilt checkout page to accept online payments."
-            }
-            icon={<FaInnosoft size="20px" />}
-            tags={["PAYMENTS"]}
-          />
-          <ContentTile
-            title={"Create a subscription"}
-            href={""}
-            image={"https://via.placeholder.com/150?text=%20"}
-            description={
-              "Set up recurring billing for your SaaS or e-commerce business."
-            }
-            icon={<FaInnosoft size="20px" />}
-            tags={["BILLING"]}
-          />
-          <ContentTile
-            title={"Receive payouts"}
-            href={""}
-            image={"https://via.placeholder.com/150?text=%20"}
-            description={"Set up your bank account to receive payouts."}
-            icon={<FaInnosoft size="20px" />}
-            tags={["PAYMENTS"]}
-          />
-        </SimpleGrid>
-        <HStack>
-          <Text fontSize="2xl" as="b" ml={10}>
-            Clone a sample project
-          </Text>
-          <Spacer />
-          <Link href={""}>
-            <Button
-              variant="ghost"
-              colorScheme="messenger"
-              my={2}
-              mx={10}
-              rightIcon={<FaArrowRight />}
-            >
-              learn more
-            </Button>
-          </Link>
-        </HStack>
-        <SimpleGrid
-          columns={{ base: 1, md: 2, lg: 3 }}
-          spacing={8}
-          mt={10}
-          mb={20}
-          mx={8}
-        >
-          <ContentTile
-            title={"Accept a payments"}
-            href={""}
-            icon={<FaGithub size="20px" />}
-            tags={["WEB", "IOS", "ANDROID"]}
-          />
-          <ContentTile
-            title={"Start a simple subscription"}
-            href={""}
-            icon={<FaGithub size="20px" />}
-            tags={["WEB", "MOBILE WEB"]}
-          />
-          <ContentTile
-            title={"Use a prebuilt checkout form"}
-            href={""}
-            icon={<FaGithub size="20px" />}
-            tags={["WEB", "MOBILE WEB"]}
-          />
-        </SimpleGrid>
-        <HStack>
-          <Text fontSize="2xl" as="b" ml={10}>
-            Clone a sample project
-          </Text>
-          <Spacer />
-          <Link href={""}>
-            <Button
-              variant="ghost"
-              colorScheme="messenger"
-              my={2}
-              mx={10}
-              rightIcon={<FaArrowRight />}
-            >
-              learn more
-            </Button>
-          </Link>
-        </HStack>
-        <SimpleGrid
-          columns={{ base: 1, md: 2, lg: 3 }}
-          spacing={8}
-          mt={10}
-          mb={20}
-          mx={8}
-        >
-          <ContentTile
-            title={"How cards work"}
-            href={""}
-            description={
-              "See how a credit or debit card payment works online step by step."
-            }
-          />
-          <ContentTile
-            title={"Payouts"}
-            href={""}
-            description={"Set up your bank account to receive payouts."}
-          />
-          <ContentTile
-            title={"Declines"}
-            href={""}
-            description={"Identify causes and build automatic retires."}
-          />
-          <ContentTile
-            title={"Receipts"}
-            href={""}
-            description={"Send email receipts built by us or customized."}
-          />
-          <ContentTile
-            title={"Refunds"}
-            href={""}
-            description={
-              "Refund or cancel customers' payments and avoid dispute."
-            }
-          />
-          <ContentTile
-            title={"Wbhook events"}
-            href={""}
-            description={
-              "Get notified about payments events and trigger actions."
-            }
-          />
-        </SimpleGrid>
+        <ContentWrapper title="Multiparty payments" href="">
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+            <ContentTile
+              title={"Accept online payments"}
+              href={""}
+              image={"https://via.placeholder.com/150?text=%20"}
+              description={
+                "Build a payment form or use a prebuilt checkout page to accept online payments."
+              }
+              icon={<FaInnosoft size="20px" />}
+              tags={["PAYMENTS"]}
+            />
+            <ContentTile
+              title={"Create a subscription"}
+              href={""}
+              image={"https://via.placeholder.com/150?text=%20"}
+              description={
+                "Set up recurring billing for your SaaS or e-commerce business."
+              }
+              icon={<FaInnosoft size="20px" />}
+              tags={["BILLING"]}
+            />
+            <ContentTile
+              title={"Receive payouts"}
+              href={""}
+              image={"https://via.placeholder.com/150?text=%20"}
+              description={"Set up your bank account to receive payouts."}
+              icon={<FaInnosoft size="20px" />}
+              tags={["PAYMENTS"]}
+            />
+          </SimpleGrid>
+        </ContentWrapper>
+
+        <ContentWrapper title="Clone a sample project" href="">
+          <SimpleGrid
+            columns={{ base: 1, md: 2, lg: 3 }}
+            spacing={8}
+          >
+            <ContentTile
+              title={"Accept a payments"}
+              href={""}
+              icon={<FaGithub size="20px" />}
+              tags={["WEB", "IOS", "ANDROID"]}
+            />
+            <ContentTile
+              title={"Start a simple subscription"}
+              href={""}
+              icon={<FaGithub size="20px" />}
+              tags={["WEB", "MOBILE WEB"]}
+            />
+            <ContentTile
+              title={"Use a prebuilt checkout form"}
+              href={""}
+              icon={<FaGithub size="20px" />}
+              tags={["WEB", "MOBILE WEB"]}
+            />
+          </SimpleGrid>
+        </ContentWrapper>
+
+        <ContentWrapper title="Added github reposetry" href="">
+          <SimpleGrid
+            columns={{ base: 1, md: 2, lg: 3 }}
+            spacing={8}
+          >
+            <ContentTile
+              title={"How cards work"}
+              href={""}
+              description={
+                "See how a credit or debit card payment works online step by step."
+              }
+            />
+            <ContentTile
+              title={"Payouts"}
+              href={""}
+              description={"Set up your bank account to receive payouts."}
+            />
+            <ContentTile
+              title={"Declines"}
+              href={""}
+              description={"Identify causes and build automatic retires."}
+            />
+            <ContentTile
+              title={"Receipts"}
+              href={""}
+              description={"Send email receipts built by us or customized."}
+            />
+            <ContentTile
+              title={"Refunds"}
+              href={""}
+              description={
+                "Refund or cancel customers' payments and avoid dispute."
+              }
+            />
+            <ContentTile
+              title={"Wbhook events"}
+              href={""}
+              description={
+                "Get notified about payments events and trigger actions."
+              }
+            />
+          </SimpleGrid>
+        </ContentWrapper>
+
         <HeroContentTile
-        title={"Stripe CLI"}
-        href={""}
-        tag={"Set Up The CLI"}
-        description={
-          "Interact with Stripe from your terminal to bootstrap sample projects, send test mode API requests, and debug your integration."
-        }
-        image={"https://via.placeholder.com/150?text=%20"}
-      />
+          title={"Stripe CLI"}
+          href={""}
+          tag={"Set Up The CLI"}
+          description={
+            "Interact with Stripe from your terminal to bootstrap sample projects, send test mode API requests, and debug your integration."
+          }
+          image={"https://via.placeholder.com/150?text=%20"}
+        />
       </Container>
 
       <ComunityBanner />
