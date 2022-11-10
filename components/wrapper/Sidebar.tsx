@@ -59,7 +59,7 @@ function SidebarNested(
           <Accordion
             allowToggle
             index={active}
-            onChange={(expandedIndex) => setActive(expandedIndex)}
+            onChange={setActive}
           >
             {props.items.map((item, index) => (
               <SidebarNested
@@ -146,7 +146,7 @@ export default function Sidebar(props: SidebarProps) {
         <Accordion
           allowToggle
           index={active}
-          onChange={(expandedIndex) => setActive(expandedIndex)}
+          onChange={setActive}
         >
           {props.options.map((item, index) => (
             <SidebarNested
