@@ -97,7 +97,7 @@ function SidebarNested(
   );
 }
 
-function findActiveAccordion(
+export function findActiveAccordion(
   items: SidebarNestedType[],
   route: string,
 ): number[] | undefined {
