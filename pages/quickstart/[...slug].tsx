@@ -4,12 +4,23 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { toArray } from "utils/js-utils";
 import QuickstartWrapper from "components/wrapper/QuickstartWrapper";
+import { Box, Heading } from "@chakra-ui/react";
 
 export default function QuickstartPage({
   doc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const Component = useMDXComponent(doc.body.code);
-  return <Component components={MDXComponents} />;
+  return (
+    <Box>
+      <Heading as="h1" mb={2}>
+        {doc.title}
+      </Heading>
+      <Heading as="h2" mb={5} color="GrayText" size="lg" fontWeight={500}>
+        {doc.description}
+      </Heading>
+      <Component components={MDXComponents} />
+    </Box>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

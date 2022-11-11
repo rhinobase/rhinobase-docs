@@ -56,6 +56,7 @@ function SidebarNested(
             leftIcon={<AccordionIcon />}
             justifyContent="start"
             colorScheme={isActive ? "messenger" : undefined}
+            textTransform="capitalize"
           >
             {props.title}
           </Button>
@@ -86,6 +87,7 @@ function SidebarNested(
           colorScheme={isActive ? "messenger" : undefined}
           leftIcon={props.icon}
           justifyContent="start"
+          textTransform="capitalize"
         >
           {props.title}
           <Spacer />

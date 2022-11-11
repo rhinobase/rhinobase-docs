@@ -1,7 +1,8 @@
-import { Code } from "@chakra-ui/react";
+import { Code, Heading } from "@chakra-ui/react";
 
 const MDXComponents = {
   code: Code,
+  h2: Heading
 };
 
 export default MDXComponents;

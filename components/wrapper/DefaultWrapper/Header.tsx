@@ -27,6 +27,7 @@ import {
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../Sidebar";
+import sitemap from "sitemap.json"
 
 const options = [
   {
@@ -148,7 +149,7 @@ export default function Header() {
               </Link>
             </DrawerHeader>
             <DrawerBody px={0}>
-              <Sidebar options={options} />
+              <Sidebar options={sitemap} />
             </DrawerBody>
           </DrawerContent>
         </Drawer>
