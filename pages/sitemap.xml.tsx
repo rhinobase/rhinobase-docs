@@ -1,4 +1,6 @@
 import { GetServerSideProps } from "next";
+import sitemap from "sitemap.json";
+import sitemapToArray from "utils/sitemapToArray";
 
 const createSitemap = (
   slugs: string[],
@@ -8,7 +10,7 @@ const createSitemap = (
           .map((slug) => {
             return `
                 <url>
-                    <loc>${`https://docs.rhinobase.io/${slug}`}</loc>
+                    <loc>${`https://docs.rhinobase.io${slug}`}</loc>
                 </url>
             `;
           })
@@ -17,7 +19,7 @@ const createSitemap = (
 `;
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const allPages = [...["", "quickstart", "apis", "sdks"]];
+  const allPages = sitemapToArray(sitemap);
 
   res.setHeader("Content-Type", "text/xml");
   res.setHeader(
