@@ -11,6 +11,7 @@ import ComunityBanner from "components/ComunityBanner";
 import ContentTile from "components/content/ContentTile";
 import ContentWrapper from "components/content/ContentWrapper";
 import HeroContentTile from "components/content/HeroContentTile";
+import TableOfContent from "components/TableOfContent";
 import PatternDots from "components/utils/PatternDots";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
 import { FaGithub, FaInnosoft } from "react-icons/fa";
@@ -191,7 +192,7 @@ export default function Home() {
           image={"https://via.placeholder.com/150?text=%20"}
         />
       </Container>
-
+      <TableOfContent />
       <ComunityBanner />
     </>
   );
