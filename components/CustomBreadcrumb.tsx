@@ -1,24 +1,36 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
+export function getBreadcrumbLinks(href: string) {
+  const items = href.split("/").filter((val) => val);
+  items.unshift("");
+  items.pop();
+
+  return items.map((item, index, arr) => {
+    const tmp = arr.slice(0, index + 1).join("/");
+
+    return {
+      href: tmp ?? "/",
+      title: item ?? "home",
+    };
+  });
+}
+
 export default function CustomBreadcrumb() {
   const router = useRouter();
-  const link = router.pathname;
-  const linkElements = link.split("/").filter((val) => val);
-  linkElements.unshift("");
-  linkElements.pop();
-  
+  const items = getBreadcrumbLinks(router.pathname);
+
   return (
     <Breadcrumb>
-      {linkElements.map((item, index, arr) => {
-        const semilink = arr.slice(0, index + 1).join("/");
-
-       return <BreadcrumbItem key={item}>
-          <BreadcrumbLink textTransform="capitalize" href={semilink == "" ? "/" : semilink}>
-            {item == "" ? "Home" : item}
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-})}
+      {items.map((item) => {
+        return (
+          <BreadcrumbItem key={item.title}>
+            <BreadcrumbLink textTransform="capitalize" href={item.href}>
+              {item.title}
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        );
+      })}
     </Breadcrumb>
   );
 }
