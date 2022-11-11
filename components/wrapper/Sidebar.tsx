@@ -16,6 +16,7 @@ import {
   AlertTitle,
   ExpandedIndex,
   Spacer,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -141,13 +142,14 @@ export function Sidebar(props: { options: SidebarNestedType[] }) {
 }
 
 export default function SidebarWrapper(props: SidebarProps) {
+  const show = useBreakpointValue({base: false, md: true});
   return (
     <HStack
       h="calc(100vh - 64px)"
       alignItems="flex-start"
       divider={<StackDivider />}
     >
-      <Sidebar options={props.options} />
+      {show && <Sidebar options={props.options} />}
       <Box h="100%" w="100%" overflow="auto">
         <Container maxW="6xl">{props.children}</Container>
       </Box>
