@@ -4,7 +4,8 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { toArray } from "utils/js-utils";
 import QuickstartWrapper from "components/wrapper/QuickstartWrapper";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, HStack } from "@chakra-ui/react";
+import TableOfContent from "components/TableOfContent";
 
 export default function QuickstartPage({
   doc,
@@ -18,7 +19,12 @@ export default function QuickstartPage({
       <Heading as="h2" mb={5} color="GrayText" size="lg" fontWeight={500}>
         {doc.description}
       </Heading>
-      <Component components={MDXComponents} />
+      <HStack>
+        <Box>
+          <Component components={MDXComponents} />
+        </Box>
+        <TableOfContent source={doc.body.raw} />
+      </HStack>
     </Box>
   );
 }
