@@ -1,4 +1,4 @@
-import { findActiveAccordion } from "components/wrapper/Sidebar";
+import findActiveAccordion from "utils/getSidebarContent";
 
 describe("finding active button in sidebar", () => {
   const options = [

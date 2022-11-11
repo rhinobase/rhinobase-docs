@@ -21,8 +21,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import findActiveAccordion from "utils/getSidebarContent";
 
-type SidebarNestedType = {
+export type SidebarNestedType = {
   title: string;
   href?: string;
   icon?: JSX.Element;
@@ -100,23 +101,6 @@ function SidebarNested(
       <AlertDescription>Please declare one of them.</AlertDescription>
     </Alert>
   );
-}
-
-export function findActiveAccordion(
-  items: SidebarNestedType[],
-  route: string,
-): number[] | undefined {
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i];
-    if (item.href && item.href == route) return [i];
-    else if (item.items) {
-      const result = findActiveAccordion(item.items, route);
-      if (result) {
-        result.unshift(i);
-        return result;
-      }
-    }
-  }
 }
 
 export function Sidebar(props: { options: SidebarNestedType[] }) {

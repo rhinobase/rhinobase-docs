@@ -11,6 +11,7 @@ import ComunityBanner from "components/ComunityBanner";
 import ContentTile from "components/content/ContentTile";
 import ContentWrapper from "components/content/ContentWrapper";
 import HeroContentTile from "components/content/HeroContentTile";
+import TableOfContent from "components/TableOfContent";
 import PatternDots from "components/utils/PatternDots";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
 import { FaGithub, FaInnosoft } from "react-icons/fa";
@@ -117,10 +118,7 @@ export default function Home() {
         </ContentWrapper>
 
         <ContentWrapper title="Clone a sample project" href="">
-          <SimpleGrid
-            columns={{ base: 1, md: 2, lg: 3 }}
-            spacing={8}
-          >
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
             <ContentTile
               title={"Accept a payments"}
               href={""}
@@ -143,10 +141,7 @@ export default function Home() {
         </ContentWrapper>
 
         <ContentWrapper title="Added github reposetry" href="">
-          <SimpleGrid
-            columns={{ base: 1, md: 2, lg: 3 }}
-            spacing={8}
-          >
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
             <ContentTile
               title={"How cards work"}
               href={""}
@@ -196,7 +191,7 @@ export default function Home() {
           image={"https://via.placeholder.com/150?text=%20"}
         />
       </Container>
-
+      <TableOfContent />
       <ComunityBanner />
     </>
   );
