@@ -21,7 +21,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import findActiveAccordion from "utils/getSidebarContent";
+import findActiveAccordion from "utils/findActiveAccordion";
 
 export type SidebarNestedType = {
   title: string;
