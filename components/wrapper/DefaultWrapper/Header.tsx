@@ -14,6 +14,7 @@ import {
   DrawerBody,
   DrawerHeader,
   ButtonGroup,
+  VStack,
 } from "@chakra-ui/react";
 import FullLogo from "components/brand/FullLogo";
 import {
@@ -27,7 +28,7 @@ import {
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../Sidebar";
-import sitemap from "sitemap.json"
+import sitemap from "sitemap.json";
 
 const options = [
   {
@@ -136,7 +137,7 @@ export default function Header() {
           onClick={onOpen}
           display={{ base: "block", md: "none" }}
         />
-        <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
+        <Drawer placement="left" isOpen={isOpen} onClose={onClose} size="full">
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
@@ -150,6 +151,38 @@ export default function Header() {
             </DrawerHeader>
             <DrawerBody px={0}>
               <Sidebar options={sitemap} />
+              <VStack alignItems="start" px={2} py={3}>
+                <Link href={"https://www.github.com"}>
+                  <Button
+                    w="100%"
+                    variant="ghost"
+                    size="sm"
+                    rightIcon={<FaGithub />}
+                  >
+                    Github
+                  </Button>
+                </Link>
+                <Link href={"https://www.discord.gg"}>
+                  <Button
+                    w="100%"
+                    variant="ghost"
+                    size="sm"
+                    rightIcon={<FaDiscord />}
+                  >
+                    Discord
+                  </Button>
+                </Link>
+                <Link href={"https://www.youtube.com"}>
+                  <Button
+                    w="100%"
+                    variant="ghost"
+                    size="sm"
+                    rightIcon={<FaYoutube />}
+                  >
+                    Youtube
+                  </Button>
+                </Link>
+              </VStack>
             </DrawerBody>
           </DrawerContent>
         </Drawer>
