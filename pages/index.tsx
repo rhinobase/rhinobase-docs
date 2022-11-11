@@ -19,6 +19,7 @@ export default function Home() {
   const bgColor = useColorModeValue("gray.100", "gray.700");
   return (
     <>
+      <Box h="64px" bgColor={bgColor} />
       <Box py={5} pos="relative">
         <Box
           pos="absolute"
@@ -117,10 +118,7 @@ export default function Home() {
         </ContentWrapper>
 
         <ContentWrapper title="Clone a sample project" href="">
-          <SimpleGrid
-            columns={{ base: 1, md: 2, lg: 3 }}
-            spacing={8}
-          >
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
             <ContentTile
               title={"Accept a payments"}
               href={""}
@@ -143,10 +141,7 @@ export default function Home() {
         </ContentWrapper>
 
         <ContentWrapper title="Added github reposetry" href="">
-          <SimpleGrid
-            columns={{ base: 1, md: 2, lg: 3 }}
-            spacing={8}
-          >
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
             <ContentTile
               title={"How cards work"}
               href={""}
