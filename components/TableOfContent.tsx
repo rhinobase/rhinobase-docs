@@ -8,7 +8,6 @@ type TableOfContentProps = {
 
 export default function TableOfContent(props: TableOfContentProps) {
   const headings = getTableOfContent(props.source);
-
   return (
     <VStack>
       <ButtonGroup>
