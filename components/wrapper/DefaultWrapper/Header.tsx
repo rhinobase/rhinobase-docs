@@ -30,43 +30,6 @@ import React, { useEffect, useState } from "react";
 import { Sidebar } from "../Sidebar";
 import sitemap from "sitemap.json";
 
-const options = [
-  {
-    title: "Article",
-    href: "/articles",
-  },
-  {
-    title: "Quickstarts",
-    href: "/quickstart",
-  },
-  {
-    title: "APIs",
-    href: "/apis",
-  },
-  {
-    title: "SDKs",
-    href: "/sdks",
-  },
-  {
-    title: "Github",
-    href: "https://www.github.com",
-    icon: <FaGithub />,
-    isExternal: true,
-  },
-  {
-    title: "Discord",
-    href: "https://www.discord.gg",
-    icon: <FaDiscord />,
-    isExternal: true,
-  },
-  {
-    title: "Youtube",
-    href: "https://www.youtube.com",
-    icon: <FaYoutube />,
-    isExternal: true,
-  },
-];
-
 export default function Header() {
   const { toggleColorMode } = useColorMode();
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);

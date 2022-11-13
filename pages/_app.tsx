@@ -21,7 +21,6 @@ type AppPropsWithLayout = AppProps & {
 const font = Plus_Jakarta_Sans();
 
 const defaultTheme = extendTheme({
-  // ...theme,
   fonts: {
     heading: font.style.fontFamily,
   },

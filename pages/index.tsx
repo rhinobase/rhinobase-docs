@@ -84,6 +84,15 @@ export default function Home() {
         </Container>
       </Box>
       <Container maxW="7xl" my={8}>
+        <HeroContentTile
+          title={"Stripe CLI"}
+          href={""}
+          tag={"Set Up The CLI"}
+          description={
+            "Interact with Stripe from your terminal to bootstrap sample projects, send test mode API requests, and debug your integration."
+          }
+          image={"https://via.placeholder.com/150?text=%20"}
+        />
         <ContentWrapper title="Multiparty payments" href="">
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
             <ContentTile
@@ -116,7 +125,6 @@ export default function Home() {
             />
           </SimpleGrid>
         </ContentWrapper>
-
         <ContentWrapper title="Clone a sample project" href="">
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
             <ContentTile
@@ -180,16 +188,6 @@ export default function Home() {
             />
           </SimpleGrid>
         </ContentWrapper>
-
-        <HeroContentTile
-          title={"Stripe CLI"}
-          href={""}
-          tag={"Set Up The CLI"}
-          description={
-            "Interact with Stripe from your terminal to bootstrap sample projects, send test mode API requests, and debug your integration."
-          }
-          image={"https://via.placeholder.com/150?text=%20"}
-        />
       </Container>
       <ComunityBanner />
     </>

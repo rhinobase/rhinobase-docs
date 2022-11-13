@@ -26,7 +26,7 @@ export default function ContentWrapper(props: ContentWrapperProps) {
         </Link>
       </HStack>
       {props.children}
-      <Flex mb={10}>
+      <Flex mb={20}>
         <Spacer />
         <Link href={props.href}>
           <Button
