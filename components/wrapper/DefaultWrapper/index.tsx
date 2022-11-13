@@ -1,6 +1,6 @@
-import { Container, Box } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
+import MinimalWrapper from "../MinimalWrapper";
 import Footer from "./Footer";
-import Header from "./Header";
 
 type WrapperProps = {
   children: JSX.Element;
@@ -8,12 +8,13 @@ type WrapperProps = {
 
 export default function DefaultWrapper(props: WrapperProps) {
   return (
-    <>
-      <Header />
-      <Box pt="64px">{props.children}</Box>
-      <Container maxW="7xl">
-        <Footer />
-      </Container>
-    </>
+    <MinimalWrapper>
+      <>
+        {props.children}
+        <Container maxW="7xl">
+          <Footer />
+        </Container>
+      </>
+    </MinimalWrapper>
   );
 }

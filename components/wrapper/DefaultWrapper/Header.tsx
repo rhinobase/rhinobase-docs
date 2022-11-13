@@ -29,26 +29,30 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../Sidebar";
 import sitemap from "sitemap.json";
+import { useRouter } from "next/router";
 
 export default function Header() {
+  const router = useRouter();
   const { toggleColorMode } = useColorMode();
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+  const bgColor = useColorModeValue("gray.100", "gray.700");
   const [show, setShow] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    const onScroll = () => setShow(window.pageYOffset > 50);
+    const onScroll = () => setShow(window.pageYOffset > 0);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
   return (
     <Box
-      className="navbar"
       pos="fixed"
       w="100%"
       zIndex={100}
       boxShadow={show ? "md" : undefined}
-      transition="border 0.1s ease 0s"
+      transition="0.1s ease 0s"
+      bgColor={router.pathname == "/" && !show ? bgColor : "white"}
     >
       <HStack p={3}>
         <Link href="/">
