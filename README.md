@@ -1,3 +1,3 @@
-# Heading 1
+# rhinobase Docs
 
-## Heading 2
+Building the next-generation platform for No Code Apps
