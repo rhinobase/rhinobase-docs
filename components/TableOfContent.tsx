@@ -1,4 +1,5 @@
-import { Button, ButtonGroup, VStack } from "@chakra-ui/react";
+import { Button, VStack } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
 import getTableOfContent from "utils/getTableOfContent";
 
@@ -8,15 +9,14 @@ type TableOfContentProps = {
 
 export default function TableOfContent(props: TableOfContentProps) {
   const headings = getTableOfContent(props.source);
+
   return (
-    <VStack>
-      <ButtonGroup>
-        {headings.map((value) => (
-          <Button key={value.id} variant="link">
-            {value.text}
-          </Button>
-        ))}
-      </ButtonGroup>
+    <VStack position="sticky" top={0} alignItems="start" display={{base:"none",lg:"flex"}} py={3}>
+      {headings.map((value) => (
+        <Link key={value.id} href={`#${value.id}`}>
+          <Button variant="link">{value.text}</Button>
+        </Link>
+      ))}
     </VStack>
   );
 }

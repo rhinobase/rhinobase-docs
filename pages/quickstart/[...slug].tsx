@@ -12,20 +12,18 @@ export default function QuickstartPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const Component = useMDXComponent(doc.body.code);
   return (
-    <Box>
-      <Heading as="h1" mb={2}>
-        {doc.title}
-      </Heading>
-      <Heading as="h2" mb={5} color="GrayText" size="lg" fontWeight={500}>
-        {doc.description}
-      </Heading>
-      <HStack>
-        <Box>
-          <Component components={MDXComponents} />
-        </Box>
-        <TableOfContent source={doc.body.raw} />
-      </HStack>
-    </Box>
+    <HStack alignItems="start" gap={8} py={3}>
+      <Box>
+        <Heading as="h1" mb={2}>
+          {doc.title}
+        </Heading>
+        <Heading as="h2" mb={5} color="GrayText" size="lg" fontWeight={500}>
+          {doc.description}
+        </Heading>
+        <Component components={MDXComponents} />
+      </Box>
+      <TableOfContent source={doc.body.raw} />
+    </HStack>
   );
 }
 

@@ -19,6 +19,7 @@ const MDXComponents = {
   },
   code: InlineCode,
   h2: Heading,
+  h3: (props) => <Heading as="h3" {...props} />,
   p: Text,
   ul: UnorderedList,
   ol: OrderedList,
