@@ -22,12 +22,7 @@ type HeroContentTileprops = {
 
 export default function HeroContentTile(props: HeroContentTileprops) {
   return (
-    <Box
-      w="100%"
-      px={10}
-      borderBottom="2px"
-      borderColor="gray.100"
-    >
+    <Box w="100%" px={10} borderBottom="2px" borderColor="gray.100">
       <HStack alignItems="start">
         <VStack width="xl" spacing={5} alignItems="start">
           <Heading size="md">{props.title}</Heading>
@@ -53,7 +48,7 @@ export default function HeroContentTile(props: HeroContentTileprops) {
           ratio={16 / 9}
           borderTopRadius="md"
           overflow="hidden"
-          display={{base: "none", md: "block"}}
+          display={{ base: "none", md: "block" }}
         >
           <Image src="https://via.placeholder.com/150?text=%20" alt="" />
         </AspectRatio>

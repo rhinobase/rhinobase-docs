@@ -105,7 +105,7 @@ export default function Header() {
           onClick={onOpen}
           display={{ base: "block", md: "none" }}
         />
-        <Drawer placement="left" isOpen={isOpen} onClose={onClose} size="full">
+        <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
@@ -120,32 +120,35 @@ export default function Header() {
             <DrawerBody px={0}>
               <Sidebar options={sitemap} />
               <VStack alignItems="start" px={2} py={3}>
-                <Link href={"https://www.github.com"}>
+                <Link href={"https://www.github.com"} style={{ width: "100%" }}>
                   <Button
                     w="100%"
+                    justifyContent="start"
                     variant="ghost"
-                    size="sm"
-                    rightIcon={<FaGithub />}
+                    leftIcon={<FaGithub />}
                   >
                     Github
                   </Button>
                 </Link>
-                <Link href={"https://www.discord.gg"}>
+                <Link href={"https://www.discord.gg"} style={{ width: "100%" }}>
                   <Button
                     w="100%"
+                    justifyContent="start"
                     variant="ghost"
-                    size="sm"
-                    rightIcon={<FaDiscord />}
+                    leftIcon={<FaDiscord />}
                   >
                     Discord
                   </Button>
                 </Link>
-                <Link href={"https://www.youtube.com"}>
+                <Link
+                  href={"https://www.youtube.com"}
+                  style={{ width: "100%" }}
+                >
                   <Button
                     w="100%"
+                    justifyContent="start"
                     variant="ghost"
-                    size="sm"
-                    rightIcon={<FaYoutube />}
+                    leftIcon={<FaYoutube />}
                   >
                     Youtube
                   </Button>

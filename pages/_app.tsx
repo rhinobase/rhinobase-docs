@@ -6,6 +6,7 @@ import Script from "next/script";
 import { Plus_Jakarta_Sans } from "@next/font/google";
 import { NextPage } from "next";
 import MinimalWrapper from "components/wrapper/MinimalWrapper";
+import theme from "theme";
 
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
   P,
@@ -21,6 +22,7 @@ type AppPropsWithLayout = AppProps & {
 const font = Plus_Jakarta_Sans();
 
 const defaultTheme = extendTheme({
+  ...theme,
   fonts: {
     heading: font.style.fontFamily,
   },

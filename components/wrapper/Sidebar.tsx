@@ -52,7 +52,6 @@ function SidebarNested(
       <AccordionItem border={0} p={0}>
         <AccordionButton p={0} mb={2} as={"div"}>
           <Button
-            size="sm"
             w="100%"
             leftIcon={<AccordionIcon />}
             justifyContent="start"
@@ -83,7 +82,6 @@ function SidebarNested(
       <Link href={props.href}>
         <Button
           w="100%"
-          size="sm"
           mb={1}
           colorScheme={isActive ? "messenger" : undefined}
           leftIcon={props.icon}
@@ -125,7 +123,8 @@ export function Sidebar(props: { options: SidebarNestedType[] }) {
       py={3}
       flexDir="column"
       spacing={0}
-      w="280px"
+      maxW="300px"
+      w="100%"
     >
       <Accordion allowToggle index={active} onChange={setActive}>
         {props.options.map((item, index) => (
@@ -142,7 +141,7 @@ export function Sidebar(props: { options: SidebarNestedType[] }) {
 }
 
 export default function SidebarWrapper(props: SidebarProps) {
-  const show = useBreakpointValue({base: false, md: true});
+  const show = useBreakpointValue({ base: false, md: true });
   return (
     <HStack
       h="calc(100vh - 64px)"
