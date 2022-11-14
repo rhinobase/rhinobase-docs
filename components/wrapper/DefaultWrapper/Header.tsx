@@ -36,6 +36,7 @@ export default function Header() {
   const { toggleColorMode } = useColorMode();
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const bgColor = useColorModeValue("gray.100", "gray.700");
+  const actualColor = useColorModeValue("white", "gray.800");
   const [show, setShow] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -52,7 +53,7 @@ export default function Header() {
       zIndex={100}
       boxShadow={show ? "md" : undefined}
       transition="0.1s ease 0s"
-      bgColor={router.pathname == "/" && !show ? bgColor : "white"}
+      bgColor={router.pathname == "/" && !show ? bgColor : actualColor}
     >
       <HStack p={3}>
         <Link href="/">
