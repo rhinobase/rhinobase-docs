@@ -15,13 +15,13 @@ export default function ArticleWrapper({
     <Container maxW="6xl" my={{ base: 0, lg: 20 }}>
       <HStack alignItems="start" gap={8} py={3}>
         <Box>
-          <Heading as="h1" apply="mdx.h1" fontSize={{base:"26px"}}>
+          <Heading as="h1" apply="mdx.h1" fontSize={{ base: "26px" }}>
             {doc.title}
           </Heading>
           <Heading
             as="h2"
             apply="mdx.h2"
-            fontSize={{base:"22px"}}
+            fontSize={{ base: "22px" }}
             my={8}
             color="GrayText"
             size="lg"
@@ -35,7 +35,11 @@ export default function ArticleWrapper({
             p={4}
             borderRadius="md"
             flexDir="column"
-            display={{ base: "flex", lg: "none" }}
+            display={
+              doc.frontMatter.headings.length == 0
+                ? "none"
+                : { base: "flex", lg: "none" }
+            }
           >
             <Heading textColor="messenger.600" size="md" textAlign="center">
               Table of Content

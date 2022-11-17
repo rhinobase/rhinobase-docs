@@ -22,7 +22,7 @@ export default function TableOfContent(props: TableOfContentProps) {
   const show = useBreakpointValue({ base: true, lg: false });
   return (
     <VStack py={3}>
-      <Box w="300px">
+      <Box w="300px" display={props.headings.length == 0 ? "none" : "block"}>
         <UnorderedList>
           {props.headings.map((value) => (
             <Link key={value.id} href={`#${value.id}`}>
@@ -30,7 +30,7 @@ export default function TableOfContent(props: TableOfContentProps) {
                 as={show ? ListItem : undefined}
                 fontWeight={activeId == value.id ? 700 : 500}
                 textColor={activeId == value.id ? "messenger.600" : undefined}
-                _hover={{fontWeight:700}}
+                _hover={{ fontWeight: 700 }}
               >
                 {value.text}
               </Text>
