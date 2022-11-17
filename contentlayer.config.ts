@@ -1,13 +1,14 @@
 import {
   ComputedFields,
   defineDocumentType,
+  defineNestedType,
   makeSource,
 } from "contentlayer/source-files";
 import remarkEmoji from "remark-emoji";
 import remarkGfm from "remark-gfm";
 import remarkSlug from "remark-slug";
 import siteConfig from "./configs/site-config.json";
-// import { getTableOfContents } from "./src/utils/get-table-of-contents";
+import getTableOfContents from "./utils/getTableOfContent";
 // import { rehypeMdxCodeMeta } from "./src/utils/rehype-code-meta";
 
 const computedFields: ComputedFields = {
@@ -17,6 +18,14 @@ const computedFields: ComputedFields = {
   },
 };
 
+const User = defineNestedType(() => ({
+  name: "User",
+  fields: {
+    profile_image: { type: "string", required: true },
+    name: { type: "string", required: true },
+  },
+}));
+
 const Guides = defineDocumentType(() => ({
   name: "Guide",
   filePathPattern: "quickstart/**/*.mdx",
@@ -25,7 +34,7 @@ const Guides = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string", required: true },
     tags: { type: "list", of: { type: "string" } },
-    author: { type: "string" },
+    user: { type: "nested", of: User },
     category: { type: "string" },
   },
   computedFields: {
@@ -33,12 +42,9 @@ const Guides = defineDocumentType(() => ({
     frontMatter: {
       type: "json",
       resolve: (doc) => ({
-        title: doc.title,
-        description: doc.description,
-        tags: doc.tags,
-        author: doc.author,
+        ...doc,
         slug: `/${doc._raw.flattenedPath}`,
-        // headings: getTableOfContents(doc.body.raw),
+        headings: getTableOfContents(doc.body.raw),
       }),
     },
   },
@@ -49,24 +55,20 @@ const Article = defineDocumentType(() => ({
   filePathPattern: "article/**/*.mdx",
   contentType: "mdx",
   fields: {
+    image: { type: "string", required: true },
     title: { type: "string", required: true },
     description: { type: "string", required: true },
-    author: { type: "string" },
-    publishedDate: { type: "string" },
+    tag: { type: "string" },
+    user: { type: "nested", of: User },
+    date: { type: "string" },
   },
   computedFields: {
     ...computedFields,
     frontMatter: {
       type: "json",
       resolve: (doc) => ({
-        publishedDate: {
-          raw: doc.publishedDate,
-          // iso: new Date(doc.publishedDate).toISOString(),
-          // text: new Date(doc.publishedDate).toDateString(),
-        },
-        author: doc.author,
-        title: doc.title,
-        description: doc.description,
+        ...doc,
+        date: new Date(doc.date ?? "").toISOString(),
         slug: `/${doc._raw.flattenedPath}`,
       }),
     },

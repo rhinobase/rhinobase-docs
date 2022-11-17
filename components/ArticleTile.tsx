@@ -9,14 +9,14 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 // import Image from "next/image";
-import dateFormat from "dateformat";
+// import dateFormat from "dateformat";
 
 export type ArticleTileType = {
   id: string;
   image: string;
   title: string;
   description: string;
-  tag: string;
+  tag?: string;
   user: {
     profile_image: string;
     name: string;
@@ -42,18 +42,16 @@ export default function ArticleTile(props: ArticleTileType) {
       <Heading size="md" mb={2}>
         {props.title}
       </Heading>
-      <Text color="GrayText">
-        {props.description}
-      </Text>
+      <Text color="GrayText">{props.description}</Text>
       <HStack mt={5}>
         <Avatar name={props.user.name} src={props.user.profile_image} />
         <Box>
           <Text fontWeight={600} textTransform="capitalize">
             {props.user.name}
           </Text>
-          <Text color="GrayText">
+          {/* <Text color="GrayText">
             {dateFormat(props.date, "mmmm d, yyyy")}
-          </Text>
+          </Text> */}
         </Box>
       </HStack>
     </Link>

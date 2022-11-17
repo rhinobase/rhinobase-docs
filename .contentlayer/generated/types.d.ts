@@ -13,10 +13,12 @@ export type Article = {
   _id: string
   _raw: Local.RawDocumentData
   type: 'Article'
+  image: string
   title: string
   description: string
-  author?: string | undefined
-  publishedDate?: string | undefined
+  tag?: string | undefined
+  user?: User | undefined
+  date?: string | undefined
   /** MDX file body */
   body: MDX
   slug: string
@@ -68,7 +70,7 @@ export type Guide = {
   title: string
   description: string
   tags?: string[] | undefined
-  author?: string | undefined
+  user?: User | undefined
   category?: string | undefined
   /** MDX file body */
   body: MDX
@@ -77,7 +79,15 @@ export type Guide = {
 }  
 
 /** Nested types */
-  
+export type User = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'User'
+  profile_image: string
+  name: string
+
+}  
 
 /** Helper types */
 
@@ -87,8 +97,8 @@ export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 export type DocumentTypes = Article | Changelog | Doc | Guide
 export type DocumentTypeNames = 'Article' | 'Changelog' | 'Doc' | 'Guide'
 
-export type NestedTypes = never
-export type NestedTypeNames = never
+export type NestedTypes = User
+export type NestedTypeNames = 'User'
 
 
 export interface ContentlayerGenTypes {
@@ -113,7 +123,7 @@ export type DocumentTypeMap = {
 }
 
 export type NestedTypeMap = {
-
+  User: User
 }
 
  
