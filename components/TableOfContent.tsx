@@ -1,41 +1,42 @@
-import { Button, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  ListItem,
+  Text,
+  UnorderedList,
+  useBreakpointValue,
+  VStack,
+} from "@chakra-ui/react";
 import { useScrollSpy } from "hooks/useScrollspy";
 import Link from "next/link";
-import React from "react";
-import getTableOfContent from "utils/getTableOfContent";
 
 type TableOfContentProps = {
-  source: string;
+  headings: {
+    text: string;
+    id: string;
+    level: number;
+  }[];
 };
 
 export default function TableOfContent(props: TableOfContentProps) {
-  const headings = getTableOfContent(props.source);
-  const activeId = useScrollSpy(
-    headings.map(({ id }) => `[id="${id}"]`),
-    {
-      rootMargin: "0% 0% -24% 0%",
-    },
-  );
-
+  const activeId = useScrollSpy(props.headings.map(({ id }) => `[id="${id}"]`));
+  const show = useBreakpointValue({ base: true, lg: false });
   return (
-    <VStack
-      position="sticky"
-      top={0}
-      alignItems="start"
-      display={{ base: "none", lg: "flex" }}
-      py={3}
-    >
-      {headings.map((value) => (
-        <Link key={value.id} href={`#${value.id}`}>
-          <Button
-            variant="link"
-            isActive={activeId == value.id}
-            colorScheme={activeId == value.id ? "messenger" : undefined}
-          >
-            {value.text}
-          </Button>
-        </Link>
-      ))}
+    <VStack py={3}>
+      <Box w="300px">
+        <UnorderedList>
+          {props.headings.map((value) => (
+            <Link key={value.id} href={`#${value.id}`}>
+              <Text
+                as={show ? ListItem : undefined}
+                fontWeight={activeId == value.id ? 700 : 500}
+                textColor={activeId == value.id ? "messenger.600" : undefined}
+              >
+                {value.text}
+              </Text>
+            </Link>
+          ))}
+        </UnorderedList>
+      </Box>
     </VStack>
   );
 }

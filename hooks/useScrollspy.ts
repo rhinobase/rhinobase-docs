@@ -12,11 +12,8 @@ export function useScrollSpy(
     )
     observer.current?.disconnect()
     observer.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry?.isIntersecting) {
-          setActiveId(entry.target.getAttribute('id'))
-        }
-      })
+      const intersecting = entries.find((entry) => entry?.isIntersecting)
+      setActiveId(intersecting?.target.getAttribute('id'))
     }, options)
     elements.forEach((el) => {
       if (el) observer.current?.observe(el)

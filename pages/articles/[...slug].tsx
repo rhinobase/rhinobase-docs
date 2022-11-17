@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { toArray } from "utils/js-utils";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
-import { Box, Container, Heading, HStack } from "@chakra-ui/react";
+import { Box, Container, Heading, HStack, Text } from "@chakra-ui/react";
 import TableOfContent from "components/TableOfContent";
 
 export default function ArticleWrapper({
@@ -12,19 +12,48 @@ export default function ArticleWrapper({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const Component = useMDXComponent(doc.body.code);
   return (
-    <Container maxW="5xl" my={20}>
-    <HStack alignItems="start" gap={8} py={3}>
-      <Box>
-        <Heading as="h1" mb={2}>
-          {doc.title}
-        </Heading>
-        <Heading as="h2" mb={5} color="GrayText" size="lg" fontWeight={500}>
-          {doc.description}
-        </Heading>
-        <Component components={MDXComponents} />
-      </Box>
-      <TableOfContent source={doc.body.raw} />
-    </HStack></Container>
+    <Container maxW="6xl" my={{ base: 0, lg: 20 }}>
+      <HStack alignItems="start" gap={8} py={3}>
+        <Box>
+          <Heading as="h1" apply="mdx.h1" fontSize={{base:"26px"}}>
+            {doc.title}
+          </Heading>
+          <Heading
+            as="h2"
+            apply="mdx.h2"
+            fontSize={{base:"22px"}}
+            my={8}
+            color="GrayText"
+            size="lg"
+            fontWeight={500}
+          >
+            {doc.description}
+          </Heading>
+          <Box
+            minH="200px"
+            bgColor="gray.100"
+            p={4}
+            borderRadius="md"
+            flexDir="column"
+            display={{ base: "flex", lg: "none" }}
+          >
+            <Heading textColor="messenger.600" size="md" textAlign="center">
+              Table of Content
+            </Heading>
+            <TableOfContent headings={doc.frontMatter.headings} />
+          </Box>
+          <Component components={MDXComponents} />
+        </Box>
+        <Box
+          position="sticky"
+          top="64px"
+          alignItems="start"
+          display={{ base: "none", lg: "flex" }}
+        >
+          <TableOfContent headings={doc.frontMatter.headings} />
+        </Box>
+      </HStack>
+    </Container>
   );
 }
 

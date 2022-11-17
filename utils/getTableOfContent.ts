@@ -1,7 +1,8 @@
 import { slug } from "github-slugger";
 
 export default function getTableOfContent(mdxContent: string) {
-  const regex = new RegExp(/^(### )(.*)\r/, "gm");
+
+  const regex = new RegExp(/^(## |### )(.*)\r/, "gm");
   const headings = Array.from(mdxContent.matchAll(regex));
   const tableOfContent: { text: string; id: string; level: number }[] = [];
 

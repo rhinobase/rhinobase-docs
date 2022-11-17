@@ -70,6 +70,7 @@ const Article = defineDocumentType(() => ({
         ...doc,
         date: new Date(doc.date ?? "").toISOString(),
         slug: `/${doc._raw.flattenedPath}`,
+        headings: getTableOfContents(doc.body.raw),
       }),
     },
   },

@@ -98,7 +98,23 @@
       },
       "type": "Guide",
       "slug": "/quickstart/react",
-      "headings": []
+      "headings": [
+        {
+          "id": "framework-guide",
+          "text": "Framework Guide",
+          "level": 2
+        },
+        {
+          "id": "learn",
+          "text": "Learn",
+          "level": 2
+        },
+        {
+          "id": "contribute",
+          "text": "Contribute",
+          "level": 2
+        }
+      ]
     }
   }
 ]
