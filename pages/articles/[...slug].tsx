@@ -1,10 +1,10 @@
 import MDXComponents from "components/MDXComponents";
-import { allGuides, Guide } from ".contentlayer/generated";
+import { allArticles, Article } from ".contentlayer/generated";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { toArray } from "utils/js-utils";
-import MinimalWrapper from "components/wrapper/MinimalWrapper";
-import { Box, Heading, HStack } from "@chakra-ui/react";
+import DefaultWrapper from "components/wrapper/DefaultWrapper";
+import { Box, Container, Heading, HStack } from "@chakra-ui/react";
 import TableOfContent from "components/TableOfContent";
 
 export default function ArticleWrapper({
@@ -12,6 +12,7 @@ export default function ArticleWrapper({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const Component = useMDXComponent(doc.body.code);
   return (
+    <Container maxW="5xl" my={20}>
     <HStack alignItems="start" gap={8} py={3}>
       <Box>
         <Heading as="h1" mb={2}>
@@ -23,12 +24,12 @@ export default function ArticleWrapper({
         <Component components={MDXComponents} />
       </Box>
       <TableOfContent source={doc.body.raw} />
-    </HStack>
+    </HStack></Container>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = allGuides
+  const paths = allArticles
     .map((t) => t._id.replace("articles/", "").replace(".mdx", ""))
     .map((id) => ({ params: { slug: id === "index" ? [] : id.split("/") } }));
   return { paths, fallback: false };
@@ -36,17 +37,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const params = toArray(ctx.params?.slug ?? []);
-  let doc: Guide | undefined;
+  let doc: Article | undefined;
   if (params.length === 0) {
-    doc = allGuides.find((t) => t._id === "articles/index.mdx");
+    doc = allArticles.find((t) => t._id === "articles/index.mdx");
   } else {
-    doc = allGuides.find((guide) =>
-      guide._id.endsWith(`${params.join("/")}.mdx`),
+    doc = allArticles.find((article) =>
+      article._id.endsWith(`${params.join("/")}.mdx`),
     );
   }
   return { props: { doc } };
 };
 
 ArticleWrapper.getLayout = function getLayout(page: JSX.Element) {
-  return <MinimalWrapper>{page}</MinimalWrapper>;
+  return <DefaultWrapper>{page}</DefaultWrapper>;
 };

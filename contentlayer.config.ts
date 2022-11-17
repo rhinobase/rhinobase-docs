@@ -52,15 +52,15 @@ const Guides = defineDocumentType(() => ({
 
 const Article = defineDocumentType(() => ({
   name: "Article",
-  filePathPattern: "article/**/*.mdx",
+  filePathPattern: "articles/**/*.mdx",
   contentType: "mdx",
   fields: {
     image: { type: "string", required: true },
     title: { type: "string", required: true },
     description: { type: "string", required: true },
     tag: { type: "string" },
-    user: { type: "nested", of: User },
-    date: { type: "string" },
+    user: { type: "nested", of: User, required: true },
+    date: { type: "string", required: true },
   },
   computedFields: {
     ...computedFields,

@@ -17,8 +17,8 @@ export type Article = {
   title: string
   description: string
   tag?: string | undefined
-  user?: User | undefined
-  date?: string | undefined
+  user: User
+  date: string
   /** MDX file body */
   body: MDX
   slug: string

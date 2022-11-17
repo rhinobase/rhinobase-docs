@@ -12,7 +12,7 @@ import Link from "next/link";
 // import dateFormat from "dateformat";
 
 export type ArticleTileType = {
-  id: string;
+  href: string;
   image: string;
   title: string;
   description: string;
@@ -26,7 +26,7 @@ export type ArticleTileType = {
 
 export default function ArticleTile(props: ArticleTileType) {
   return (
-    <Link href={`/articles/${props.id}`}>
+    <Link href={props.href}>
       <AspectRatio
         ratio={16 / 9}
         overflow="hidden"
