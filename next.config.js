@@ -15,12 +15,6 @@ const nextConfig = withContentlayer({
       destination: "https://discord.gg",
       permanent: true,
     },
-    // GENERAL
-    {
-      source: "/articles",
-      destination: "https://www.rhinobase.io/articles",
-      permanent: true,
-    },
   ],
   reactStrictMode: true,
   swcMinify: true,

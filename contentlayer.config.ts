@@ -38,8 +38,97 @@ const Guides = defineDocumentType(() => ({
         tags: doc.tags,
         author: doc.author,
         slug: `/${doc._raw.flattenedPath}`,
-        // editUrl: `${siteConfig.repo.editUrl}/${doc._id}`,
         // headings: getTableOfContents(doc.body.raw),
+      }),
+    },
+  },
+}));
+
+const Article = defineDocumentType(() => ({
+  name: "Article",
+  filePathPattern: "article/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string", required: true },
+    author: { type: "string" },
+    publishedDate: { type: "string" },
+  },
+  computedFields: {
+    ...computedFields,
+    frontMatter: {
+      type: "json",
+      resolve: (doc) => ({
+        publishedDate: {
+          raw: doc.publishedDate,
+          // iso: new Date(doc.publishedDate).toISOString(),
+          // text: new Date(doc.publishedDate).toDateString(),
+        },
+        author: doc.author,
+        title: doc.title,
+        description: doc.description,
+        slug: `/${doc._raw.flattenedPath}`,
+      }),
+    },
+  },
+}));
+
+const Doc = defineDocumentType(() => ({
+  name: "Doc",
+  filePathPattern: "docs/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: { type: "string" },
+    package: { type: "string" },
+    description: { type: "string" },
+    id: { type: "string" },
+    scope: {
+      type: "enum",
+      options: ["usage", "theming", "props"],
+      default: "usage",
+    },
+    version: { type: "string" },
+    author: { type: "string" },
+    video: { type: "string" },
+    category: { type: "string" },
+    aria: { type: "string" },
+  },
+  computedFields: {
+    ...computedFields,
+    frontMatter: {
+      type: "json",
+      resolve: (doc) => ({
+        title: doc.title,
+        package: doc.package,
+        description: doc.description,
+        version: doc.version,
+        slug: `/${doc._raw.flattenedPath}`,
+        // headings: getTableOfContents(doc.body.raw),
+      }),
+    },
+  },
+}));
+
+const Changelog = defineDocumentType(() => ({
+  name: "Changelog",
+  filePathPattern: "changelog/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string", required: true },
+    slug: { type: "string" },
+    version: { type: "string" },
+    releaseUrl: { type: "string" },
+    releaseDate: { type: "string" },
+  },
+  computedFields: {
+    frontMatter: {
+      type: "json",
+      resolve: (doc) => ({
+        title: doc.title,
+        description: doc.description,
+        slug: "/changelog",
+        version: doc.version,
       }),
     },
   },
@@ -47,7 +136,7 @@ const Guides = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Guides],
+  documentTypes: [Article, Changelog, Doc, Guides],
   mdx: {
     // rehypePlugins: [rehypeMdxCodeMeta],
     remarkPlugins: [remarkSlug, remarkGfm, remarkEmoji],

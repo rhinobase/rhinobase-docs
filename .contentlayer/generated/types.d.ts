@@ -8,6 +8,58 @@ export { isType } from 'contentlayer/client'
 export type { Markdown, MDX, ImageFieldData, IsoDateTimeString }
 
 /** Document types */
+export type Article = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'Article'
+  title: string
+  description: string
+  author?: string | undefined
+  publishedDate?: string | undefined
+  /** MDX file body */
+  body: MDX
+  slug: string
+  frontMatter: json
+}
+
+export type Changelog = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'Changelog'
+  title: string
+  description: string
+  slug?: string | undefined
+  version?: string | undefined
+  releaseUrl?: string | undefined
+  releaseDate?: string | undefined
+  /** MDX file body */
+  body: MDX
+  frontMatter: json
+}
+
+export type Doc = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'Doc'
+  title?: string | undefined
+  package?: string | undefined
+  description?: string | undefined
+  id?: string | undefined
+  scope: 'usage' | 'theming' | 'props'
+  version?: string | undefined
+  author?: string | undefined
+  video?: string | undefined
+  category?: string | undefined
+  aria?: string | undefined
+  /** MDX file body */
+  body: MDX
+  slug: string
+  frontMatter: json
+}
+
 export type Guide = {
   /** File path relative to `contentDirPath` */
   _id: string
@@ -32,8 +84,8 @@ export type Guide = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = Guide
-export type DocumentTypeNames = 'Guide'
+export type DocumentTypes = Article | Changelog | Doc | Guide
+export type DocumentTypeNames = 'Article' | 'Changelog' | 'Doc' | 'Guide'
 
 export type NestedTypes = never
 export type NestedTypeNames = never
@@ -54,6 +106,9 @@ declare global {
 }
 
 export type DocumentTypeMap = {
+  Article: Article
+  Changelog: Changelog
+  Doc: Doc
   Guide: Guide
 }
 
