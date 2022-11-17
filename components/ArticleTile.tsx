@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 // import Image from "next/image";
-// import dateFormat from "dateformat";
+import dateFormat from "dateformat";
 
 export type ArticleTileType = {
   href: string;
@@ -49,9 +49,7 @@ export default function ArticleTile(props: ArticleTileType) {
           <Text fontWeight={600} textTransform="capitalize">
             {props.user.name}
           </Text>
-          {/* <Text color="GrayText">
-            {dateFormat(props.date, "mmmm d, yyyy")}
-          </Text> */}
+          <Text color="GrayText">{dateFormat(props.date, "mmmm d, yyyy")}</Text>
         </Box>
       </HStack>
     </Link>
