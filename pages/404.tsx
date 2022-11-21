@@ -13,7 +13,7 @@ import DefaultWrapper from "components/wrapper/DefaultWrapper";
 export default function NotFound() {
   return (
     <Container maxW="7xl" h="600px" letterSpacing={1}>
-      <VStack alignItems="start" justifyContent="center" h="100%" gap={4}>
+      <VStack alignItems="center" justifyContent="center" h="100%" gap={4}>
         <AspectRatio h="100px" width="100px">
           <Image src="https://via.placeholder.com/150?text=%20" alt="" />
         </AspectRatio>
