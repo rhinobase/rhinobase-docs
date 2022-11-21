@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { toArray } from "utils/js-utils";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
-import { Box, Container, Heading, HStack, Text } from "@chakra-ui/react";
+import { Box, Container, Heading, HStack } from "@chakra-ui/react";
 import TableOfContent from "components/TableOfContent";
 
 export default function ArticleWrapper({
