@@ -1,22 +1,12 @@
-import {
-  Heading,
-  Text,
-  Image,
-  AspectRatio,
-  VStack,
-  Container,
-  Button,
-} from "@chakra-ui/react";
+import { Heading, Text, VStack, Container, Button } from "@chakra-ui/react";
 import Link from "next/link";
-import DefaultWrapper from "components/wrapper/DefaultWrapper";
+import { FaQuestion } from "react-icons/fa";
 
 export default function NotFound() {
   return (
     <Container maxW="7xl" h="600px" letterSpacing={1}>
       <VStack alignItems="center" justifyContent="center" h="100%" gap={4}>
-        <AspectRatio h="100px" width="100px">
-          <Image src="https://via.placeholder.com/150?text=%20" alt="" />
-        </AspectRatio>
+        <FaQuestion size={100} />
         <Text textColor="red" fontSize="xl">
           404 ERROR
         </Text>
@@ -42,7 +32,3 @@ export default function NotFound() {
     </Container>
   );
 }
-
-NotFound.getLayout = function getLayout(page: JSX.Element) {
-  return <DefaultWrapper>{page}</DefaultWrapper>;
-};
