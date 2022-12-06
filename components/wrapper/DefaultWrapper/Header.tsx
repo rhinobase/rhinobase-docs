@@ -1,44 +1,34 @@
-import {
-  HStack,
-  IconButton,
-  Spacer,
-  useColorMode,
-  useColorModeValue,
-  Button,
-  Box,
-  Drawer,
-  useDisclosure,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerBody,
-  DrawerHeader,
-  ButtonGroup,
-  VStack,
-} from "@chakra-ui/react";
 import FullLogo from "components/brand/FullLogo";
-import {
-  FaGithub,
-  FaDiscord,
-  FaYoutube,
-  FaMoon,
-  FaSun,
-  FaBars,
-} from "react-icons/fa";
+import { FaGithub, FaDiscord, FaYoutube, FaBars, FaMoon } from "react-icons/fa";
+import { HiXMark } from "react-icons/hi2";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { Sidebar } from "../Sidebar";
-import sitemap from "sitemap.json";
+import React, { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { classNames } from "utils/className";
+import { toggleColorMode } from "utils/colorMode";
+import { Dialog, Popover, Transition } from "@headlessui/react";
+
+const navigation = [
+  { name: "Article", href: "/articles", icon: "HomeIcon", current: true },
+  {
+    name: "Quickstart",
+    href: "/quickstart",
+    icon: "UsersIcon",
+    current: false,
+  },
+  { name: "APIs", href: "/apis", icon: "FolderIcon", current: false },
+  { name: "SDKs", href: "/sdks", icon: "CalendarIcon", current: false },
+];
 
 export default function Header() {
   const router = useRouter();
-  const { toggleColorMode } = useColorMode();
-  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
-  const bgColor = useColorModeValue("gray.100", "gray.700");
-  const actualColor = useColorModeValue("white", "gray.800");
   const [show, setShow] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const [isOpen, setIsOpen] = useState(false);
+
+  // const onOpen = () => setIsOpen(true);
+  // const onClose = () => setIsOpen(false);
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setShow(window.pageYOffset > 0);
@@ -47,117 +37,244 @@ export default function Header() {
   }, []);
 
   return (
-    <Box
-      pos="fixed"
-      w="100%"
-      zIndex={100}
-      boxShadow={show ? "md" : undefined}
-      transition="0.1s ease 0s"
-      bgColor={router.pathname == "/" && !show ? bgColor : actualColor}
-    >
-      <HStack p={3}>
-        <Link href="/">
-          <FullLogo logo={{ size: 40, borderRadius: "md", p: 1 }} size="lg" />
-        </Link>
-        <Spacer />
-        <Box display={{ base: "none", md: "block" }}>
-          <Link href="/articles">
-            <Button variant="ghost">Article</Button>
-          </Link>
-          <Link href="/quickstart">
-            <Button variant="ghost">Quickstarts</Button>
-          </Link>
-          <Link href="/apis">
-            <Button variant="ghost">APIs</Button>
-          </Link>
-          <Link href="/sdks">
-            <Button variant="ghost">SDKs</Button>
-          </Link>
-        </Box>
-        <ButtonGroup display={{ base: "none", sm: "block" }}>
-          <IconButton
-            variant="ghost"
-            aria-label="github"
-            icon={<FaGithub size="24px" />}
-          />
-          <IconButton
-            variant="ghost"
-            aria-label="discord"
-            icon={<FaDiscord size="24px" />}
-          />
-          <IconButton
-            variant="ghost"
-            aria-label="youtube"
-            icon={<FaYoutube size="24px" />}
-          />
-        </ButtonGroup>
-        <IconButton
-          onClick={toggleColorMode}
-          variant="ghost"
-          aria-label="togglemode"
-          icon={<SwitchIcon size="20px" />}
-        />
-        <IconButton
-          aria-label="menu"
-          variant="ghost"
-          size="md"
-          icon={<FaBars style={{ marginLeft: 10 }} />}
-          onClick={onOpen}
-          display={{ base: "block", md: "none" }}
-        />
-        <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>
-              <Link href="/">
-                <FullLogo
-                  logo={{ size: 40, borderRadius: "md", p: 1 }}
-                  size="lg"
-                />
-              </Link>
-            </DrawerHeader>
-            <DrawerBody px={0}>
-              <Sidebar options={sitemap} />
-              <VStack alignItems="start" px={2} py={3}>
-                <Link href={"https://www.github.com"} style={{ width: "100%" }}>
-                  <Button
-                    w="100%"
-                    justifyContent="start"
-                    variant="ghost"
-                    leftIcon={<FaGithub />}
-                  >
-                    Github
-                  </Button>
-                </Link>
-                <Link href={"https://www.discord.gg"} style={{ width: "100%" }}>
-                  <Button
-                    w="100%"
-                    justifyContent="start"
-                    variant="ghost"
-                    leftIcon={<FaDiscord />}
-                  >
-                    Discord
-                  </Button>
-                </Link>
-                <Link
-                  href={"https://www.youtube.com"}
-                  style={{ width: "100%" }}
+    <>
+      <Popover className="relative bg-white">
+        <div
+          className={classNames(
+            show ? "shadow-md" : "",
+            router.pathname == "/" && !show
+              ? "bg-gray-100 dark:bg-gray-700"
+              : "bg-white dark:bg-gray-800",
+            "text-gray-800 dark:text-white fixed w-full z-[100] transition ease-in-out duration-[.1s] delay-[0s]",
+          )}
+        >
+          <div className="flex items-center flex-row p-3">
+            <Link href="/">
+              <FullLogo
+                logo={{ size: 40, borderRadius: "md", p: 1 }}
+                size="lg"
+              />
+            </Link>
+            <div className="flex-[1] justify-items-stretch mr-2"></div>
+            <div className="mr-2 hidden md:block ">
+              <Link href="/articles">
+                <button
+                  type="button"
+                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 text-md font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
                 >
-                  <Button
-                    w="100%"
-                    justifyContent="start"
-                    variant="ghost"
-                    leftIcon={<FaYoutube />}
-                  >
-                    Youtube
-                  </Button>
+                  Article
+                </button>
+              </Link>
+              <Link href="/quickstart">
+                <button
+                  type="button"
+                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 text-md font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                >
+                  Quickstarts
+                </button>
+              </Link>
+              <Link href="/apis">
+                <button
+                  type="button"
+                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 text-md font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                >
+                  APIs
+                </button>
+              </Link>
+              <Link href="/sdks">
+                <button
+                  type="button"
+                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 text-md font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                >
+                  SDKs
+                </button>
+              </Link>
+            </div>
+            <div className="hidden sm:flex gap-2 ">
+              <button
+                type="button"
+                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+              >
+                <Link href="">
+                  <FaGithub size="24px" />
                 </Link>
-              </VStack>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </HStack>
-    </Box>
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+              >
+                <Link href="">
+                  <FaDiscord size="24px" />
+                </Link>
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+              >
+                <Link href="">
+                  <FaYoutube size="24px" />
+                </Link>
+              </button>
+            </div>
+            <button
+              type="button"
+              className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 mx-2 text-sm font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+              onClick={toggleColorMode}
+            >
+              <FaMoon size="20px" />
+            </button>
+
+            <button
+              className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 mx-2 text-sm font-medium hover:bg-gray-700 hover:text-white focus:outline-none md:hidden sm:block"
+              onClick={() => setSidebarOpen(true)}
+            >
+              <FaBars size="16px" />
+            </button>
+            <Transition.Root show={sidebarOpen} as={Fragment}>
+              <Dialog
+                as="div"
+                className="relative z-[110] md:hidden"
+                onClose={setSidebarOpen}
+              >
+                <Transition.Child
+                  as={Fragment}
+                  enter="transition-opacity ease-linear duration-300"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="transition-opacity ease-linear duration-300"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <div className="fixed inset-0 bg-gray-600 bg-opacity-75" />
+                </Transition.Child>
+
+                <div className="fixed inset-0 z-40 flex">
+                  <Transition.Child
+                    as={Fragment}
+                    enter="transition ease-in-out duration-300 transform"
+                    enterFrom="-translate-x-full"
+                    enterTo="translate-x-0"
+                    leave="transition ease-in-out duration-300 transform"
+                    leaveFrom="translate-x-0"
+                    leaveTo="-translate-x-full"
+                  >
+                    <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white pt-5 pb-4">
+                      <Transition.Child
+                        as={Fragment}
+                        enter="ease-in-out duration-300"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                        leave="ease-in-out duration-300"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                      >
+                        <div className="absolute top-0 right-0 -mr-12 pt-2">
+                          <button
+                            type="button"
+                            className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                            onClick={() => setSidebarOpen(false)}
+                          >
+                            <span className="sr-only">Close sidebar</span>
+                            <HiXMark
+                              className="h-6 w-6 text-white"
+                              aria-hidden="true"
+                            />
+                          </button>
+                        </div>
+                      </Transition.Child>
+                      <div className="flex flex-shrink-0 items-center px-4">
+                        <Link href="/">
+                          <FullLogo
+                            logo={{ size: 40, borderRadius: "md", p: 1 }}
+                            size="lg"
+                          />
+                        </Link>
+                        {/* <img
+                      className="h-8 w-auto"
+                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300"
+                      alt="Your Company"
+                    /> */}
+                      </div>
+                      <div className="mt-5 h-0 flex-1 overflow-y-auto">
+                        <div className="border-b-2 border-gray-50"></div>
+                        <nav className="space-y-2 px-3">
+                          <Link
+                            href="/articles"
+                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                          >
+                            Article
+                          </Link>
+                          <Link
+                            href="/quickstart"
+                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                          >
+                            Quickstart
+                          </Link>
+                          <Link
+                            href="/apis"
+                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                          >
+                            APIs
+                          </Link>
+                          <Link
+                            href="/sdks"
+                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                          >
+                            SDKs
+                          </Link>
+                          <div className="border-b-2 border-gray-100"></div>
+                          <Link href=""
+                          className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                          >
+                            <FaGithub size="24px" />
+                            <span className="ml-3">Github</span>
+                          </Link>
+                          <Link href=""
+                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                          >
+                            <FaDiscord size="24px" />
+                            <span className="ml-3">Discord</span>
+                          </Link>
+                          <Link href=""
+                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                          >
+                            <FaYoutube size="24px" />
+                            <span className="ml-3">Youtube</span>
+                          </Link>
+                          {/* {navigation.map((item) => (
+                            <Link href={item.href}>
+                            <button
+                              type="button"
+                              className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 text-md font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                            >
+                              Article
+                            </button>
+                          </Link>
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className={classNames(
+                            item.current ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600',
+                            'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                          )}
+                        >
+                          <item.icon className="mr-4 h-6 w-6 flex-shrink-0 text-indigo-300" aria-hidden="true" />
+                          {item.name}
+                        </a>
+                      ))} */}
+                        </nav>
+                      </div>
+                    </Dialog.Panel>
+                  </Transition.Child>
+                  <div className="w-14 flex-shrink-0" aria-hidden="true">
+                    {/* Dummy element to force sidebar to shrink to fit close icon */}
+                  </div>
+                </div>
+              </Dialog>
+            </Transition.Root>
+          </div>
+        </div>
+      </Popover>
+    </>
   );
 }
