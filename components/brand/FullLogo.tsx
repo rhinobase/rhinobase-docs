@@ -1,4 +1,3 @@
-import { Flex, Heading } from "@chakra-ui/react";
 import Logo, { LogoProps } from "./Logo";
 
 type initialProps = {
@@ -8,11 +7,11 @@ type initialProps = {
 
 export default function FullLogo({ size, logo }: initialProps) {
   return (
-    <Flex role="group" alignItems="center">
-      <Logo {...logo} />
-      <Heading ml={3} lineHeight={1} size={size ?? "3xl"}>
-        rhinobase
-      </Heading>
-    </Flex>
+    <>
+      <div className="flex items-center">
+        <Logo {...logo} />
+        <h2 className="ml-3 text-4xl font-semibold leading-4">rhinobase</h2>
+      </div>
+    </>
   );
 }

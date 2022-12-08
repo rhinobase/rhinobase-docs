@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import Image from "next/image";
 import rhinobaseLogo from "../../public/rhinobase_logo.png";
 
@@ -10,14 +9,20 @@ export type LogoProps = {
 
 export default function Logo({ size, borderRadius, p }: LogoProps) {
   return (
-    <Box
-      width={`${size}px` ?? "100px"}
-      height={`${size}px` ?? "100px"}
-      bgGradient="linear(to-br, cyan.300, messenger.500, pink.500, orange.500)"
-      borderRadius={borderRadius ?? "xl"}
-      p={p ?? 3}
-    >
-      <Image src={rhinobaseLogo} alt="rhinobase" />
-    </Box>
+    <>
+      <div
+        className="flex h-[40px] w-[40px] items-center justify-center rounded-md"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom right, #76E4F7, #0078FF, #D53F8C, #DD6B20)",
+        }}
+      >
+        <Image
+          src={rhinobaseLogo}
+          alt="rhinobase"
+          className="h-[80%] w-[80%]"
+        />
+      </div>
+    </>
   );
 }

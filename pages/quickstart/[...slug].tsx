@@ -4,7 +4,6 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { toArray } from "utils/js-utils";
 import QuickstartWrapper from "components/wrapper/QuickstartWrapper";
-import { Box, Heading, HStack } from "@chakra-ui/react";
 import TableOfContent from "components/TableOfContent";
 
 export default function QuickstartPage({
@@ -12,18 +11,16 @@ export default function QuickstartPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const Component = useMDXComponent(doc.body.code);
   return (
-    <HStack alignItems="start" gap={8} py={3}>
-      <Box>
-        <Heading as="h1" mb={2}>
-          {doc.title}
-        </Heading>
-        <Heading as="h2" mb={5} color="GrayText" size="lg" fontWeight={500}>
-          {doc.description}
-        </Heading>
-        <Component components={MDXComponents} />
-      </Box>
-      <TableOfContent source={doc.body.raw} />
-    </HStack>
+    <>
+      <div className="flex flex-col">
+        <div>
+          <h1 className="mb-4 text-4xl">{doc.title}</h1>
+          <h2 className="mb-6 text-2xl">{doc.description}</h2>
+          <Component components={MDXComponents} />
+        </div>
+        {/* <TableOfContent source={doc.body.raw} /> */}
+      </div>
+    </>
   );
 }
 

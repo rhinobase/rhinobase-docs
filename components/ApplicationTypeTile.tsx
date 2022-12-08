@@ -1,5 +1,5 @@
-import { Flex, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import Link from "next/link";
+import Image from "next/image";
 
 type ApplicationTypeTileProps = {
   id: string;
@@ -10,41 +10,25 @@ type ApplicationTypeTileProps = {
 };
 
 export default function ApplicationTypeTile(props: ApplicationTypeTileProps) {
-  const bgColor = useColorModeValue("white", "gray.800");
   return (
-    <Link href={`/quickstart#${props.id}`}>
-      <Flex
-        h="320px"
-        flexDir="column"
-        alignItems="center"
-        border="4px"
-        borderColor="transparent"
-        _hover={{ borderColor: "messenger.200" }}
-        justifyContent="center"
-        boxShadow="0px 2px 4px rgb(0 0 0 / 12%)"
-        borderRadius="md"
-        p={7}
-        transition="border 0.1s ease 0s"
-        bgColor={bgColor}
-      >
-        <Image
-          borderRadius="2xl"
-          boxSize="100px"
-          src={props.image}
-          alt={props.title}
-          boxShadow="lg"
-          mb={7}
-        />
-        <Text textAlign="center" as="b" fontSize="lg" mb={2}>
-          {props.title}
-        </Text>
-        <Text textAlign="center" noOfLines={2} mb={1}>
-          {props.content}
-        </Text>
-        <Text fontSize="13px" noOfLines={1} color="GrayText" mt={1}>
-          {props.example}
-        </Text>
-      </Flex>
-    </Link>
+    <>
+      <Link href={`/quickstart#${props.id}`}>
+        <div className="flex h-[320px] flex-col items-center justify-center rounded-md border-2 border-transparent bg-white p-7 text-gray-800 shadow-lg shadow-gray-300 transition-all hover:border-blue-300 dark:bg-gray-700 dark:text-white dark:shadow-gray-900">
+          <Image
+            src={props.image}
+            alt={props.title}
+            sizes=""
+            className="mb-7 rounded-2xl shadow-lg"
+            width={100}
+            height={100}
+          />
+          <p className="mb-2 text-center text-lg font-bold">{props.title}</p>
+          <p className="mb-1 text-center text-base">{props.content}</p>
+          <p className="mt-1 text-center text-[13px] text-gray-500">
+            {props.example}
+          </p>
+        </div>
+      </Link>
+    </>
   );
 }

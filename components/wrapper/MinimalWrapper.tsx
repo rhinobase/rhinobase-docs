@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import Header from "./DefaultWrapper/Header";
 
 type WrapperProps = {
@@ -9,7 +8,9 @@ export default function MinimalWrapper(props: WrapperProps) {
   return (
     <>
       <Header />
-      <Box pt="64px">{props.children}</Box>
+      <div className="pt-16  text-gray-800 dark:bg-gray-700 dark:text-white">
+        {props.children}
+      </div>
     </>
   );
 }

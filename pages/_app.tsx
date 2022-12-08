@@ -1,12 +1,10 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import Head from "next/head";
 import Script from "next/script";
 import { Plus_Jakarta_Sans } from "@next/font/google";
 import { NextPage } from "next";
 import MinimalWrapper from "components/wrapper/MinimalWrapper";
-import theme from "theme";
 
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
   P,
@@ -21,19 +19,12 @@ type AppPropsWithLayout = AppProps & {
 
 const font = Plus_Jakarta_Sans();
 
-const defaultTheme = extendTheme({
-  ...theme,
-  fonts: {
-    heading: font.style.fontFamily,
-  },
-});
-
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout =
     Component.getLayout ?? ((page) => <MinimalWrapper>{page}</MinimalWrapper>);
 
   return (
-    <ChakraProvider theme={defaultTheme}>
+    <div className={font.className}>
       <Head>
         <title key="title">Rhinobase Docs</title>
         <meta
@@ -73,6 +64,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         </>
       )}
       {getLayout(<Component {...pageProps} />)}
-    </ChakraProvider>
+    </div>
   );
 }

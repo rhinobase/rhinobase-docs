@@ -1,64 +1,38 @@
-import {
-  Text,
-  Container,
-  Heading,
-  Box,
-  chakra,
-  Flex,
-} from "@chakra-ui/react";
+import { Text, Container, Heading, Box, chakra, Flex } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
 import { FaDiscord } from "react-icons/fa";
 
 export default function ComunityBanner() {
   return (
-    <Box bg="#5865F2">
-      <Container maxW="7xl" py="8">
-        <Flex
-          direction={{ base: "column", md: "row" }}
-          align="center"
-          justify="space-between"
-        >
-          <Flex color="white">
-            <Flex
-              alignItems="center"
-              justifyContent="center"
-              fontSize="48px"
-              mr="5"
+    <>
+      <div style={{ backgroundColor: "#5865F2" }}>
+        <div className="container m-auto py-8 px-4">
+          <div className="flex justify-between sm:flex-col md:flex-row">
+            <div className="flex text-white ">
+              <div className="mr-5 flex items-center justify-center text-5xl">
+                <FaDiscord />
+              </div>
+              <div>
+                <h2 className="leading[1.2] text-xl font-medium">
+                  Connect with the community
+                </h2>
+                <p className="opacity-70">
+                  Feel free to ask questions, report issues, and meet new
+                  people.
+                </p>
+              </div>
+            </div>
+            <Link
+              href={"https://discord.gg"}
+              target="_blank"
+              className="inline-flex h-[56px] items-center rounded-md bg-white px-6 font-bold text-gray-800 shadow-md"
             >
-              <FaDiscord />
-            </Flex>
-            <Box>
-              <Heading size="md" lineHeight="1.2" mb="1">
-                Connect with the community
-              </Heading>
-              <Text opacity={0.7}>
-                Feel free to ask questions, report issues, and meet new people.
-              </Text>
-            </Box>
-          </Flex>
-          <chakra.button
-            width={{ base: "100%", md: "auto" }}
-            mt={{ base: "6", md: 0 }}
-            color="gray.800"
-            as="a"
-            justifyContent="center"
-            display="inline-flex"
-            alignItems="center"
-            href="https://discord.gg"
-            rel="noopener"
-            target="_blank"
-            fontWeight="bold"
-            shadow="md"
-            bg="white"
-            px="24px"
-            h="56px"
-            rounded="lg"
-            fontSize="md"
-          >
-            Join the #rhinobase Discord!
-          </chakra.button>
-        </Flex>
-      </Container>
-    </Box>
+              Join the #rhinobase Discord!
+            </Link>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

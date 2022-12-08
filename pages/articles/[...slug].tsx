@@ -12,7 +12,28 @@ export default function ArticleWrapper({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const Component = useMDXComponent(doc.body.code);
   return (
-    <Container maxW="6xl" my={{ base: 0, lg: 20 }}>
+    <>
+    <div className="container m-auto my-0 lg:my-20">
+      <div className="flex  gap-8 flex-col lg:flex-row">
+        <div className="flex-[2]">
+          <h1 className="text-3xl mt-8 mb-1 font-medium">
+          {doc.title}
+          </h1>
+          <h2 className="text-xl mt-8">
+          {doc.description}
+          </h2>
+          <div className="text-justify">
+          <Component components={MDXComponents} />
+          </div>
+        </div>
+        <div className="flex-[1]">
+          <div className="sticky top-20">
+          <TableOfContent headings={doc.frontMatter.headings} />
+          </div>
+        </div>
+      </div>
+    </div>
+    {/* <Container maxW="6xl" my={{ base: 0, lg: 20 }}>
       <HStack alignItems="start" gap={8} py={3}>
         <Box>
           <Heading as="h1" apply="mdx.h1" fontSize={{ base: "26px" }}>
@@ -57,7 +78,8 @@ export default function ArticleWrapper({
           <TableOfContent headings={doc.frontMatter.headings} />
         </Box>
       </HStack>
-    </Container>
+    </Container> */}
+    </>
   );
 }
 

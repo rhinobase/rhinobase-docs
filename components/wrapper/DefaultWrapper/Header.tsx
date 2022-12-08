@@ -45,22 +45,22 @@ export default function Header() {
             router.pathname == "/" && !show
               ? "bg-gray-100 dark:bg-gray-700"
               : "bg-white dark:bg-gray-800",
-            "text-gray-800 dark:text-white fixed w-full z-[100] transition ease-in-out duration-[.1s] delay-[0s]",
+            "fixed z-[100] w-full text-gray-800 transition delay-[0s] duration-[.1s] ease-in-out dark:text-white",
           )}
         >
-          <div className="flex items-center flex-row p-3">
+          <div className="flex flex-row items-center p-3">
             <Link href="/">
               <FullLogo
                 logo={{ size: 40, borderRadius: "md", p: 1 }}
                 size="lg"
               />
             </Link>
-            <div className="flex-[1] justify-items-stretch mr-2"></div>
+            <div className="mr-2 flex-[1] justify-items-stretch"></div>
             <div className="mr-2 hidden md:block ">
               <Link href="/articles">
                 <button
                   type="button"
-                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 text-md font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                  className="text-md inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 font-medium hover:bg-black/[.08] focus:outline-none dark:hover:bg-white/[0.2]"
                 >
                   Article
                 </button>
@@ -68,7 +68,7 @@ export default function Header() {
               <Link href="/quickstart">
                 <button
                   type="button"
-                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 text-md font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                  className="text-md inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 font-medium  hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
                 >
                   Quickstarts
                 </button>
@@ -76,7 +76,7 @@ export default function Header() {
               <Link href="/apis">
                 <button
                   type="button"
-                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 text-md font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                  className="text-md inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 font-medium  hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
                 >
                   APIs
                 </button>
@@ -84,16 +84,16 @@ export default function Header() {
               <Link href="/sdks">
                 <button
                   type="button"
-                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 text-md font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                  className="text-md inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 font-medium  hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
                 >
                   SDKs
                 </button>
               </Link>
             </div>
-            <div className="hidden sm:flex gap-2 ">
+            <div className="hidden gap-2 sm:flex ">
               <button
                 type="button"
-                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
               >
                 <Link href="">
                   <FaGithub size="24px" />
@@ -101,7 +101,7 @@ export default function Header() {
               </button>
               <button
                 type="button"
-                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
               >
                 <Link href="">
                   <FaDiscord size="24px" />
@@ -109,7 +109,7 @@ export default function Header() {
               </button>
               <button
                 type="button"
-                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
               >
                 <Link href="">
                   <FaYoutube size="24px" />
@@ -118,14 +118,14 @@ export default function Header() {
             </div>
             <button
               type="button"
-              className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 mx-2 text-sm font-medium hover:bg-gray-700 hover:text-white focus:outline-none"
+              className="mx-2 inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
               onClick={toggleColorMode}
             >
               <FaMoon size="20px" />
             </button>
 
             <button
-              className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 mx-2 text-sm font-medium hover:bg-gray-700 hover:text-white focus:outline-none md:hidden sm:block"
+              className="mx-2 inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2] sm:block md:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <FaBars size="16px" />
@@ -200,43 +200,46 @@ export default function Header() {
                         <nav className="space-y-2 px-3">
                           <Link
                             href="/articles"
-                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
                           >
                             Article
                           </Link>
                           <Link
                             href="/quickstart"
-                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
                           >
                             Quickstart
                           </Link>
                           <Link
                             href="/apis"
-                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
                           >
                             APIs
                           </Link>
                           <Link
                             href="/sdks"
-                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
                           >
                             SDKs
                           </Link>
                           <div className="border-b-2 border-gray-100"></div>
-                          <Link href=""
-                          className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                          <Link
+                            href=""
+                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
                           >
                             <FaGithub size="24px" />
                             <span className="ml-3">Github</span>
                           </Link>
-                          <Link href=""
-                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                          <Link
+                            href=""
+                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
                           >
                             <FaDiscord size="24px" />
                             <span className="ml-3">Discord</span>
                           </Link>
-                          <Link href=""
-                            className=" hover:bg-gray-200 group flex items-center px-4 py-2 text-base font-medium rounded-md"
+                          <Link
+                            href=""
+                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
                           >
                             <FaYoutube size="24px" />
                             <span className="ml-3">Youtube</span>
