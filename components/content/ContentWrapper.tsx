@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, HStack, Spacer } from "@chakra-ui/react";
+// import { Button, Flex, Heading, HStack, Spacer } from "@chakra-ui/react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -11,34 +11,37 @@ type ContentWrapperProps = {
 export default function ContentWrapper(props: ContentWrapperProps) {
   return (
     <>
-      <HStack alignItems="start" mt={20} mb={5}>
-        <Heading size="lg">{props.title}</Heading>
-        <Spacer />
-        <Link href={props.href}>
-          <Button
-            display={{ base: "none", md: "block" }}
-            variant="ghost"
-            colorScheme="messenger"
-            rightIcon={<FaArrowRight />}
+      <div className="mt-20 mb-5 flex items-start align-middle">
+        <h2 className="text-2xl font-semibold md:text-3xl">{props.title}</h2>
+        <div className="flex-1"></div>
+        <Link
+          href={props.href}
+          className="hidden rounded-md transition-all hover:bg-default-50 dark:hover:bg-gray-700 md:block"
+        >
+          <button
+            type="button"
+            className="flex items-center px-4 py-2 align-middle text-base font-semibold text-default-200"
           >
             learn more
-          </Button>
+            <FaArrowRight className="ml-2" />
+          </button>
         </Link>
-      </HStack>
+      </div>
       {props.children}
-      <Flex mb={20}>
-        <Spacer />
-        <Link href={props.href}>
-          <Button
-            display={{ base: "block", md: "none" }}
-            variant="ghost"
-            colorScheme="messenger"
-            rightIcon={<FaArrowRight />}
+      <div className="flex items-end justify-end md:hidden">
+        <Link
+          href={props.href}
+          className="rounded-md transition-all hover:bg-default-50 dark:hover:bg-gray-700"
+        >
+          <button
+            type="button"
+            className="flex items-center  px-4 py-2 align-middle text-base font-semibold text-default-300"
           >
             learn more
-          </Button>
+            <FaArrowRight className="ml-2" />
+          </button>
         </Link>
-      </Flex>
+      </div>
     </>
   );
 }

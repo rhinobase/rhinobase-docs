@@ -1,4 +1,3 @@
-import { Container } from "@chakra-ui/react";
 import MinimalWrapper from "../MinimalWrapper";
 import Footer from "./Footer";
 
@@ -11,9 +10,11 @@ export default function DefaultWrapper(props: WrapperProps) {
     <MinimalWrapper>
       <>
         {props.children}
-        <Container maxW="7xl">
+        {/* <div className="dark:bg-gray-700 dark:text-white"> */}
+        <div className="container m-auto">
           <Footer />
-        </Container>
+        </div>
+        {/* </div> */}
       </>
     </MinimalWrapper>
   );

@@ -1,15 +1,7 @@
-import {
-  Box,
-  Heading,
-  HStack,
-  SimpleGrid,
-  Text,
-  Image,
-} from "@chakra-ui/react";
 import QuickstartTile, { QuickstartTileProps } from "components/QuickstartTile";
 import QuickstartWrapper from "components/wrapper/QuickstartWrapper";
 import React from "react";
-
+import Image from "next/image";
 // Images
 import PythonImage from "../../public/quickstart_icons/python.svg";
 import LaravelImage from "../../public/quickstart_icons/laravel.svg";
@@ -192,28 +184,31 @@ const quickstart_data: QuickstartType[] = [
 ];
 
 export default function Quickstarts() {
-  return quickstart_data.map((value, index) => (
-    <React.Fragment key={index}>
-      <Box pt={10} id={value.id}>
-        <HStack gap={5}>
+  return quickstart_data.map((value) => (
+    <>
+      <div className="pt-10">
+        <div className="flex items-center">
           <Image
             src={value.image}
-            alt={value.title}
-            boxSize="75px"
-            borderRadius="xl"
+            alt=""
+            className="h-[75px] w-[75px] rounded-xl"
+            width={75}
+            height={75}
           />
-          <Heading>{value.title}</Heading>
-        </HStack>
-        <Text fontSize="2xl" my={5}>
+          <h1 className="ml-5 text-xl font-semibold  md:text-4xl">
+            {value.title}
+          </h1>
+        </div>
+        <p className="py-5 text-lg text-gray-600 dark:text-gray-300 md:text-2xl">
           {value.description}
-        </Text>
-      </Box>
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5} mb={10}>
-        {value.items.map((item, index) => (
-          <QuickstartTile key={index} {...item} />
-        ))}
-      </SimpleGrid>
-    </React.Fragment>
+        </p>
+        <div className="mb-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {value.items.map((item, index) => (
+            <QuickstartTile key={index} {...item} />
+          ))}
+        </div>
+      </div>
+    </>
   ));
 }
 

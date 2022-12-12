@@ -1,13 +1,14 @@
-import {
-  Box,
-  ListItem,
-  Text,
-  UnorderedList,
-  useBreakpointValue,
-  VStack,
-} from "@chakra-ui/react";
+// import {
+//   Box,
+//   ListItem,
+//   Text,
+//   UnorderedList,
+//   useBreakpointValue,
+//   VStack,
+// } from "@chakra-ui/react";
 import { useScrollSpy } from "hooks/useScrollspy";
 import Link from "next/link";
+import { classNames } from "utils/className";
 
 type TableOfContentProps = {
   headings: {
@@ -19,25 +20,40 @@ type TableOfContentProps = {
 
 export default function TableOfContent(props: TableOfContentProps) {
   const activeId = useScrollSpy(props.headings.map(({ id }) => `[id="${id}"]`));
-  const show = useBreakpointValue({ base: true, lg: false });
+  // const show = useBreakpointValue({ base: true, lg: false });
   return (
-    <VStack py={3}>
-      <Box w="300px" display={props.headings.length == 0 ? "none" : "block"}>
-        <UnorderedList>
+    <>
+      <div className="ml-5 mt-5 hidden space-y-2 lg:block">
+        {props.headings.map((value) => (
+          <Link key={value.id} href={`#${value.id}`}>
+            <p
+              className={classNames(
+                activeId == value.id
+                  ? "font-semibold text-default-500 dark:text-default-300 "
+                  : "font-medium",
+              )}
+            >
+              {value.text}
+            </p>
+          </Link>
+        ))}
+      </div>
+      <div className="py-3">
+        <ul className="ml-8 flex list-outside list-disc flex-col gap-2 lg:hidden">
           {props.headings.map((value) => (
-            <Link key={value.id} href={`#${value.id}`}>
-              <Text
-                as={show ? ListItem : undefined}
-                fontWeight={activeId == value.id ? 700 : 500}
-                textColor={activeId == value.id ? "messenger.600" : undefined}
-                _hover={{ fontWeight: 700 }}
+            <li key={value.id}>
+              <Link
+                href={`#${value.id}`}
+                className={classNames(
+                  activeId == value.id ? "font-[500]" : "font-[500]",
+                )}
               >
                 {value.text}
-              </Text>
-            </Link>
+              </Link>
+            </li>
           ))}
-        </UnorderedList>
-      </Box>
-    </VStack>
+        </ul>
+      </div>
+    </>
   );
 }

@@ -1,12 +1,5 @@
-import {
-  HStack,
-  Text,
-  Image,
-  useColorModeValue,
-  Box,
-  AspectRatio,
-} from "@chakra-ui/react";
 import Link from "next/link";
+import Image from "next/image";
 
 export type ContentTileProps = {
   title: string;
@@ -18,75 +11,62 @@ export type ContentTileProps = {
 };
 
 export default function ContentTile(props: ContentTileProps) {
-  const bgColor = useColorModeValue("gray.100", "gray.700");
-
   if (props.image) {
     return (
-      <Link href={props.href}>
-        <Box
-          w="100%"
-          h="100%"
-          borderBottom="2px"
-          borderColor={bgColor}
-          py={4}
-          _hover={{ borderColor: "messenger.200" }}
-          transition="border 0.1s ease 0s"
-        >
-          <AspectRatio ratio={3 / 1} mb={5} borderRadius="md" overflow="hidden">
-            <Image src={props.image} alt={props.title} />
-          </AspectRatio>
-          <Text size="md" fontWeight={600} color="messenger.500">
-            {props.title}
-          </Text>
-          <Text mt={2}>{props.description}</Text>
-          {(props.icon || props.tags) && (
-            <HStack mt={5}>
-              {props.icon}
-              <Text
-                fontSize="12px"
-                textTransform="uppercase"
-                fontWeight={600}
-                color="GrayText"
-              >
-                {props.tags?.join(" · ")}
-              </Text>
-            </HStack>
-          )}
-        </Box>
-      </Link>
+      <>
+        <Link href={props.href}>
+          <div className="h-full w-full border-b-2 border-gray-100 py-4 hover:border-default-300 dark:border-gray-600 dark:hover:border-default-300">
+            <div className="flex flex-col items-start">
+              <div className="mb-5 h-[130px] w-full rounded-md">
+                <Image
+                  src="https://via.placeholder.com/150?text=%20"
+                  alt=""
+                  className="h-full w-full rounded-md"
+                  width={100}
+                  height={100}
+                />
+              </div>
+              <p className="text-base font-medium text-default-500 dark:text-default-300">
+                {props.title}
+              </p>
+              <p className="mt-2">{props.description}</p>
+              {(props.icon || props.tags) && (
+                <div className="mt-5 flex">
+                  {props.icon}
+                  <p className="ml-2 text-xs font-medium text-gray-500">
+                    {" "}
+                    {props.tags?.join(" · ")}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </Link>
+      </>
     );
   }
 
   return (
-    <Link href={props.href}>
-      <Box
-        w="100%"
-        h="100%"
-        border="2px"
-        borderColor={bgColor}
-        borderRadius="md"
-        p={4}
-        _hover={{ borderColor: "messenger.200" }}
-        transition="border 0.1s ease 0s"
-      >
-        <Text size="md" fontWeight={600} color="messenger.500">
-          {props.title}
-        </Text>
-        <Text mt={2}>{props.description}</Text>
-        {(props.icon || props.tags) && (
-          <HStack mt={5}>
-            {props.icon}
-            <Text
-              fontSize="12px"
-              textTransform="uppercase"
-              fontWeight={600}
-              color="GrayText"
-            >
-              {props.tags?.join(" · ")}
-            </Text>
-          </HStack>
-        )}
-      </Box>
-    </Link>
+    <>
+      <Link href={props.href}>
+        <div className="h-full w-full rounded-md border-2 border-gray-100 p-4 transition-all hover:border-default-300 dark:border-gray-600 dark:hover:border-default-300">
+          <div className="flex  max-w-xl flex-col items-start">
+            <p className="text-base font-medium text-default-500 dark:text-default-300">
+              {props.title}
+            </p>
+            <p className="mt-2">{props.description}</p>
+            {(props.icon || props.tags) && (
+              <div className="mt-5 flex">
+                {props.icon}
+                <p className="ml-3 text-xs font-medium text-gray-500">
+                  {" "}
+                  {props.tags?.join(" · ")}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </Link>
+    </>
   );
 }

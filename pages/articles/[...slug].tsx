@@ -4,7 +4,6 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { toArray } from "utils/js-utils";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
-import { Box, Container, Heading, HStack } from "@chakra-ui/react";
 import TableOfContent from "components/TableOfContent";
 
 export default function ArticleWrapper({
@@ -12,7 +11,30 @@ export default function ArticleWrapper({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const Component = useMDXComponent(doc.body.code);
   return (
-    <Container maxW="6xl" my={{ base: 0, lg: 20 }}>
+    <>
+      <div className="container m-auto my-0 max-w-7xl lg:my-20">
+        <div className="flex flex-col gap-8 lg:flex-row">
+          <div className="flex-[2] px-4">
+            <h1 className="mt-8 mb-1 text-3xl font-semibold">{doc.title}</h1>
+            <h2 className="mt-8 text-xl font-medium">{doc.description}</h2>
+            <div className="my-8 flex flex-col rounded-md bg-gray-100 p-2 dark:bg-slate-700 lg:hidden">
+              <h1 className="ml-4 mt-3 text-xl font-bold text-default-500">
+                Table of Content
+              </h1>
+              <TableOfContent headings={doc.frontMatter.headings} />
+            </div>
+            <div className="text-justify">
+              <Component components={MDXComponents} />
+            </div>
+          </div>
+          <div className="flex-[1]">
+            <div className="sticky top-24">
+              <TableOfContent headings={doc.frontMatter.headings} />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <Container maxW="6xl" my={{ base: 0, lg: 20 }}>
       <HStack alignItems="start" gap={8} py={3}>
         <Box>
           <Heading as="h1" apply="mdx.h1" fontSize={{ base: "26px" }}>
@@ -57,7 +79,8 @@ export default function ArticleWrapper({
           <TableOfContent headings={doc.frontMatter.headings} />
         </Box>
       </HStack>
-    </Container>
+    </Container> */}
+    </>
   );
 }
 
