@@ -5,99 +5,15 @@ import {
   FaTwitter,
   FaLinkedin,
   FaFacebook,
-  FaTwitch,
-  FaInstagram,
 } from "react-icons/fa";
-import FooterList, { FooterListProps } from "./FooterList";
 import Logo from "components/brand/Logo";
 import Link from "next/link";
-
-const data: FooterListProps[] = [
-  {
-    title: "Company",
-    items: [
-      {
-        title: "About Us",
-        href: "",
-      },
-      {
-        title: "Careers",
-        href: "",
-      },
-      {
-        title: "Articles",
-        href: "https://www.rhinobase.io/articles",
-      },
-    ],
-  },
-  {
-    title: "Product",
-    items: [
-      {
-        title: "CLI",
-        href: "",
-      },
-      {
-        title: "Customers",
-        href: "",
-      },
-      {
-        title: "Enterprise",
-        href: "",
-      },
-      {
-        title: "Pricing",
-        href: "",
-      },
-      {
-        title: "Changelog",
-        href: "",
-      },
-    ],
-  },
-  {
-    title: "Resources",
-    items: [
-      {
-        title: "Docs",
-        href: "",
-      },
-      {
-        title: "Support",
-        href: "",
-      },
-      {
-        title: "Status",
-        href: "",
-      },
-      {
-        title: "Contact",
-        href: "",
-      },
-    ],
-  },
-  {
-    title: "Talk to us",
-    items: [
-      {
-        title: "Call +91",
-        href: "",
-      },
-      {
-        title: "Contact Sales",
-        href: "",
-      },
-    ],
-  },
-];
 
 const navigation = {
   company: [
     { name: "About Us", href: "#" },
     { name: "Careers", href: "#" },
     { name: "Articles", href: "/articles" },
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
   ],
   product: [
     { name: "CLI", href: "#" },
@@ -118,16 +34,6 @@ const navigation = {
   ],
   social: [
     {
-      name: "Facebook",
-      href: "#",
-      icon: FaFacebook,
-    },
-    {
-      name: "Instagram",
-      href: "#",
-      icon: FaInstagram,
-    },
-    {
       name: "Twitter",
       href: "#",
       icon: FaTwitter,
@@ -137,6 +43,17 @@ const navigation = {
       href: "#",
       icon: FaGithub,
     },
+    {
+      name: "Facebook",
+      href: "#",
+      icon: FaFacebook,
+    },
+    {
+      name: "Linkedin",
+      href: "#",
+      icon: FaLinkedin,
+    },
+
     {
       name: "Youtube",
       href: "#",
@@ -152,108 +69,93 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <>
-      <footer className="" aria-labelledby="footer-heading">
-        <h2 id="footer-heading" className="sr-only">
-          Footer
-        </h2>
-        <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-          <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-            <div className="space-y-8 xl:col-span-1">
-              <Link href="/">
-                <Logo size={40} borderRadius="8" p={1} />
-              </Link>
-              <p className="text-base">
-                Making the world a better place through constructing elegant
-                hierarchies.
-              </p>
-              <div className="flex space-x-6">
-                {navigation.social.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className=" hover:text-gray-500"
-                  >
-                    <span className="sr-only">{item.name}</span>
-                    <item.icon className="h-6 w-6" aria-hidden="true" />
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div className="mt-12 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-base font-medium ">Company</h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {navigation.company.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-base hover:text-gray-400"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-12 md:mt-0">
-                  <h3 className="text-base font-medium">Product</h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {navigation.product.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-base hover:text-gray-400"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-base font-medium">Resourses</h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {navigation.resourse.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-base hover:text-gray-400"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-12 md:mt-0">
-                  <h3 className="text-base font-medium ">Talk to us</h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {navigation.talkToUs.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-base  hover:text-gray-400"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 border-t border-gray-200 pt-8">
-            <p className="text-base text-gray-400 xl:text-center">
-              &copy; 2020 - 2022 Rhinobase® Inc. All Rights Reserved.
-            </p>
+    <div className="mx-auto max-w-7xl px-4 pt-10">
+      <div className="mb-10 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
+        <div className="col-span-2 space-y-8 md:col-span-1">
+          <Link href="/">
+            <Logo />
+          </Link>
+        </div>
+
+        <div>
+          <h3 className="text-base font-semibold ">Company</h3>
+          <ul role="list" className="mt-4 space-y-2 text-base">
+            {navigation.company.map((item) => (
+              <li key={item.name}>
+                <a href={item.href} className="hover:text-gray-500">
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="">
+          <h3 className="text-base font-semibold">Product</h3>
+          <ul role="list" className="mt-4 space-y-2 text-base">
+            {navigation.product.map((item) => (
+              <li key={item.name}>
+                <a href={item.href} className="hover:text-gray-500">
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-base font-semibold">Resourses</h3>
+          <ul role="list" className="mt-4 space-y-2 text-base">
+            {navigation.resourse.map((item) => (
+              <li key={item.name}>
+                <a href={item.href} className="hover:text-gray-500">
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className=" md:mt-0">
+          <h3 className="text-base font-semibold ">Talk to us</h3>
+          <ul role="list" className="mt-4 space-y-2 text-base">
+            {navigation.talkToUs.map((item) => (
+              <li key={item.name}>
+                <a href={item.href} className=" hover:text-gray-500">
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="flex flex-col-reverse  border-t border-gray-200 py-5 dark:border-gray-600 lg:flex-row">
+        <div className="flex flex-col text-center lg:flex-row lg:text-left ">
+          <p className="mr-0 text-center text-base text-gray-500 lg:mr-6">
+            &copy; 2020 - 2022 Rhinobase® Inc. All Rights Reserved.
+          </p>
+          <div className="mt-5 lg:mt-0">
+            <Link className="text-gray-500 " href={"#"}>
+              Privacy
+            </Link>
+            <Link className="ml-2 text-gray-500" href={"#"}>
+              Terms
+            </Link>
           </div>
         </div>
-      </footer>
-    </>
+
+        <div className="flex-1" />
+        <div className="mb-6 flex items-center justify-center space-x-6 lg:mb-0">
+          {navigation.social.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="flex items-center justify-center text-gray-500 hover:text-gray-600 dark:text-white dark:hover:text-gray-400"
+            >
+              <span className="sr-only">{item.name}</span>
+              <item.icon className="h-4 w-4" aria-hidden="true" />
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

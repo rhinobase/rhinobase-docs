@@ -15,96 +15,93 @@ import AppleImage from "../../public/quickstart_icons/apple.svg";
 import ReactImage from "../../public/quickstart_icons/react.svg";
 import NodejsImage from "../../public/quickstart_icons/nodejs.svg";
 import DjangoImage from "../../public/quickstart_icons/django.svg";
-import { text } from "node:stream/consumers";
 
-const platforms=[
-    {
-        image: PythonImage,
-        text: "Python",
-        tag: []
-    },
+const platforms = [
+  {
+    image: PythonImage,
+    text: "Python",
+    tag: [],
+  },
 
-    {
-        image: LaravelImage,
-        text: "Laravel",
-        tag: []
-    },
-    {
-        image: JavascriptImage,
-        text: "Javascript",
-        tag: []
-    },
-    {
-        image: GolangImage,
-        text: "Golden",
-        tag: []
-    },
-    {
-        image: PhpImage,
-        text: "Php",
-        tag: []
-    },
-    {
-        image: NextjsImage,
-        text: "Nextjs",
-        tag: []
-    },
-    {
-        image: RailsImage,
-        text: "rails",
-        tag: []
-    },
-    {
-        image: JavaImage,
-        text: "Java",
-        tag: []
-    },
-    {
-        image: AngularImage,
-        text: "Angular",
-        tag: []
-    },
-    {
-        image: VuejsImage,
-        text: "Vue",
-        tag: []
-    },
-    {
-        image: AndroidImage,
-        text: "Android",
-        tag: []
-    },
-    {
-        image: FlutterImage,
-        text: "Flutter",
-        tag: []
-    },
-    {
-        image: AppleImage,
-        text: "Apple",
-        tag: []
-    },
-    {
-        image: ReactImage,
-        text: "React",
-        tag: []
-    },
+  {
+    image: LaravelImage,
+    text: "Laravel",
+    tag: [],
+  },
+  {
+    image: JavascriptImage,
+    text: "Javascript",
+    tag: [],
+  },
+  {
+    image: GolangImage,
+    text: "Golden",
+    tag: [],
+  },
+  {
+    image: PhpImage,
+    text: "Php",
+    tag: [],
+  },
+  {
+    image: NextjsImage,
+    text: "Nextjs",
+    tag: [],
+  },
+  {
+    image: RailsImage,
+    text: "rails",
+    tag: [],
+  },
+  {
+    image: JavaImage,
+    text: "Java",
+    tag: [],
+  },
+  {
+    image: AngularImage,
+    text: "Angular",
+    tag: [],
+  },
+  {
+    image: VuejsImage,
+    text: "Vue",
+    tag: [],
+  },
+  {
+    image: AndroidImage,
+    text: "Android",
+    tag: [],
+  },
+  {
+    image: FlutterImage,
+    text: "Flutter",
+    tag: [],
+  },
+  {
+    image: AppleImage,
+    text: "Apple",
+    tag: [],
+  },
+  {
+    image: ReactImage,
+    text: "React",
+    tag: [],
+  },
 
-    {
-        image: NodejsImage,
-        text: "Node",
-        tag: []
-    },
+  {
+    image: NodejsImage,
+    text: "Node",
+    tag: [],
+  },
 
-    {
-        image: DjangoImage,
-        text: "Django",
-        tag: []
-    },
-]
+  {
+    image: DjangoImage,
+    text: "Django",
+    tag: [],
+  },
+];
 
 export default function Platform() {
-  return (
-    <div>Platform</div>
-  )
+  return <div>Platform</div>;
 }

@@ -184,7 +184,7 @@ const quickstart_data: QuickstartType[] = [
 ];
 
 export default function Quickstarts() {
-  return quickstart_data.map((value, index) => (
+  return quickstart_data.map((value) => (
     <>
       <div className="pt-10">
         <div className="flex items-center">
@@ -195,9 +195,13 @@ export default function Quickstarts() {
             width={75}
             height={75}
           />
-          <h1 className="ml-5 text-4xl font-semibold">{value.title}</h1>
+          <h1 className="ml-5 text-xl font-semibold  md:text-4xl">
+            {value.title}
+          </h1>
         </div>
-        <p className="py-5 text-2xl">{value.description}</p>
+        <p className="py-5 text-lg text-gray-600 dark:text-gray-300 md:text-2xl">
+          {value.description}
+        </p>
         <div className="mb-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {value.items.map((item, index) => (
             <QuickstartTile key={index} {...item} />

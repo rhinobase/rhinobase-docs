@@ -12,13 +12,13 @@ export default function QuickstartPage({
   const Component = useMDXComponent(doc.body.code);
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col py-10">
         <div>
           <h1 className="mb-4 text-4xl">{doc.title}</h1>
           <h2 className="mb-6 text-2xl">{doc.description}</h2>
           <Component components={MDXComponents} />
         </div>
-        {/* <TableOfContent source={doc.body.raw} /> */}
+        <TableOfContent headings={doc.frontMatter.headings} />
       </div>
     </>
   );

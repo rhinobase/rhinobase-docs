@@ -12,24 +12,36 @@ export default function ContentWrapper(props: ContentWrapperProps) {
   return (
     <>
       <div className="mt-20 mb-5 flex items-start align-middle">
-        <h2 className="text-3xl font-semibold">{props.title}</h2>
+        <h2 className="text-2xl font-semibold md:text-3xl">{props.title}</h2>
         <div className="flex-1"></div>
         <Link
           href={props.href}
-          className="rounded-md transition-all hover:bg-blue-200"
+          className="hidden rounded-md transition-all hover:bg-default-50 dark:hover:bg-gray-700 md:block"
         >
           <button
             type="button"
-            className="flex items-center px-4 py-2 align-middle text-base font-semibold text-blue-500"
+            className="flex items-center px-4 py-2 align-middle text-base font-semibold text-default-200"
           >
             learn more
-            <span className="ml-2">
-              <FaArrowRight />
-            </span>
+            <FaArrowRight className="ml-2" />
           </button>
         </Link>
       </div>
       {props.children}
+      <div className="flex items-end justify-end md:hidden">
+        <Link
+          href={props.href}
+          className="rounded-md transition-all hover:bg-default-50 dark:hover:bg-gray-700"
+        >
+          <button
+            type="button"
+            className="flex items-center  px-4 py-2 align-middle text-base font-semibold text-default-300"
+          >
+            learn more
+            <FaArrowRight className="ml-2" />
+          </button>
+        </Link>
+      </div>
     </>
   );
 }

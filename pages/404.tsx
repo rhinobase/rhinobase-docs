@@ -1,6 +1,5 @@
 // import { Heading, Text, VStack, Container, Button } from "@chakra-ui/react";
 import Link from "next/link";
-import { FaQuestion } from "react-icons/fa";
 import { HiExclamationTriangle } from "react-icons/hi2";
 
 export default function NotFound() {

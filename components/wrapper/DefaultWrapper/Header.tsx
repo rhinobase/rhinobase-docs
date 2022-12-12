@@ -1,32 +1,20 @@
 import FullLogo from "components/brand/FullLogo";
-import { FaGithub, FaDiscord, FaYoutube, FaBars, FaMoon } from "react-icons/fa";
-import { HiXMark } from "react-icons/hi2";
+import { FaGithub, FaDiscord, FaYoutube, FaBars } from "react-icons/fa";
+import { HiMoon, HiSun, HiXMark } from "react-icons/hi2";
 import Link from "next/link";
 import React, { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { classNames } from "utils/className";
-import { toggleColorMode } from "utils/colorMode";
 import { Dialog, Popover, Transition } from "@headlessui/react";
+import { Sidebar } from "../Sidebar";
 
-const navigation = [
-  { name: "Article", href: "/articles", icon: "HomeIcon", current: true },
-  {
-    name: "Quickstart",
-    href: "/quickstart",
-    icon: "UsersIcon",
-    current: false,
-  },
-  { name: "APIs", href: "/apis", icon: "FolderIcon", current: false },
-  { name: "SDKs", href: "/sdks", icon: "CalendarIcon", current: false },
-];
+import sitemap from "sitemap.json";
+import { ColorMode, useColorMode } from "providers/colorMode";
 
 export default function Header() {
   const router = useRouter();
   const [show, setShow] = useState(false);
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const onOpen = () => setIsOpen(true);
-  // const onClose = () => setIsOpen(false);
+  const { mode, toggleColorMode } = useColorMode();
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -44,23 +32,20 @@ export default function Header() {
             show ? "shadow-md" : "",
             router.pathname == "/" && !show
               ? "bg-gray-100 dark:bg-gray-700"
-              : "bg-white dark:bg-gray-800",
+              : "bg-gray-100 dark:bg-gray-800",
             "fixed z-[100] w-full text-gray-800 transition delay-[0s] duration-[.1s] ease-in-out dark:text-white",
           )}
         >
-          <div className="flex flex-row items-center p-3">
+          <div className="flex flex-row items-center p-2">
             <Link href="/">
-              <FullLogo
-                logo={{ size: 40, borderRadius: "md", p: 1 }}
-                size="lg"
-              />
+              <FullLogo />
             </Link>
             <div className="mr-2 flex-[1] justify-items-stretch"></div>
             <div className="mr-2 hidden md:block ">
               <Link href="/articles">
                 <button
                   type="button"
-                  className="text-md inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 font-medium hover:bg-black/[.08] focus:outline-none dark:hover:bg-white/[0.2]"
+                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-1 text-base font-semibold hover:bg-gray-200 focus:outline-none dark:hover:bg-gray-600"
                 >
                   Article
                 </button>
@@ -68,7 +53,7 @@ export default function Header() {
               <Link href="/quickstart">
                 <button
                   type="button"
-                  className="text-md inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 font-medium  hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
+                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-1 text-base font-semibold  hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600"
                 >
                   Quickstarts
                 </button>
@@ -76,7 +61,7 @@ export default function Header() {
               <Link href="/apis">
                 <button
                   type="button"
-                  className="text-md inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 font-medium  hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
+                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-1 text-base font-semibold  hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600"
                 >
                   APIs
                 </button>
@@ -84,7 +69,7 @@ export default function Header() {
               <Link href="/sdks">
                 <button
                   type="button"
-                  className="text-md inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-2 font-medium  hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
+                  className="inline-flex items-center rounded-md border border-transparent bg-transparent px-4 py-1 text-base font-semibold  hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600"
                 >
                   SDKs
                 </button>
@@ -93,7 +78,7 @@ export default function Header() {
             <div className="hidden gap-2 sm:flex ">
               <button
                 type="button"
-                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
+                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-1 text-sm font-medium hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600"
               >
                 <Link href="">
                   <FaGithub size="24px" />
@@ -101,7 +86,7 @@ export default function Header() {
               </button>
               <button
                 type="button"
-                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
+                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-1 text-sm font-medium hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600"
               >
                 <Link href="">
                   <FaDiscord size="24px" />
@@ -109,7 +94,7 @@ export default function Header() {
               </button>
               <button
                 type="button"
-                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
+                className="inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-1 text-sm font-medium hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600"
               >
                 <Link href="">
                   <FaYoutube size="24px" />
@@ -118,18 +103,23 @@ export default function Header() {
             </div>
             <button
               type="button"
-              className="mx-2 inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2]"
+              className="mx-2 inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600"
               onClick={toggleColorMode}
             >
-              <FaMoon size="20px" />
+              {mode == ColorMode.LIGHT ? (
+                <HiMoon size="20px" />
+              ) : (
+                <HiSun size="20px" />
+              )}
             </button>
 
             <button
-              className="mx-2 inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-black/[.08] focus:outline-none  dark:hover:bg-white/[0.2] sm:block md:hidden"
+              className="mx-2 inline-flex items-center rounded-md border border-transparent bg-transparent px-2 py-2 text-sm font-medium hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600 sm:block md:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <FaBars size="16px" />
             </button>
+
             <Transition.Root show={sidebarOpen} as={Fragment}>
               <Dialog
                 as="div"
@@ -158,7 +148,7 @@ export default function Header() {
                     leaveFrom="translate-x-0"
                     leaveTo="-translate-x-full"
                   >
-                    <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white pt-5 pb-4">
+                    <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white pt-5 pb-4 dark:bg-gray-700 dark:text-white">
                       <Transition.Child
                         as={Fragment}
                         enter="ease-in-out duration-300"
@@ -184,10 +174,7 @@ export default function Header() {
                       </Transition.Child>
                       <div className="flex flex-shrink-0 items-center px-4">
                         <Link href="/">
-                          <FullLogo
-                            logo={{ size: 40, borderRadius: "md", p: 1 }}
-                            size="lg"
-                          />
+                          <FullLogo />
                         </Link>
                         {/* <img
                       className="h-8 w-auto"
@@ -196,54 +183,33 @@ export default function Header() {
                     /> */}
                       </div>
                       <div className="mt-5 h-0 flex-1 overflow-y-auto">
-                        <div className="border-b-2 border-gray-50"></div>
-                        <nav className="space-y-2 px-3">
-                          <Link
-                            href="/articles"
-                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
-                          >
-                            Article
-                          </Link>
-                          <Link
-                            href="/quickstart"
-                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
-                          >
-                            Quickstart
-                          </Link>
-                          <Link
-                            href="/apis"
-                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
-                          >
-                            APIs
-                          </Link>
-                          <Link
-                            href="/sdks"
-                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
-                          >
-                            SDKs
-                          </Link>
-                          <div className="border-b-2 border-gray-100"></div>
-                          <Link
-                            href=""
-                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
-                          >
-                            <FaGithub size="24px" />
-                            <span className="ml-3">Github</span>
-                          </Link>
-                          <Link
-                            href=""
-                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
-                          >
-                            <FaDiscord size="24px" />
-                            <span className="ml-3">Discord</span>
-                          </Link>
-                          <Link
-                            href=""
-                            className=" group flex items-center rounded-md px-4 py-2 text-base font-medium hover:bg-gray-200"
-                          >
-                            <FaYoutube size="24px" />
-                            <span className="ml-3">Youtube</span>
-                          </Link>
+                        <div className=""></div>
+                        <nav className="space-y-2">
+                          <Sidebar options={sitemap} />
+                          {/* <div className="border-b border-gray-200 dark:border-gray-500"></div> */}
+                          <div className="flex flex-col space-y-2 px-2 py-3">
+                            <Link
+                              href=""
+                              className="inline-flex h-10 items-center rounded-md px-4 text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-600"
+                            >
+                              <FaGithub size="16px" />
+                              <span className="ml-3">Github</span>
+                            </Link>
+                            <Link
+                              href=""
+                              className="inline-flex h-10 items-center rounded-md px-4 text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-600"
+                            >
+                              <FaDiscord size="16px" />
+                              <span className="ml-3">Discord</span>
+                            </Link>
+                            <Link
+                              href=""
+                              className="inline-flex h-10 items-center rounded-md px-4 text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-600"
+                            >
+                              <FaYoutube size="16px" />
+                              <span className="ml-3">Youtube</span>
+                            </Link>
+                          </div>
                           {/* {navigation.map((item) => (
                             <Link href={item.href}>
                             <button

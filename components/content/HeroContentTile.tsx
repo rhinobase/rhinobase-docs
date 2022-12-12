@@ -16,12 +16,12 @@ export default function HeroContentTile(props: HeroContentTileprops) {
       <div className="width-full border-b-2 border-gray-100 px-10 dark:border-gray-600">
         <div className="flex items-start justify-between">
           <div className="flex  max-w-xl flex-col items-start space-y-5 md:flex-1">
-            <h1 className=" text-2xl">{props.title}</h1>
+            <h1 className="text-2xl font-semibold">{props.title}</h1>
             <p>{props.description}</p>
             <Link href={props.href} className="pb-5">
               <button
                 type="button"
-                className="flex items-center align-middle text-base font-bold text-blue-500"
+                className="flex items-center align-middle text-base font-bold text-default-300"
               >
                 {props.tag}{" "}
                 <span className="ml-2">

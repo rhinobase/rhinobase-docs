@@ -13,7 +13,7 @@ export default function ApplicationTypeTile(props: ApplicationTypeTileProps) {
   return (
     <>
       <Link href={`/quickstart#${props.id}`}>
-        <div className="flex h-[320px] flex-col items-center justify-center rounded-md border-2 border-transparent bg-white p-7 text-gray-800 shadow-lg shadow-gray-300 transition-all hover:border-blue-300 dark:bg-gray-700 dark:text-white dark:shadow-gray-900">
+        <div className="flex h-[320px] flex-col items-center justify-center rounded-md border-2 border-transparent bg-white p-7 text-gray-800 shadow-md shadow-gray-300 transition-all hover:border-default-300 dark:bg-gray-800 dark:text-white dark:shadow-gray-900">
           <Image
             src={props.image}
             alt={props.title}

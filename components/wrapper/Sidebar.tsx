@@ -1,12 +1,8 @@
 import { Disclosure } from "@headlessui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useMemo, useState } from "react";
-import {
-  HiChevronDown,
-  HiExclamationTriangle,
-  HiOutlineArrowTopRightOnSquare,
-} from "react-icons/hi2";
+import React, { useMemo } from "react";
+import { HiExclamationTriangle, HiOutlineChevronDown } from "react-icons/hi2";
 import { classNames } from "utils/className";
 import findActiveAccordion from "utils/findActiveAccordion";
 
@@ -39,15 +35,15 @@ function SidebarNested(
         <Disclosure>
           {({ open }) => (
             <>
-              <Disclosure.Button className="mb-2 flex w-full items-center rounded-lg py-2 px-4 text-left font-medium hover:bg-gray-300/[0.3] focus:outline-none">
-                <HiChevronDown
+              <Disclosure.Button className="mb-2 flex w-full items-center rounded-lg py-2 px-4 text-left font-semibold hover:bg-gray-100 focus:outline-none dark:hover:bg-gray-600">
+                <HiOutlineChevronDown
                   className={`${
                     open ? "rotate-180 transform" : ""
-                  } mr-3 h-4 w-4 font-bold`}
+                  } mr-3 h-4 w-4 font-extrabold`}
                 />
                 {props.title}
               </Disclosure.Button>
-              <Disclosure.Panel className="">
+              <Disclosure.Panel className=" pl-4">
                 {props.items?.map((item, index) => (
                   <SidebarNested
                     key={index}
@@ -71,15 +67,12 @@ function SidebarNested(
           <button
             className={classNames(
               isActive
-                ? " text-blue-500 hover:bg-blue-300/[0.3]"
-                : "hover:bg-gray-300/[0.3] ",
+                ? "text-default-500 hover:bg-default-50  dark:text-default-100 dark:hover:bg-gray-600"
+                : "hover:bg-gray-100 dark:hover:bg-gray-600 ",
               "mb-1 flex w-full items-center rounded-lg py-2 px-4 text-left font-medium capitalize focus:outline-none",
             )}
           >
             {props.title}
-            <HiOutlineArrowTopRightOnSquare
-              className={classNames(isActive ? "hidden " : "", "ml-2 h-3 w-3")}
-            />
           </button>
         </Link>
       </>
@@ -123,7 +116,7 @@ export function Sidebar(props: { options: SidebarNestedType[] }) {
 
   return (
     <>
-      <div className="mt-3 hidden w-full max-w-xs flex-col px-3 lg:flex">
+      <div className="w-full max-w-[300px] flex-col px-2 py-3 lg:flex">
         <Disclosure>
           {props.options.map((item, index) => (
             <SidebarNested
@@ -144,11 +137,12 @@ export default function SidebarWrapper(props: SidebarProps) {
     <>
       <div
         className="flex items-start"
-        style={{ height: "calc(100vh - 64px)" }}
+        style={{ height: "calc(100vh - 48px)" }}
       >
-        <Sidebar options={props.options} />
-
-        <div className="h-full w-full overflow-auto border-l px-6">
+        <div className="hidden w-full max-w-[300px] flex-col px-2 py-3 md:flex">
+          <Sidebar options={props.options} />
+        </div>
+        <div className="h-full w-full overflow-auto border-l px-6 dark:border-gray-600">
           <div className="container m-auto max-w-6xl">{props.children}</div>
         </div>
       </div>

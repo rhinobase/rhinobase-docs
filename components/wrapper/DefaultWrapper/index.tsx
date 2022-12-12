@@ -10,11 +10,11 @@ export default function DefaultWrapper(props: WrapperProps) {
     <MinimalWrapper>
       <>
         {props.children}
-        <div className="bg-transparent text-gray-800 dark:bg-gray-700 dark:text-white">
-          <div className="container m-auto">
-            <Footer />
-          </div>
+        {/* <div className="dark:bg-gray-700 dark:text-white"> */}
+        <div className="container m-auto">
+          <Footer />
         </div>
+        {/* </div> */}
       </>
     </MinimalWrapper>
   );

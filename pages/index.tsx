@@ -5,8 +5,7 @@ import ContentWrapper from "components/content/ContentWrapper";
 import HeroContentTile from "components/content/HeroContentTile";
 import PatternDots from "components/utils/PatternDots";
 import DefaultWrapper from "components/wrapper/DefaultWrapper";
-import Link from "next/link";
-import { FaArrowRight, FaGithub, FaInnosoft } from "react-icons/fa";
+import { FaGithub, FaInnosoft } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -17,12 +16,12 @@ export default function Home() {
       />
       <div className="text-gray-800 dark:text-white">
         <div className="relative py-5">
-          <div className="absolute top-0 left-0 -z-[1] h-[90%] w-full overflow-hidden rounded-b-[60px] dark:z-0">
+          <div className="absolute top-0 left-0 -z-[1] h-[90%] w-full overflow-hidden rounded-b-[20px] bg-gray-200  dark:z-0 dark:bg-gray-700 md:rounded-b-[60px]">
             <PatternDots />
             <div className="absolute h-full w-full bg-gradient-to-t from-transparent to-gray-100 dark:to-gray-700" />
           </div>
 
-          <div className="container relative m-auto px-8">
+          <div className="relative mx-auto max-w-7xl px-5 ">
             <div className="my-20">
               <h2 className="mb-3 text-4xl font-bold">Start Building</h2>
               <p className="text-2xl">
@@ -30,7 +29,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-10 px-5 md:grid-cols-2 lg:grid-cols-4">
               <ApplicationTypeTile
                 id="native"
                 image="https://via.placeholder.com/150?text=%20"
@@ -63,7 +62,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="container m-auto py-8 px-4">
+        <div className="mx-auto mb-20 max-w-7xl py-8 px-4">
           <HeroContentTile
             title={"Stripe CLI"}
             href={""}

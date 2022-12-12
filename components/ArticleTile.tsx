@@ -1,12 +1,3 @@
-import {
-  Avatar,
-  Box,
-  Text,
-  Image,
-  Heading,
-  HStack,
-  AspectRatio,
-} from "@chakra-ui/react";
 import Link from "next/link";
 // import Image from "next/image";
 import dateFormat from "dateformat";
@@ -27,29 +18,46 @@ export type ArticleTileType = {
 export default function ArticleTile(props: ArticleTileType) {
   return (
     <>
-     <Link href={props.href}>
-        <div className="w-[100%] h-[100%] border-b-2 border-gray-400/[0.2] hover:border-blue-300 py-4">
-          <div className="flex items-start flex-col flex-wrap">
-            <div className="mb-5 rounded-md w-[100%]">
-            <img src={props.image} alt={props.tag} className="w-[100%] h-[100%] rounded-lg" />
-            </div>      
-            <div>
-              <p className="text-base font-medium text-blue-500 mb-3">{props.tag}</p>
-              <h3 className="text-xl font-semibold mb-2">{props.title}</h3>
-              <p className="">{props.description}</p>
+      <Link href={props.href}>
+        <div className="h-full w-full border-b-2 border-gray-100 py-4  hover:border-default-300 dark:border-gray-700">
+          <div className="flex h-full flex-col items-start gap-3">
+            <div className="w-full rounded-md">
+              <img
+                src={props.image}
+                alt={props.tag}
+                className="h-full w-full rounded-lg"
+              />
             </div>
-            <div className="flex mt-5 items-center w-[100%]">
-              <img src={props.image} alt={props.tag} className="w-[50px] h-[50px] rounded-full object-cover" />
-              <div className=""> 
-                <p className="text-base font-medium  ml-4"> {props.user.name}</p>
-                <p className="text-base ml-4"> {dateFormat(props.date, "mmmm d, yyyy")}</p>
+            <p className="text-base font-medium text-default-500">
+              {props.tag}
+            </p>
+            <div className="flex flex-col gap-1">
+              <h3 className="text-xl font-semibold">{props.title}</h3>
+              <p className="text-gray-500">{props.description}</p>
+            </div>
+            <div className="flex-1" />
+            <div className="mt-5 flex w-full items-center">
+              <img
+                src={props.image}
+                alt={props.tag}
+                className="h-[50px] w-[50px] rounded-full object-cover"
+              />
+              <div className="">
+                <p className="ml-4 text-base  font-medium">
+                  {" "}
+                  {props.user.name}
+                </p>
+                <p className="ml-4 text-base">
+                  {" "}
+                  {dateFormat(props.date, "mmmm d, yyyy")}
+                </p>
               </div>
             </div>
           </div>
-        </div>  
+        </div>
       </Link>
 
-    {/* <Link href={props.href}>
+      {/* <Link href={props.href}>
       <AspectRatio
         ratio={16 / 9}
         overflow="hidden"

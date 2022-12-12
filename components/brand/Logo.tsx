@@ -1,17 +1,11 @@
 import Image from "next/image";
 import rhinobaseLogo from "../../public/rhinobase_logo.png";
 
-export type LogoProps = {
-  size?: number;
-  borderRadius?: string;
-  p?: number;
-};
-
-export default function Logo({ size, borderRadius, p }: LogoProps) {
+export default function Logo() {
   return (
     <>
       <div
-        className="flex h-[40px] w-[40px] items-center justify-center rounded-md"
+        className="flex h-[35px] w-[35px] items-center justify-center rounded-md"
         style={{
           backgroundImage:
             "linear-gradient(to bottom right, #76E4F7, #0078FF, #D53F8C, #DD6B20)",
